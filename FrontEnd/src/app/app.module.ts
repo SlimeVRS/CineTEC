@@ -9,6 +9,10 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { OfficesComponent } from './components/offices/offices.component';
 import { ScreensComponent } from './components/screens/screens.component';
+import { RouterModule } from '@angular/router';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,10 +23,19 @@ import { ScreensComponent } from './components/screens/screens.component';
     MoviesComponent,
     OfficesComponent,
     ScreensComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      {path: 'login', component: EmployeesComponent},
+      {path: 'tarjetas', component: ClientsComponent},
+      
+    ]),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

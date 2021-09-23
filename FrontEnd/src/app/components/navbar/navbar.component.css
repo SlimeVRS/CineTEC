@@ -1,0 +1,15 @@
+.navbar{
+    max-height: 65px;
+    background-color: #271b3f;
+  }
+  
+  .navbar-brand {
+    width:350px;
+    font-size: 24px;
+  }
+  .navbar-brand img {
+    height: 50px;
+    /* put value of image height as your need */
+    float: right;
+    margin-right: 7px;
+  }

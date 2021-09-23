@@ -1,1 +1,6 @@
-<p>offices works!</p>
+<a style="color:dodgerblue;">Seleccionar Ciudad  </a>
+<form [formGroup]="cityForm">
+    <select formControlName="cityControl">
+      <option [value]="city" *ngFor="let city of cities">             {{city}}</option>
+    </select>
+   </form>
