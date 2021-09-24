@@ -1,23 +1,46 @@
 <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
-       
-            <a class="navbar-brand" href="#">
-              <a class="navbar-item">
+
+        <a class="navbar-brand" href="#">
+            <a class="navbar-item">
                 <img src="assets/CineTecLogo.png">
-              </a>
             </a>
-         
+        </a>
+
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+
+                <a style="color:dodgerblue;">Seleccionar Ciudad </a>
+                <a>&nbsp;&nbsp;</a>
+                <form [formGroup]="cityForm">
+                    <select formControlName="cityControl">
+                        
+                        <option [value]="city" *ngFor="let city of cities"> {{city}}</option>
+                    </select>
+                </form>
+                <a>&nbsp;&nbsp;</a>
+                <a style="color:dodgerblue;">Seleccionar Cine </a>
+                <a>&nbsp;&nbsp;</a>
+                <form [formGroup]="cinemasForm">
+                    <select formControlName="cinemaControl">
+                        <option [value]="cinema" *ngFor="let cinema of cinemas"> {{cinema}}</option>
+                    </select>
+                </form>
+                <a>&nbsp;&nbsp;</a>
+                <a>&nbsp;&nbsp;</a>
+                <a>&nbsp;&nbsp;</a>
                 
-                <app-offices></app-offices>
+
+                <i class="fas fa-sign-in-alt" style="color: white; float: right;" ></i>
+               
+                
 
 
-                <li class="nav-item dropdown" ngbDropdown>
+                <!-- <li class="nav-item dropdown" ngbDropdown>
                     <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
                         Seleccionar Cine
@@ -26,10 +49,7 @@
                         <li ngbDropdownItem><a class="dropdown-item" routerLink="/login">Login</a></li>
                         <li ngbDropdownItem><a class="dropdown-item" routerLink="/tarjetas">Pago entre cuentas</a></li>
                     </ul>
-                </li>
-
-
-
+                </li> -->
             </ul>
         </div>
     </div>

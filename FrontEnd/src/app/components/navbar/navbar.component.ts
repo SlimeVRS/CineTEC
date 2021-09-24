@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  cityForm: FormGroup;
+  cities = ['Cartago', 'Alajuela', 'San Carlos','Limon','San Jose']
 
-  constructor() { }
+  cinemasForm: FormGroup;
+  cinemas = ['Paseo Metropoli', 'City Mall', 'TEC Cinemas','Citicinemas','Multiplaza del Este']
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit() {
+    this.cityForm = this.fb.group({
+      cityControl: ['Cartago']
+    });
+    this.cinemasForm = this.fb.group({
+      cinemaControl: ['Paseo Metropoli']
+    });
   }
 
 }
