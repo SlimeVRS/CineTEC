@@ -13,6 +13,9 @@ import { RouterModule } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarouselComponent } from './components/navbar/carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -22,14 +25,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClientsComponent,
     MoviesComponent,
     OfficesComponent,
-    ScreensComponent
+    ScreensComponent,
+    CarouselComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatSelectModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,NgbModule,
+    
     RouterModule.forRoot([
       {path: 'login', component: EmployeesComponent},
       {path: 'tarjetas', component: ClientsComponent},
