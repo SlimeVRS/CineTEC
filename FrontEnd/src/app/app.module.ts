@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarouselComponent } from './components/navbar/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MoviesComponent,
     OfficesComponent,
     ScreensComponent,
-    CarouselComponent
+    CarouselComponent,
+    LoginComponent,
+    HomeComponent
 
   ],
   imports: [
@@ -36,8 +40,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,NgbModule,
     
     RouterModule.forRoot([
-      {path: 'login', component: EmployeesComponent},
-      {path: 'tarjetas', component: ClientsComponent},
+      {path: 'employees', component: EmployeesComponent},
+      {path: 'home', component: HomeComponent},
+      {path: 'cliente', component: ClientsComponent}, 
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },
       
     ]),
     BrowserAnimationsModule,
