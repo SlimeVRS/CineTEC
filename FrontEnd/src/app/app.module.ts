@@ -53,6 +53,7 @@ import { ClientslistComponent } from './components/clients/clientslist/clientsli
       {path: 'empleadosC', component: NormalEmployeesComponent},
       {path: 'home', component: HomeComponent},
       {path: 'cliente', component: ClientsComponent}, 
+      {path: 'login', component: LoginComponent}, 
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
       
     ]),
