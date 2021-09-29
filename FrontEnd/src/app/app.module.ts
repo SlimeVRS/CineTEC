@@ -17,8 +17,12 @@ import { CarouselComponent } from './components/navbar/carousel/carousel.compone
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-
-
+import { TabGroupAlignComponent } from './components/employees/tab-group-align/tab-group-align.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NormalEmployeesComponent } from './components/employees/normal-employees/normal-employees.component';
+import { NormalEmployeesListComponent } from './components/employees/normal-employees-list/normal-employees-list.component';
+import {MatCardModule} from '@angular/material/card';
+import { ClientslistComponent } from './components/clients/clientslist/clientslist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,11 @@ import { HomeComponent } from './components/home/home.component';
     ScreensComponent,
     CarouselComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TabGroupAlignComponent,
+    NormalEmployeesComponent,
+    NormalEmployeesListComponent,
+    ClientslistComponent
 
   ],
   imports: [
@@ -38,9 +46,11 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     MatSelectModule,
     ReactiveFormsModule,NgbModule,
+    MatTabsModule,MatCardModule,
     
     RouterModule.forRoot([
       {path: 'employees', component: EmployeesComponent},
+      {path: 'empleadosC', component: NormalEmployeesComponent},
       {path: 'home', component: HomeComponent},
       {path: 'cliente', component: ClientsComponent}, 
       { path: '**', redirectTo: 'home', pathMatch: 'full' },

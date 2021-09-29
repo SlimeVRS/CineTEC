@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-clients',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ClientsComponent implements OnInit {
 
   constructor() { }
-
+  form: FormGroup;
   ngOnInit(): void {
   }
 
