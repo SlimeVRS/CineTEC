@@ -23,6 +23,7 @@ import { NormalEmployeesComponent } from './components/employees/normal-employee
 import { NormalEmployeesListComponent } from './components/employees/normal-employees-list/normal-employees-list.component';
 import {MatCardModule} from '@angular/material/card';
 import { ClientslistComponent } from './components/clients/clientslist/clientslist.component';
+import { ResgistrarComponent } from './resgistrar/resgistrar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { ClientslistComponent } from './components/clients/clientslist/clientsli
     TabGroupAlignComponent,
     NormalEmployeesComponent,
     NormalEmployeesListComponent,
-    ClientslistComponent
+    ClientslistComponent,
+    ResgistrarComponent
 
   ],
   imports: [
@@ -52,7 +54,9 @@ import { ClientslistComponent } from './components/clients/clientslist/clientsli
       {path: 'employees', component: EmployeesComponent},
       {path: 'empleadosC', component: NormalEmployeesComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'cliente', component: ClientsComponent}, 
+      {path: 'cliente', component: ClientsComponent},
+      {path: 'singup', component: ResgistrarComponent}, 
+      {path: 'login', component: LoginComponent}, 
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
       
     ]),
