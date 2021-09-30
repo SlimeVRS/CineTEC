@@ -35,7 +35,7 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, password, user
+                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user
                         FROM public.""Clients"" ";
             return await db.QueryAsync<Client>(sql, new { });
         }
@@ -44,7 +44,7 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, password, user
+                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user
                         FROM public.""Clients""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Client>(sql, new { Id = id });
@@ -54,7 +54,7 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Clients"" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, password, user)
+                        INSERT INTO public.""Clients"" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user)
                         VALUES(@Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Password, @User)";
             var response = await db.ExecuteAsync(sql, new {
                 client.Id,
@@ -81,8 +81,8 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
                         second_last_Name=@Second_Last_Name,
                         phone=@Phone, 
                         birth_date=@Birth_Date,
-                        password=@Ppassword,
-                        user=@User
+                        _password=@Ppassword,
+                        _user=@User
                     WHERE id = @Id";
             var respone = await db.ExecuteAsync(sql, new {
                 client.Id,
