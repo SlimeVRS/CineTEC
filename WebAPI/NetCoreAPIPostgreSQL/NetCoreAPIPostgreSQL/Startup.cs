@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NetCoreAPIPostgreSQL.Data;
 using NetCoreAPIPostgreSQL.Data.Client_Repository;
+using NetCoreAPIPostgreSQL.Data.Employee_Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace NetCoreAPIPostgreSQL
             services.AddSingleton(postgreSQLConnectionConfiguration);
 
             services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

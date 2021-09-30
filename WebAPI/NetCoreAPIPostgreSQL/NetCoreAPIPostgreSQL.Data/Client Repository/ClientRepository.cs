@@ -81,7 +81,7 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
                         second_last_Name=@Second_Last_Name,
                         phone=@Phone, 
                         birth_date=@Birth_Date,
-                        _password=@Ppassword,
+                        _password=@Password,
                         _user=@User
                     WHERE id = @Id";
             var respone = await db.ExecuteAsync(sql, new {
