@@ -53,7 +53,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteEmploye(int id)
         {
             await _employeeRepository.DeleteEmployee(new Employee { Id = id });
