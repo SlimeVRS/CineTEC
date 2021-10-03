@@ -10,6 +10,7 @@ using NetCoreAPIPostgreSQL.Data;
 using NetCoreAPIPostgreSQL.Data.BranchRepository;
 using NetCoreAPIPostgreSQL.Data.Client_Repository;
 using NetCoreAPIPostgreSQL.Data.Employee_Repository;
+using NetCoreAPIPostgreSQL.Data.Movie_Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,7 @@ namespace NetCoreAPIPostgreSQL
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IBranchRepository, BranchRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

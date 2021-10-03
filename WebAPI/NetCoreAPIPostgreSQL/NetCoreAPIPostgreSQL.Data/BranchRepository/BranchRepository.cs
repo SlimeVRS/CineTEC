@@ -54,9 +54,9 @@ namespace NetCoreAPIPostgreSQL.Data.BranchRepository
         {
             var db = dbConnection();
             var sql = @"
-INSERT INTO public.""Branches"" (name, cant_rooms, address)
-VALUES(@Name, @Cant_Rooms, @Address)
-";
+                        INSERT INTO public.""Branches"" (name, cant_rooms, address)
+                        VALUES(@Name, @Cant_Rooms, @Address)
+                        ";
             var response = await db.ExecuteAsync(sql, new {
                 branch.Name,
                 branch.Cant_Rooms,
