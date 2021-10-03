@@ -11,8 +11,8 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
     {
         Task<IEnumerable<Movie>> GetAllMovies();
         Task<Movie> GetMovieDetails(int id);
-        Task<bool> InsertMovie(Movie movie);
-        Task<bool> UpdateMovie(Movie movie);
-        Task<bool> DeleteMovie(Movie movie);
+        Task<bool> InsertMovie(Movie rol);
+        Task<bool> UpdateMovie(Movie rol);
+        Task<bool> DeleteMovie(Movie rol);
     }
 }
