@@ -25,6 +25,8 @@ import { ClientslistComponent } from './components/clients/clientslist/clientsli
 import { ResgistrarComponent } from './components/login/resgistrar/resgistrar.component';
 import { ImagemanagerComponent } from './components/movies/imagemanager/imagemanager.component';
 import { HttpClientModule} from '@angular/common/http';
+import { FooterComponent } from './components/home/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { HttpClientModule} from '@angular/common/http';
     NormalEmployeesListComponent,
     ClientslistComponent,
     ResgistrarComponent,
-    ImagemanagerComponent
+    ImagemanagerComponent,
+    FooterComponent
 
   ],
   imports: [
@@ -53,7 +56,7 @@ import { HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,NgbModule,
     MatTabsModule,MatCardModule,
     HttpClientModule,
-    
+  
     RouterModule.forRoot([
       {path: 'employees', component: EmployeesComponent},
       {path: 'empleadosC', component: NormalEmployeesComponent},
