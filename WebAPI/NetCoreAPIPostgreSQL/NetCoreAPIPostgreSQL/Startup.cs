@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NetCoreAPIPostgreSQL.Data;
 using NetCoreAPIPostgreSQL.Data.BranchRepository;
+using NetCoreAPIPostgreSQL.Data.ClassificationRepository;
 using NetCoreAPIPostgreSQL.Data.Client_Repository;
 using NetCoreAPIPostgreSQL.Data.Directors_Repository;
 using NetCoreAPIPostgreSQL.Data.Employee_Repository;
@@ -42,6 +43,7 @@ namespace NetCoreAPIPostgreSQL
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IRolRepository, RolRepository>();
             services.AddScoped<IDirectorsRepository, DirectorsRepository>();
+            services.AddScoped<IClassificationRepository, ClassificationRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
