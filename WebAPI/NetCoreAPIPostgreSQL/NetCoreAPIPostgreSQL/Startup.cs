@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using NetCoreAPIPostgreSQL.Data;
 using NetCoreAPIPostgreSQL.Data.BranchRepository;
 using NetCoreAPIPostgreSQL.Data.Client_Repository;
+using NetCoreAPIPostgreSQL.Data.Directors_Repository;
 using NetCoreAPIPostgreSQL.Data.Employee_Repository;
 using NetCoreAPIPostgreSQL.Data.Movie_Repository;
 using NetCoreAPIPostgreSQL.Data.RolRepository;
@@ -40,6 +41,7 @@ namespace NetCoreAPIPostgreSQL
             services.AddScoped<IBranchRepository, BranchRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IRolRepository, RolRepository>();
+            services.AddScoped<IDirectorsRepository, DirectorsRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
