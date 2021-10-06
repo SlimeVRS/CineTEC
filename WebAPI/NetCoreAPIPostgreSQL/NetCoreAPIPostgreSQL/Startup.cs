@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NetCoreAPIPostgreSQL.Data;
+using NetCoreAPIPostgreSQL.Data.Bill_Repository;
 using NetCoreAPIPostgreSQL.Data.BranchRepository;
 using NetCoreAPIPostgreSQL.Data.ClassificationRepository;
 using NetCoreAPIPostgreSQL.Data.Client_Repository;
@@ -50,6 +51,7 @@ namespace NetCoreAPIPostgreSQL
             services.AddScoped<IProtagonistRepository, ProtagonistRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<IBillRepository, BillRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
