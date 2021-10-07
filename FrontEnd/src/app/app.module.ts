@@ -65,6 +65,8 @@ import { FooterComponent } from './components/home/footer/footer.component';
       {path: 'cliente', component: ClientsComponent},
       {path: 'singup', component: ResgistrarComponent}, 
       {path: 'login', component: LoginComponent}, 
+      {path: 'offices', component: OfficesComponent},
+      {path: 'screens', component: ScreensComponent},
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
       
     ]),
