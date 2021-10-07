@@ -6,9 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+
+import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +28,7 @@ public class FirstFragment extends Fragment {
     private Spinner SpinCine;
     private Spinner SpinPeli;
     private Spinner SpinHora;
+    private ImageView img_asientos;
     private ArrayAdapter<String> adapterCines;
     private ArrayAdapter<String> adapterPeli;
     private ArrayAdapter<String> adapterHora;
@@ -137,6 +141,8 @@ public class FirstFragment extends Fragment {
                 horario = (String) SpinHora.getAdapter().getItem(posicion);
                 if (!horario.equals("Seleccione una Hora")){
                     Toast.makeText(getActivity(),"cine:"+cinema+", pelicula:"+pelicula+", hora:"+horario,Toast.LENGTH_LONG).show();
+                    img_asientos = getActivity().findViewById(R.id.asientos_img);
+                    img_asientos.setImageResource(R.drawable.sala_1);
                 }
 
             }

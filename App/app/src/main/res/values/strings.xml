@@ -12,4 +12,7 @@
     <string name="Cine">Cine</string>
     <string name="pelicula">Pelicula</string>
     <string name="hora">Hora</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="Asiento">Asientos</string>
+    <string name="reservar">Reservar</string>
 </resources>
