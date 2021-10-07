@@ -35,7 +35,7 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, _row, _column, _state
+                        SELECT id, _row, _column, _state, id_room
                         FROM public.""Seats""";
             return await db.QueryAsync<Seat>(sql, new { });
         }
@@ -44,7 +44,7 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, _row, _column, _state
+                        SELECT id, _row, _column, _state, id_room
                         FROM public.""Seats""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Seat>(sql, new { Id = id });
@@ -54,13 +54,14 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Seats"" (_row, _column, _state)
-                        VALUES (@Row, @Column, @State)";
+                        INSERT INTO public.""Seats"" (_row, _column, _state, id_room)
+                        VALUES (@Row, @Column, @State, @Id_Room)";
             var response = await db.ExecuteAsync(sql, new
             {
                 seat.Row,
                 seat.Column,
-                seat.State
+                seat.State,
+                seat.Id_Room
             });
             return response > 0;
         }
@@ -72,14 +73,16 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
                         UPDATE public.""Seats""
                         SET _row = @Row,
                             _column = @Column,
-                            _state = @State
+                            _state = @State,
+                            id_room = @Id_Room
                         WHERE id = @Id";
             var response = await db.ExecuteAsync(sql, new
             {
                 seat.Id,
                 seat.Row,
                 seat.Column,
-                seat.State
+                seat.State,
+                seat.Id_Room
             });
             return response > 0;
         }

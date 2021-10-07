@@ -12,5 +12,6 @@ namespace NetCoreAPIPostgreSQL.Model
         public int Row { get; set; }
         public int Column { get; set; }
         public int State { get; set; }
+        public int Id_Room { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, capacity, rows, columns
+                        SELECT id, capacity, rows, columns, id_branch
                         FROM public.""Rooms""";
             return await db.QueryAsync<Room>(sql, new { });
         }
@@ -42,7 +42,7 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
         public async Task<Room> GetRoomDetails(int id)
         {
             var db = dbConnection();
-            var sql = @"SELECT id, capacity, rows, columns
+            var sql = @"SELECT id, capacity, rows, columns, id_branch
                         FROM public.""Rooms""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Room>(sql, new { Id = id });
@@ -52,8 +52,8 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Rooms"" (capacity, rows, columns)
-                        VALUES(@Capacity, @Rows, @Columns)";
+                        INSERT INTO public.""Rooms"" (capacity, rows, columns, id_branch)
+                        VALUES(@Capacity, @Rows, @Columns, @Id_Branch)";
             var response = await db.ExecuteAsync(sql, new
             {
                 room.Capacity,
@@ -71,13 +71,15 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
                         SET capacity=@Capacity,
                             rows=@Rows,
                             columns=@Columns
+                            id_branch = @Id_Branch
                         WHERE id = @Id";
             var response = await db.ExecuteAsync(sql, new
             {
                 room.Id,
                 room.Capacity,
                 room.Rows,
-                room.Columns
+                room.Columns,
+                room.Id_Branch
             });
             return response > 0;
         }

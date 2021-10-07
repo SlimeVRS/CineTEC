@@ -21,5 +21,7 @@ namespace NetCoreAPIPostgreSQL.Model
         public DateTime Admission_Date { get; set; }
         public string Password { get; set; }
         public string User { get; set; }
+        public int Id_Branch { get; set; }
+        public int Id_Rol { get; set; }
     }
 }

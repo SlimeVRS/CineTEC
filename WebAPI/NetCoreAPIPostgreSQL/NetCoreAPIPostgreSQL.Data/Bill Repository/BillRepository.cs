@@ -35,7 +35,7 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, total
+                        SELECT id, total, id_employee, id_client
                         FROM public.""Bills""";
             return await db.QueryAsync<Bill>(sql, new { });
         }
@@ -44,7 +44,7 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, total
+                        SELECT id, total, id_employee,id_client
                         FROM public.""Bills""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Bill>(sql, new { Id = id});
@@ -54,9 +54,14 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Bills"" (total)
-                        VALUES(@Total)";
-            var response = await db.ExecuteAsync(sql, new { bill.Total });
+                        INSERT INTO public.""Bills"" (total, id_employee, id_client)
+                        VALUES(@Total, @Id_Employee, @Id_Client)";
+            var response = await db.ExecuteAsync(sql, new
+            {
+                bill.Total,
+                bill.Id_Employee,
+                bill.Id_Client
+            });
             return response > 0;
         }
 
@@ -65,12 +70,16 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Bills""
-                        SET total = @Total
+                        SET total = @Total,
+                            id_employee = @Id_Employee,
+                            id_employee = @Id_Client
                         WHERE id = @Id";
             var response = await db.ExecuteAsync(sql, new
             {
                 bill.Id,
-                bill.Total
+                bill.Total,
+                bill.Id_Employee,
+                bill.Id_Client
             });
             return response > 0;
         }

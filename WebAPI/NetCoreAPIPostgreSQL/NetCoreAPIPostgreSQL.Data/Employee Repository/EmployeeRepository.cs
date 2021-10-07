@@ -35,7 +35,7 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user
+                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user, id_branch, id_rol
                         FROM public.""Employees"" ";
             return await db.QueryAsync<Employee>(sql, new { });
         }
@@ -44,7 +44,7 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user
+                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user, id_branch, id_rol
                         FROM public.""Employees""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Employee>(sql, new { Id = id });
@@ -54,8 +54,8 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Employees"" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user)
-                        VALUES(@Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Admission_Date,@Password, @User)";
+                        INSERT INTO public.""Employees"" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user, id_branch, id_rol)
+                        VALUES(@Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Admission_Date,@Password, @User, @Id_Branch, @Id_Rol)";
             var response = await db.ExecuteAsync(sql, new {
                 employee.Id,
                 employee.First_Name,
@@ -66,7 +66,9 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                 employee.Birth_Date,
                 employee.Admission_Date,
                 employee.Password,
-                employee.User
+                employee.User,
+                employee.Id_Branch,
+                employee.Id_Rol
             });
             return response > 0;
         }
@@ -84,7 +86,9 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                         birth_date=@Birth_Date,
                         admission_date=@Admission_Date,
                         _password=@Password,
-                        _user=@User
+                        _user=@User,
+                        id_branch=@Id_Branch,
+                        id_rol = @Id_Rol
                     WHERE id = @Id";
             var response = await db.ExecuteAsync(sql, new {
                 employee.Id,
@@ -96,7 +100,9 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                 employee.Birth_Date,
                 employee.Admission_Date,
                 employee.Password,
-                employee.User
+                employee.User,
+                employee.Id_Branch,
+                employee.Id_Rol
             });
             return response > 0;
         }

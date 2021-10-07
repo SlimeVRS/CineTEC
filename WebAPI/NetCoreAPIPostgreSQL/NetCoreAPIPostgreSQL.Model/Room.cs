@@ -12,5 +12,6 @@ namespace NetCoreAPIPostgreSQL.Model
         public int Capacity { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
+        public int Id_Branch { get; set; }
     }
 }

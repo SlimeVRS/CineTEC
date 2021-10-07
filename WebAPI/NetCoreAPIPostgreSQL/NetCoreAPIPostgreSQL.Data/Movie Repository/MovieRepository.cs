@@ -34,7 +34,7 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, name, duration, poster, price_elder, price_adult, price_kid
+                        SELECT id, name, duration, poster, price_elder, price_adult, price_kid, id_director, id_classif, id_protagonist
                         FROM public.""Movies"" ";
             return await db.QueryAsync<Movie>(sql, new { });
         }
@@ -43,7 +43,7 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, name, duration, poster, price_elder, price_adult, price_kid
+                        SELECT id, name, duration, poster, price_elder, price_adult, price_kid, id_director, id_classif, id_protagonist
                         FROM public.""Movies""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Movie>(sql, new { Id = id });
@@ -53,8 +53,8 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Movies"" (name, duration, poster, price_elder, price_adult, price_kid)
-                        VALUES (@Name, @Duration, @Poster, @Price_Elder, @Price_Adult, @Price_Kid)";
+                        INSERT INTO public.""Movies"" (name, duration, poster, price_elder, price_adult, price_kid, id_director, id_classif, id_protagonist)
+                        VALUES (@Name, @Duration, @Poster, @Price_Elder, @Price_Adult, @Price_Kid, @Id_Director, @Id_Classif, @Id_Protagonist)";
             var response = await db.ExecuteAsync(sql, new
             {
                 movie.Name,
@@ -62,7 +62,10 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
                 movie.Poster,
                 movie.Price_Elder,
                 movie.Price_Adult,
-                movie.Price_Kid
+                movie.Price_Kid,
+                movie.Id_Director,
+                movie.Id_Classif,
+                movie.Id_Protagonist
             });
             return response > 0;
         }
@@ -77,7 +80,10 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
                             poster=@Poster,
                             price_elder=@Price_Elder,
                             price_adult=@Price_Adult,
-                            price_kid= @Price_Kid
+                            price_kid= @Price_Kid,
+                            id_director=@Id_Director,
+                            id_classif=@Id_Classif,
+                            id_protagonist=@Id_Protagonist
                         WHERE id = @Id";
             var response = await db.ExecuteAsync(sql, new
             {
@@ -87,7 +93,10 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
                 movie.Poster,
                 movie.Price_Elder,
                 movie.Price_Adult,
-                movie.Price_Kid
+                movie.Price_Kid,
+                movie.Id_Director,
+                movie.Id_Classif,
+                movie.Id_Protagonist
             });
             return response > 0;
         }
