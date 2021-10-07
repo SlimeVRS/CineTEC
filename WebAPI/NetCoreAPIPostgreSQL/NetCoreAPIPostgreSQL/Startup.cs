@@ -14,6 +14,7 @@ using NetCoreAPIPostgreSQL.Data.Client_Repository;
 using NetCoreAPIPostgreSQL.Data.Directors_Repository;
 using NetCoreAPIPostgreSQL.Data.Employee_Repository;
 using NetCoreAPIPostgreSQL.Data.Movie_Repository;
+using NetCoreAPIPostgreSQL.Data.Projection_Repository;
 using NetCoreAPIPostgreSQL.Data.Protagonist_Repository;
 using NetCoreAPIPostgreSQL.Data.RolRepository;
 using NetCoreAPIPostgreSQL.Data.Room_Repository;
@@ -52,6 +53,7 @@ namespace NetCoreAPIPostgreSQL
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IBillRepository, BillRepository>();
+            services.AddScoped<IProjectionRepository, ProjectionRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
