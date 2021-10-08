@@ -28,6 +28,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './components/home/footer/footer.component';
 import { ClientviewComponent } from './components/clientview/clientview.component';
 import { AdminviewComponent } from './components/adminview/adminview.component';
+import { NavbarClientComponent } from './components/clientview/navbar-client/navbar-client.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { AdminviewComponent } from './components/adminview/adminview.component';
     ImagemanagerComponent,
     FooterComponent,
     ClientviewComponent,
-    AdminviewComponent
+    AdminviewComponent,
+    NavbarClientComponent
 
   ],
   imports: [
