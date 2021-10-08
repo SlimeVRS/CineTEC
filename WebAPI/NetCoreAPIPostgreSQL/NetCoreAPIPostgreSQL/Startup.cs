@@ -28,6 +28,7 @@ namespace NetCoreAPIPostgreSQL
 {
     public class Startup
     {
+        readonly string CORSSpecificOrigins = "_specifications";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -40,8 +41,10 @@ namespace NetCoreAPIPostgreSQL
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("http://localhost:15451"));
+                options.AddPolicy(name: CORSSpecificOrigins,
+                    builder => {
+                        builder.WithOrigins("http://localhost:15451/", "http://localhost:4200/");
+                    });
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             var postgreSQLConnectionConfiguration = new PostgreSQLConfiguration(Configuration.GetConnectionString("PostgreSQLConnection"));
@@ -78,6 +81,8 @@ namespace NetCoreAPIPostgreSQL
             }
 
             app.UseRouting();
+
+            app.UseCors(CORSSpecificOrigins);
 
             app.UseAuthorization();
 
