@@ -38,7 +38,12 @@ namespace NetCoreAPIPostgreSQL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://localhost:15451"));
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             var postgreSQLConnectionConfiguration = new PostgreSQLConfiguration(Configuration.GetConnectionString("PostgreSQLConnection"));
             services.AddSingleton(postgreSQLConnectionConfiguration);
 
