@@ -26,6 +26,8 @@ import { ResgistrarComponent } from './components/login/resgistrar/resgistrar.co
 import { ImagemanagerComponent } from './components/movies/imagemanager/imagemanager.component';
 import { HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './components/home/footer/footer.component';
+import { ClientviewComponent } from './components/clientview/clientview.component';
+import { AdminviewComponent } from './components/adminview/adminview.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { FooterComponent } from './components/home/footer/footer.component';
     ClientslistComponent,
     ResgistrarComponent,
     ImagemanagerComponent,
-    FooterComponent
+    FooterComponent,
+    ClientviewComponent,
+    AdminviewComponent
 
   ],
   imports: [
@@ -67,6 +71,7 @@ import { FooterComponent } from './components/home/footer/footer.component';
       {path: 'login', component: LoginComponent}, 
       {path: 'offices', component: OfficesComponent},
       {path: 'screens', component: ScreensComponent},
+      {path: 'admin', component: AdminviewComponent},
       { path: '**', redirectTo: 'login', pathMatch: 'full' },
       
     ]),
