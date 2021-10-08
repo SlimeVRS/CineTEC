@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class NormalEmployeesComponent implements OnInit {
 
   constructor() { }
-  form: FormGroup;
+  form1: FormGroup;
   ngOnInit(): void {
   }
 

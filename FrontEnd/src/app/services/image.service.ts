@@ -15,6 +15,6 @@ export class ImageService {
 
     formData.append('image', image);
 
-    return this.http.post<any>('/api/v1/image-upload', formData);
+    return this.http.post<any>('http://localhost:15451/api/Movie', formData);
   }
 }

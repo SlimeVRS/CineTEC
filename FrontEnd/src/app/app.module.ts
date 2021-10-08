@@ -67,7 +67,7 @@ import { FooterComponent } from './components/home/footer/footer.component';
       {path: 'login', component: LoginComponent}, 
       {path: 'offices', component: OfficesComponent},
       {path: 'screens', component: ScreensComponent},
-      { path: '**', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'login', pathMatch: 'full' },
       
     ]),
     BrowserAnimationsModule,

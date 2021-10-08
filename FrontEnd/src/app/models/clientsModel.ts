@@ -1,4 +1,5 @@
-export class employeesModel{
+export class clientsModel{
+    id?: number;
     nombre:string;
     nombre2:string;
     apellido1:string;
