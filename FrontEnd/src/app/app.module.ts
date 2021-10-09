@@ -29,7 +29,7 @@ import { FooterComponent } from './components/home/footer/footer.component';
 import { ClientviewComponent } from './components/clientview/clientview.component';
 import { AdminviewComponent } from './components/adminview/adminview.component';
 import { NavbarClientComponent } from './components/clientview/navbar-client/navbar-client.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -62,6 +62,7 @@ import { NavbarClientComponent } from './components/clientview/navbar-client/nav
     ReactiveFormsModule,NgbModule,
     MatTabsModule,MatCardModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
   
     RouterModule.forRoot([
       {path: 'employees', component: EmployeesComponent},

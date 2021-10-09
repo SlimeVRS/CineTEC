@@ -43,7 +43,7 @@ namespace NetCoreAPIPostgreSQL
             {
                 options.AddPolicy(name: CORSSpecificOrigins,
                     builder => {
-                        builder.WithOrigins("http://localhost:15451/api/", "http://localhost:4200/");
+                        builder.WithOrigins("http://localhost:15451/api/", "http://localhost:4200");
                     });
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);

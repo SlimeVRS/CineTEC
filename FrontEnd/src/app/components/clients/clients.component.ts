@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { clientsModel } from 'src/app/models/clientsModel';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-clients',
@@ -13,23 +14,24 @@ export class ClientsComponent implements OnInit {
 
   list: clientsModel[];
   cliente: clientsModel;
+  form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private clientService: ClienteService) {
+  constructor(private formBuilder: FormBuilder, private clientService: ClienteService, private toastr: ToastrService) {
     this.form = this.formBuilder.group({
       id: 0,
       nombre: ['', [Validators.required]],
       nombre2: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       apellido1: ['', [Validators.required, Validators.maxLength(16)]],
-      apellido2: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
+      apellido2: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       cedula: ['', [Validators.required, Validators.maxLength(16)]],
-      numeroTelefono: ['', [Validators.required, Validators.maxLength(6), Validators.minLength(3)]],
-      fechaNacimiento: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(1)]],
-      usuario: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(1)]],
-      contraseña: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(1)]],
+      numeroTelefono: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
+      fechaNacimiento: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
+      usuario: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
+      contraseña: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
 
     })
   }
-  form: FormGroup;
+  
   ngOnInit(): void {
     this.clientService.obtenerCliente().subscribe(data=>{
       console.log(data);
@@ -48,7 +50,25 @@ export class ClientsComponent implements OnInit {
     })
   }
   guardarCliente(){
+    const cliente: clientsModel = {
+      nombre : this.form.get('nombre').value,
+      nombre2 : this.form.get('nombre2').value,
+      apellido1 : this.form.get('apellido1').value,
+      apellido2 : this.form.get('apellido2').value,
+      cedula : this.form.get('cedula').value,
+      numeroTelefono : this.form.get('numeroTelefono').value,
+      fechaNacimiento : this.form.get('fechaNacimiento').value,
+      usuario : this.form.get('usuario').value,
+      contraseña : this.form.get('contraseña').value,
+      
+    }
+    this.clientService.guardarCliente(cliente).subscribe(data=>{
+      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.form.reset();
+    })
     
+    console.log(this.form);
+    console.log(cliente);
   }
 
 }
