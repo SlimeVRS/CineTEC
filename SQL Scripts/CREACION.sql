@@ -1,6 +1,3 @@
--- CREACIÓN DE TABLAS
-
--- SUCURSALES
 CREATE TABLE IF NOT EXISTS public."Branches"
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 9999 CACHE 1 ),
@@ -140,26 +137,6 @@ CREATE TABLE IF NOT EXISTS public."Seats"
     CONSTRAINT "Seats_pkey" PRIMARY KEY (id)
 );
 
--- INSERCIÓN DE ENTIDADES EN ESTE ORDEN
-
--- [PRIMER BLOQUE]
--- BRANCH
--- CLASSIFICATION
--- CLIENTS
--- DIRECTOR
--- PROTAGONIST
--- ROLES
-
--- [SEGUNDO BLOQUE]
--- EMPLOYEES
--- MOVIES
--- ROOMS
-
--- [TERCER BLOQUE]
--- BILLS
--- PROJECTION
--- SEATS
-
 -- RELACION ENTRE TABLAS
 
 ALTER TABLE "Bills"
@@ -217,5 +194,64 @@ ADD CONSTRAINT id_room_branch_fk
 FOREIGN KEY (id_branch) 
 REFERENCES "Branches" (id);
 
+-- INSERCIÓN DE ENTIDADES EN ESTE ORDEN
 
+-- [PRIMER BLOQUE]
+-- BRANCH
+-- CLASSIFICATION
+-- CLIENTS
+-- DIRECTOR
+-- PROTAGONIST
+-- ROLES
 
+-- [SEGUNDO BLOQUE]
+-- EMPLOYEES
+-- MOVIES
+-- ROOMS
+
+-- [TERCER BLOQUE]
+-- BILLS
+-- PROJECTION
+-- SEATS
+
+INSERT INTO public."Branches" (name, cant_rooms, address)
+VALUES ('Cartago', 10, 'Cartago');
+
+INSERT INTO public."Clients" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user)
+VALUES(101110111, 'Primer Nombre', 'Segundo Nombre', 'Primer Apellido', 'Segundo Apellido', '11111111', '01-01-2021', 'Pasword123', 'User123');
+
+INSERT INTO public."Clients" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user)
+VALUES(202220222, 'Nombre1', 'SegNombre1', 'Apellido1', 'SegApellido1', '22222222', '2000-01-01', 'contraseña', 'usuario');
+
+INSERT INTO public."Classifications" (classif)
+VALUES('Adulto');
+
+INSERT INTO public."Classifications" (classif)
+VALUES('Niño');
+
+INSERT INTO public."Directors" (first_name, second_name, first_last_name, second_last_name)
+VALUES ('Dnombre1','Dnombre1','Dapellido1','Dapellido1');
+
+INSERT INTO public."Protagonists" (first_name, second_name, first_last_name, second_last_name)
+VALUES ('Pnombre1', 'Pnombre1', 'Papellido1', 'Papellido1');
+
+INSERT INTO public."Roles" (name, description)
+VALUES('cajero','cobra dinero');
+
+INSERT INTO public."Employees" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user, id_branch, id_rol)
+VALUES (101110111, 'Nombre1', 'Nombre1', 'Apellido1', 'Apellido2','11111111','1999-02-10','2021-10-10', 'Contraseña', 'Usuario', 1, 1);
+
+INSERT INTO public."Movies" (name, duration, poster, price_elder, price_adult, price_kid, id_director, id_classif, id_protagonist)
+VALUES ('Peli1', '1:45', 'poster1', 1400, 1500, 1200, 1, 2,1);
+
+INSERT INTO public."Rooms" (capacity, rows, columns, id_branch)
+VALUES (30, 6, 5, 1);
+
+INSERT INTO public."Bills" (total, id_employee, id_client)
+VALUES(4700, 101110111, 202220222);
+
+INSERT INTO public."Projections" (_time, id_movie, id_room)
+VALUES ('14:40', 1, 1);
+
+INSERT INTO public."Seats" (_row, _column, _state, id_room)
+VALUES(3,4,1,1);
