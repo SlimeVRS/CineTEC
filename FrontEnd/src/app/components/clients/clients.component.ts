@@ -18,7 +18,7 @@ export class ClientsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private clientService: ClienteService, private toastr: ToastrService) {
     this.form = this.formBuilder.group({
-      id: 0,
+      id1:0,
       nombre: ['', [Validators.required]],
       nombre2: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       apellido1: ['', [Validators.required, Validators.maxLength(16)]],
@@ -27,46 +27,47 @@ export class ClientsComponent implements OnInit {
       numeroTelefono: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       fechaNacimiento: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       usuario: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      contraseña: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
+      password: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
 
     })
   }
-  
+
   ngOnInit(): void {
-    this.clientService.obtenerCliente().subscribe(data=>{
+    this.clientService.obtenerCliente().subscribe(data => {
       console.log(data);
-      this.cliente =data;
+      this.cliente = data;
       this.form.patchValue({
-        nombre: this.cliente.nombre,
-        nombre2: this.cliente.nombre2,
-        apellido1:this.cliente.apellido1,
-        apellido2:this.cliente.apellido2,
-        cedula: this.cliente.cedula,
-        numeroTelefono: this.cliente.numeroTelefono,
-        fechaNacimiento: this.cliente.fechaNacimiento,
-        usuario:this.cliente.usuario,
-        contraseña: this.cliente.contraseña
+        nombre: this.cliente.first_name,
+        nombre2: this.cliente.second_name,
+        apellido1: this.cliente.first_last_name,
+        apellido2: this.cliente.second_last_name,
+        cedula: this.cliente.id,
+        numeroTelefono: this.cliente.phone,
+        fechaNacimiento: this.cliente.birth_date,
+        usuario: this.cliente._user,
+        password: this.cliente._password,
       })
     })
   }
-  guardarCliente(){
+  guardarCliente() {
     const cliente: clientsModel = {
-      nombre : this.form.get('nombre').value,
-      nombre2 : this.form.get('nombre2').value,
-      apellido1 : this.form.get('apellido1').value,
-      apellido2 : this.form.get('apellido2').value,
-      cedula : this.form.get('cedula').value,
-      numeroTelefono : this.form.get('numeroTelefono').value,
-      fechaNacimiento : this.form.get('fechaNacimiento').value,
-      usuario : this.form.get('usuario').value,
-      contraseña : this.form.get('contraseña').value,
+      first_name: this.form.get('nombre').value,
+      second_name: this.form.get('nombre2').value,
+      first_last_name: this.form.get('apellido1').value,
+      second_last_name: this.form.get('apellido2').value,
+      id: this.form.get('cedula').value,
+      phone: this.form.get('numeroTelefono').value,
+      _password: this.form.get('password').value,
+      _user: this.form.get('usuario').value,
       
+      birth_date: this.form.get('fechaNacimiento').value+"T00:00:00",
+    
     }
-    this.clientService.guardarCliente(cliente).subscribe(data=>{
+    this.clientService.guardarCliente(cliente).subscribe(data => {
       this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
       this.form.reset();
     })
-    
+
     console.log(this.form);
     console.log(cliente);
   }
