@@ -28,23 +28,102 @@ export class SeatReservComponent implements OnInit {
     var intvalorFilas = parseInt(valorFilas);
     console.log(intvalorFilas);
     console.log(intvalorColumnas);
-    this.populateArray(intvalorFilas,intvalorColumnas);
+    this.populateArray(intvalorFilas, intvalorColumnas);
   }
   populateArray(filas: number, columnas: number) {
-    var count =1;
+    var count = 1;
+
     for (var i = 0; i < filas; i++) {
       var data = [];
       for (var j = 0; j < columnas; j++) {
-        data.push("Test" + count);
+        data.push(0);
         count++;
       }
 
       this.seatsMatrix.push(data);
 
     }
-    this.generateTable();
-  }
-  generateTable() {
+    this.generateTable(filas, columnas);
     console.log(this.seatsMatrix);
+    console.log(filas, columnas)
   }
+  generateTable(filas: number, columnas: number) {
+
+    var count = 1;
+    var disponibleO = document.getElementById('disponible');
+
+    var seleccionadoO = document.getElementById('seleccionado');
+    var vendidoO = document.getElementById('vendido');
+
+    var table = document.getElementById('seatTable') as HTMLTableElement;
+    for (var i = 0; i < filas; i++) {
+      var newRow = table.insertRow(i);
+      for (var j = 0; j < columnas; j++) {
+        var newCell = newRow.insertCell(j);
+
+        if (this.seatsMatrix[i][j] == 0) {
+          var disponible = disponibleO.cloneNode(true);
+          newCell.appendChild(disponible)
+        }
+        else if (this.seatsMatrix[i][j] == 1) {
+          var vendido = vendidoO.cloneNode(true);
+          table.appendChild(vendido);
+        }
+        else if (this.seatsMatrix[i][j] == 2) {
+          var seleccionado = seleccionadoO.cloneNode(true);
+          table.appendChild(seleccionado);
+        }
+        count++;
+      }
+    }
+    
+
+  }
+  updater() {
+    var table1 = document.getElementById('seatTable') as HTMLTableElement;
+    const rows = table1.tBodies[0].rows;
+    var seleccionadoO = document.getElementById('seleccionado');
+    var disponibleO = document.getElementById('disponible');
+    var vendidoO = document.getElementById('vendido');
+
+    Array.from(rows).forEach((row, idx) => {
+    
+      Array.from(row.cells).forEach((cell,idxC)=>{
+        var seleccionado = seleccionadoO.cloneNode(true);
+        var disponible = disponibleO.cloneNode(true);
+        var vendido = vendidoO.cloneNode(true);
+        cell.addEventListener('click', event => {
+          if(this.seatsMatrix[idx][idxC] == 0) {
+            row.deleteCell(idxC);
+            var newCell=table1.rows[idx].insertCell(idxC);
+            newCell.appendChild(seleccionado);
+            this.seatsMatrix[idx][idxC]=2;
+          }
+          else if(this.seatsMatrix[idx][idxC] == 1){
+            row.deleteCell(idxC);
+            var newCell=table1.rows[idx].insertCell(idxC);
+            newCell.appendChild(disponible);
+            this.seatsMatrix[idx][idxC]=2; 
+          } 
+          else if(this.seatsMatrix[idx][idxC] == 2){
+            row.deleteCell(idxC);
+            var newCell=table1.rows[idx].insertCell(idxC);
+            newCell.appendChild(disponible);
+            this.seatsMatrix[idx][idxC]=0; 
+          }
+        
+          console.clear();
+          console.log(this.seatsMatrix);
+          console.log('row index:', idx ,idxC);
+        });
+      });
+    });
+    
+
+
+
+  }
+
+
+
 }

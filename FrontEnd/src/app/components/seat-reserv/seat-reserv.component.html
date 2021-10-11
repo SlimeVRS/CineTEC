@@ -41,25 +41,23 @@
 
     <ul class="showcase">
       <li>
-        <div class="seat"></div>
+        <div class="seat" id="disponible"></div>
         <small>Disponible</small>
       </li>
       <li>
-        <div class="seat selected"></div>
+        <div class="seat selected" id="seleccionado"></div>
         <small>Seleccionado</small>
       </li>
       <li>
-        <div class="seat sold"></div>
+        <div class="seat sold" id="vendido"></div>
         <small>No disponible</small>
       </li>
     </ul>
     <div class="container">
       <div class="screen"></div>
-
-    
-      
+      <table class="seatContainer" id="seatTable" (click)="updater()"></table>
     </div>
-
-    
+    <script></script>
+   
   </body>
 </html>

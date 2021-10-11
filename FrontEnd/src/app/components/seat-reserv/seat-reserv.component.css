@@ -124,3 +124,7 @@ p.text span{
     font-weight:bold;
     color:white;
   }
+  .seatContainer{
+    margin-left: auto;
+  margin-right: auto;
+  }
