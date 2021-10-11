@@ -1,13 +1,14 @@
 html,
 body {
   height: 100%;
+  margin:0;
 }
 body {
   display: flex;
   align-items: left;
   padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
+  padding-bottom: 19%;
+  background-color: #271b3f; 
 }
 
 .form-signin {

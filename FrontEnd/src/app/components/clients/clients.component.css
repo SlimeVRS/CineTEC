@@ -1,6 +1,12 @@
 div{
     background-color:#271b3f ;
     color: rgb(255, 255, 255);
+    min-height: 100%;
+    overflow: hidden;   
+}
+body{
+    background-color:#271b3f ;
+    padding-bottom: 13%;  
 }
 .button {
     background-color: #d6c41e; /* Green */
@@ -12,4 +18,9 @@ div{
     display: inline-block;
     font-size: 16px;  
     font-weight:bold;
+  }
+  p{
+      margin: 0%;
+      padding-bottom: 11%;
+      background-color:#271b3f ;    
   }
