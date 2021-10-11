@@ -44,8 +44,7 @@ namespace NetCoreAPIPostgreSQL
                 options.AddPolicy(CORSSpecificOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:15451").AllowAnyHeader().AllowAnyMethod();
-                    });
+                        builder.WithOrigins("http://localhost:15451/", "http://localhost:4200/").AllowAnyHeader().AllowAnyMethod();
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             var postgreSQLConnectionConfiguration = new PostgreSQLConfiguration(Configuration.GetConnectionString("PostgreSQLConnection"));
