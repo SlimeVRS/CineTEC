@@ -15,8 +15,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="1000dp"
-            >
+            android:layout_height="1000dp">
 
             <Button
                 android:id="@+id/button_first"
@@ -40,9 +39,10 @@
 
             <Spinner
                 android:id="@+id/spin_cine"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_width="390dp"
+                android:layout_height="51dp"
                 android:layout_marginTop="120dp"
+                android:layout_marginEnd="16dp"
                 android:background="@color/gris_claro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,8 +50,9 @@
 
             <Spinner
                 android:id="@+id/spin_peli"
-                android:layout_width="match_parent"
+                android:layout_width="390dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="232dp"
                 android:background="@color/gris_claro"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,10 +72,10 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="98dp"
-                android:layout_height="40dp"
+                android:layout_width="182dp"
+                android:layout_height="38dp"
                 android:layout_marginTop="300dp"
-                android:layout_marginEnd="312dp"
+                android:layout_marginEnd="228dp"
                 android:text="@string/hora"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,11 +83,12 @@
 
             <Spinner
                 android:id="@+id/spin_hora"
-                android:layout_width="match_parent"
+                android:layout_width="390dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="340dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="336dp"
                 android:background="@color/gris_claro"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -106,13 +108,14 @@
 
             <Spinner
                 android:id="@+id/spin_asiento"
-                android:layout_width="match_parent"
+                android:layout_width="390dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="464dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="460dp"
                 android:background="@color/gris_claro"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck"
-                tools:layout_editor_absoluteX="0dp" />
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView"
@@ -136,8 +139,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/asientos_img" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
     </ScrollView>
