@@ -32,13 +32,16 @@ public class FirstFragment extends Fragment {
     private Spinner SpinCine;
     private Spinner SpinPeli;
     private Spinner SpinHora;
+    private Spinner SpinAsientos;
     private ImageView img_asientos;
     private ArrayAdapter<String> adapterCines;
     private ArrayAdapter<String> adapterPeli;
     private ArrayAdapter<String> adapterHora;
+    private ArrayAdapter<String> adapterAsientos;
     private ArrayList<String> cines;
     private ArrayList<String> peli;
     private ArrayList<String> hora;
+    private ArrayList<String> asientos;
     private String cinema;
     private String pelicula;
     private String horario;
@@ -125,7 +128,7 @@ public class FirstFragment extends Fragment {
                     pelicula = datos[0];
                     horario=datos[1];
                     room=datos[2];
-                    spin_asiento();
+                    spin_asiento_tipo();
                 }
             }
 
@@ -136,13 +139,13 @@ public class FirstFragment extends Fragment {
         });
     }
 
-    private void spin_asiento(){
+    private void spin_asiento_tipo(){
         //Obtencion del spin
         SpinHora = getActivity().findViewById(R.id.spin_hora);
         //creacion de los arrays
         hora=new ArrayList();
         //llamada de la funcion de carga de los cines
-        asiento();
+        asiento_tipo();
         //carga de los arrays a los adapters
         adapterHora=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,hora);
         adapterHora.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -155,6 +158,7 @@ public class FirstFragment extends Fragment {
                 if (posicion>0){
                     Toast.makeText(getActivity(),"cine:"+cinema+", pelicula:"+pelicula+", hora:"+horario,Toast.LENGTH_LONG).show();
                     cargar_img();
+                    spin_asientos_();
                 }
 
             }
@@ -165,7 +169,52 @@ public class FirstFragment extends Fragment {
             }
         });
     }
-    private void asiento(){
+    private void spin_asientos_(){
+        //Obtencion del spin
+        SpinAsientos = getActivity().findViewById(R.id.spin_asiento);
+        //creacion de los arrays
+        asientos=new ArrayList();
+        //llamada de la funcion de carga de los cines
+        asientos();
+        //carga de los arrays a los adapters
+        adapterAsientos=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,asientos);
+        adapterAsientos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //asignacion de los adapters a los spinners
+        SpinAsientos.setAdapter(adapterAsientos);
+        SpinAsientos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int posicion, long l) {
+                String asiento = (String) SpinAsientos.getAdapter().getItem(posicion);
+                if (posicion>0){
+                    spin_pelicula();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private  void  asientos(){
+        asientos.add("Seleccione un asiento");
+        String query="select id,_row,_column\n" +
+                "from seats\n" +
+                "where _state=1 and id_room="+room+";" ;
+        Cursor consulta = db.rawQuery(query, null);
+        if (consulta != null) {
+            consulta.moveToFirst();
+            do {
+                //Asignamos el valor en nuestras variables para usarlos en lo que necesitemos
+                @SuppressLint("Range")String id = consulta.getString(consulta.getColumnIndex("id"));
+                @SuppressLint("Range")String fila= consulta.getString(consulta.getColumnIndex("_row"));
+                @SuppressLint("Range") String columna= consulta.getString(consulta.getColumnIndex("_column"));
+                asientos.add(id+",Fila: "+fila+",columna: "+columna);
+            } while (consulta.moveToNext());
+        }
+    }
+    private void asiento_tipo(){
         hora.add("Seleccione un tipo de asiento");
         String query="select price_elder,price_adult,price_kid\n" +
                 "from movies\n" +
