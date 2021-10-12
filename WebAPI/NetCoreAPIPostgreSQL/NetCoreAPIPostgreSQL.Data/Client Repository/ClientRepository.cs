@@ -44,7 +44,7 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user
+                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password AS password, _user AS user
                         FROM public.""Clients""
                         WHERE id = @Id";
             return await db.QueryFirstOrDefaultAsync<Client>(sql, new { Id = id });
