@@ -30,14 +30,14 @@ namespace NetCoreAPIPostgreSQL.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateRoom([FromBody] Room room)
+        public async Task<ActionResult> CreateRoom([FromBody] RoomFRONTEND room)
         {
             if (room == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var created = await _roomRepositry.InsertRoom(room);
+            var created = await _roomRepositry.InsertRoomFrontEnd(room);
             return Created("Room created", created);
         }
 
