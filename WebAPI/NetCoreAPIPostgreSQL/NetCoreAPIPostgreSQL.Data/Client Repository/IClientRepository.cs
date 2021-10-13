@@ -13,6 +13,7 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         Task<Client> GetClientDetails(int id_client);
         Task<bool> InsertClient(Client client);
         Task<bool> UpdateClient(Client client);
-        Task<bool> DeleteClient(Client client); 
+        Task<bool> DeleteClient(Client client);
+        Task<Client> GetClientByUserPassword(string user, string password);
     }
 }

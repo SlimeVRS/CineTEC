@@ -97,5 +97,19 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
             });
             return respone > 0;
         }
+
+        public async Task<Client> GetClientByUserPassword(string user, string password)
+        {
+            var db = dbConnection();
+            var sql = @"
+                        SELECT password_client, user_client
+                        FROM public.""Clients""
+                        WHERE password_client = @Passwrod_client AND user_client = @User_Client";
+            return await db.QueryFirstOrDefaultAsync<Client>(sql, new
+            {
+                Passwrod_client = password,
+                User_Client = user
+            });
+        }
     }
 }

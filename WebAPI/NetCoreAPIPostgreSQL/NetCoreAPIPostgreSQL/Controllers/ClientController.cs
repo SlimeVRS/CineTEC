@@ -23,6 +23,12 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _clientRepository.GetAllClients());
         }
+        
+        [HttpGet("/api/[controller]/{user}/{password}")]
+        public async Task<ActionResult> GetClientByUserPassword(string user, string password)
+        {
+            return Ok(await _clientRepository.GetClientByUserPassword(user, password));
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetClientDetails(int id)
