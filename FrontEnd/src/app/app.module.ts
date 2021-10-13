@@ -31,6 +31,8 @@ import { AdminviewComponent } from './components/adminview/adminview.component';
 import { NavbarClientComponent } from './components/clientview/navbar-client/navbar-client.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SeatReservComponent } from './components/seat-reserv/seat-reserv.component';
+import { RolComponent } from './components/rol/rol.component';
+import { RollistComponent } from './components/rol/rollist/rollist.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { SeatReservComponent } from './components/seat-reserv/seat-reserv.compon
     ClientviewComponent,
     AdminviewComponent,
     NavbarClientComponent,
-    SeatReservComponent
+    SeatReservComponent,
+    RolComponent,
+    RollistComponent
 
   ],
   imports: [
@@ -77,6 +81,7 @@ import { SeatReservComponent } from './components/seat-reserv/seat-reserv.compon
       {path: 'offices', component: OfficesComponent},
       {path: 'screens', component: ScreensComponent},
       {path: 'admin', component: AdminviewComponent},
+      {path: 'tools', component: RolComponent},
       {path: 'seat-reserv', component: SeatReservComponent},
       { path: '**', redirectTo: 'login', pathMatch: 'full' },
       

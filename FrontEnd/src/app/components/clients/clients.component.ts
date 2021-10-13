@@ -29,7 +29,7 @@ export class ClientsComponent implements OnInit {
       usuario: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       password: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
 
-    })
+    });
   }
 
   ngOnInit(): void {

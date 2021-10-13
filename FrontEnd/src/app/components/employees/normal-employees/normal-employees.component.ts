@@ -40,34 +40,34 @@ export class NormalEmployeesComponent implements OnInit {
       console.log(data);
       this.empleado =data;
       this.form1.patchValue({
-        nombre: this.empleado.nombre,
-        nombre2: this.empleado.nombre2,
-        apellido1:this.empleado.apellido1,
-        apellido2:this.empleado.apellido2,
-        cedula: this.empleado.cedula,
-        numeroTelefono: this.empleado.numeroTelefono,
-        fechaNacimiento: this.empleado.fechaNacimiento,
-        fechaIngreso: this.empleado.fechaNacimiento,
+        nombre: this.empleado.first_name,
+        nombre2: this.empleado.second_name,
+        apellido1:this.empleado.first_last_name,
+        apellido2:this.empleado.second_last_name,
+        cedula: this.empleado.id,
+        numeroTelefono: this.empleado.phone,
+        fechaNacimiento: this.empleado.birth_date,
+        fechaIngreso: this.empleado.birth_date,
         rol: this.empleado.rol,
-        usuario:this.empleado.usuario,
-        contraseña: this.empleado.contraseña
+        usuario:this.empleado._user,
+        contraseña: this.empleado._password
       })
     })
   }
 
   guardarEmpleado(){
     const empleado: employeesModel = {
-      nombre : this.form1.get('nombre').value,
-      nombre2 : this.form1.get('nombre2').value,
-      apellido1 : this.form1.get('apellido1').value,
-      apellido2 : this.form1.get('apellido2').value,
-      cedula : this.form1.get('cedula').value,
-      numeroTelefono : this.form1.get('numeroTelefono').value,
-      fechaNacimiento : this.form1.get('fechaNacimiento').value,
-      fechaIngreso: this.form1.get('fechaIngreso').value,
+      first_name : this.form1.get('nombre').value,
+      second_name : this.form1.get('nombre2').value,
+      first_last_name : this.form1.get('apellido1').value,
+      second_last_name : this.form1.get('apellido2').value,
+      id : this.form1.get('cedula').value,
+      phone : this.form1.get('numeroTelefono').value,
+      birth_date : this.form1.get('fechaNacimiento').value,
+      admission_date: this.form1.get('fechaIngreso').value,
       rol: this.form1.get('rol').value,
-      usuario : this.form1.get('usuario').value,
-      contraseña : this.form1.get('contraseña').value,
+      _user : this.form1.get('usuario').value,
+      _password : this.form1.get('contraseña').value,
       
     }
     this.employeeService.guardarEmpleado(empleado).subscribe(data=>{

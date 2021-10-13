@@ -1,6 +1,6 @@
 
 import { ImageService } from 'src/app/services/image.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageSnippet } from './imageSnipet.component';
 
 @Component({
@@ -12,11 +12,11 @@ import { ImageSnippet } from './imageSnipet.component';
 
 export class ImagemanagerComponent implements OnInit {
   selectedFile: ImageSnippet;
-  onFileSelected(event:any){
+  onFileSelected(event: any) {
     console.log(event);
   }
-  onUpload(){
-    
+  onUpload() {
+
   }
 
   constructor(private imageService: ImageService) { }
@@ -35,16 +35,22 @@ export class ImagemanagerComponent implements OnInit {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
-    reader.addEventListener('load', (event: any) => {
-
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-
-      this.imageService.uploadImage(this.selectedFile.file).subscribe(
-        (res) => {
-          this.onSuccess();
-        },
-        (err) => {
-        this.onError();
+    reader.addEventListener('load', function (e) {
+      e.preventDefault();
+      let formData = new FormData();
+      formData.append('file', file);
+      fetch('http://localhost:15451/api/Movie', {
+        method: 'POST',
+        body: formData
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.errors) {
+            alert(data.errors)
+          }
+          else {
+            console.log(data)
+          }
         })
     });
 
