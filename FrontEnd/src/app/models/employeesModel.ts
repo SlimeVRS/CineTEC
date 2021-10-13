@@ -1,14 +1,14 @@
 export class employeesModel{
-    id?:number;
-    nombre:string;
-    nombre2:string;
-    apellido1:string;
-    apellido2:string;
-    cedula:string;
-    numeroTelefono:string;
-    fechaNacimiento:string;
-    fechaIngreso:string;
+    
+    first_name:string;
+    second_name:string;
+    first_last_name:string;
+    second_last_name:string;
+    id:number;
+    phone:string;
+    birth_date:string;
+    admission_date:string;
     rol:string;
-    usuario:string;
-    contraseña:string;
+    _user:string;
+    _password:string;
 }

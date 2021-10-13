@@ -1,0 +1,47 @@
+<app-employees></app-employees>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="rol.component.css" />
+  <title>Movie Seat Booking</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-5">
+      <h6 class="text-center">
+        Agregar Rol
+      </h6>
+      <form [formGroup]="form" (ngSubmit)="guardarCliente()">
+        <div class="row">
+          <h6> </h6>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="name" placeholder="Rol">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="description" placeholder="Descripcion">
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="button btn-sucess btn-lg btn-block" type="submit">Aceptar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-7">
+      <h6 class="text-center">
+          Roles
+      </h6>
+      <app-rollist></app-rollist>
+  </div>
+    </div>
+</body>
+
+</html>
