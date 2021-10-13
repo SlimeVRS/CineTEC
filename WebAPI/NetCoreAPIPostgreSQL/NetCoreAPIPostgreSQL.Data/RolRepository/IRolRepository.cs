@@ -10,7 +10,7 @@ namespace NetCoreAPIPostgreSQL.Data.RolRepository
     public interface IRolRepository
     {
         Task<IEnumerable<Rol>> GetAllRoles();
-        Task<Rol> GetRolDetails(int id);
+        Task<Rol> GetRolDetails(int id_rol);
         Task<bool> InsertRol(Rol movie);
         Task<bool> UpdateRol(Rol movie);
         Task<bool> DeleteRol(Rol movie);

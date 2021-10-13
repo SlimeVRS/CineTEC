@@ -26,8 +26,8 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
             var sql = @"
                         DELETE
                         FROM public.""Seats""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = seat.Id });
+                        WHERE id_seat = @Id_Seat";
+            var response = await db.ExecuteAsync(sql, new { Id_Seat = seat.Id_Seat });
             return response > 0;
         }
 
@@ -35,33 +35,33 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, _row, _column, _state, id_room
+                        SELECT id_seat, row_seat, column_seat, state_seat, id_room_seat
                         FROM public.""Seats""";
             return await db.QueryAsync<Seat>(sql, new { });
         }
 
-        public async Task<Seat> GetSeatDetails(int id)
+        public async Task<Seat> GetSeatDetails(int id_seat)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, _row, _column, _state, id_room
+                        SELECT id_seat, row_seat, column_seat, state_seat, id_room_seat
                         FROM public.""Seats""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Seat>(sql, new { Id = id });
+                        WHERE id_seat = @Id_Seat";
+            return await db.QueryFirstOrDefaultAsync<Seat>(sql, new { Id_Seat = id_seat });
         }
 
         public async Task<bool> InsertSeat(Seat seat)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Seats"" (_row, _column, _state, id_room)
-                        VALUES (@Row, @Column, @State, @Id_Room)";
+                        INSERT INTO public.""Seats"" (row_seat, column_seat, state_seat, id_room_seat)
+                        VALUES (@Row_Seat, @Column_Seat, @State_Seat, @Id_Room_Seat)";
             var response = await db.ExecuteAsync(sql, new
             {
-                seat.Row,
-                seat.Column,
-                seat.State,
-                seat.Id_Room
+                seat.Row_Seat,
+                seat.Column_Seat,
+                seat.State_Seat,
+                seat.Id_Room_Seat
             });
             return response > 0;
         }
@@ -71,18 +71,18 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Seats""
-                        SET _row = @Row,
-                            _column = @Column,
-                            _state = @State,
-                            id_room = @Id_Room
-                        WHERE id = @Id";
+                        SET row_seat = @Row_Seat,
+                            column_seat = @Column_Seat,
+                            state_seat = @State_Seat,
+                            id_room_seat = @Id_Room_Seat
+                        WHERE id_seat = @Id_Seat";
             var response = await db.ExecuteAsync(sql, new
             {
-                seat.Id,
-                seat.Row,
-                seat.Column,
-                seat.State,
-                seat.Id_Room
+                seat.Id_Seat,
+                seat.Row_Seat,
+                seat.Column_Seat,
+                seat.State_Seat,
+                seat.Id_Room_Seat
             });
             return response > 0;
         }

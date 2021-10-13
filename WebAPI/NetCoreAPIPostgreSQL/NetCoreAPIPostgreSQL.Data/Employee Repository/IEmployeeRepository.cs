@@ -10,9 +10,10 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
     public interface IEmployeeRepository
     {
         Task<IEnumerable<Employee>> GetAllEmployees();
-        Task<Employee> GetEmployeeDetails(int id);
+        Task<Employee> GetEmployeeDetails(int id_employee);
         Task<bool> InsertEmployee(Employee employee);
         Task<bool> UpdateEmployee(Employee employee);
         Task<bool> DeleteEmployee(Employee employee);
+        //Task<bool> InsertEmployeeFrontEnd(EmployeeFRONTEND employee);
     }
 }

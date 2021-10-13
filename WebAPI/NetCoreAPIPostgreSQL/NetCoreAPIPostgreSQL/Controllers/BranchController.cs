@@ -56,7 +56,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBranch(int id)
         {
-            await _branchRespository.DeleteBranch(new Branch { Id = id });
+            await _branchRespository.DeleteBranch(new Branch { Id_Branch = id });
             return NoContent();
         }
     }

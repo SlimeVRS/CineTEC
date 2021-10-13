@@ -26,8 +26,8 @@ namespace NetCoreAPIPostgreSQL.Data.ClassificationRepository
             var sql = @"
                         DELETE
                         FROM public.""Classifications""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = classification.Id });
+                        WHERE id_classif = @Id_Classif";
+            var response = await db.ExecuteAsync(sql, new { Id_Classif = classification.Id_Classif });
             return response > 0;
         }
 
@@ -35,19 +35,19 @@ namespace NetCoreAPIPostgreSQL.Data.ClassificationRepository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, classif
+                        SELECT id_classif, classif
                         FROM public.""Classifications""";
             return await db.QueryAsync<Classification>(sql, new { });
         }
 
-        public async Task<Classification> GetClassificationDetails(int id)
+        public async Task<Classification> GetClassificationDetails(int id_classif)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, classif
+                        SELECT id_classif, classif
                         FROM public.""Classifications""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Classification>(sql, new { Id = id});
+                        WHERE id_classif = @Id_Classif";
+            return await db.QueryFirstOrDefaultAsync<Classification>(sql, new { Id_Classif = id_classif });
         }
 
         public async Task<bool> InsertClassification(Classification classification)
@@ -66,8 +66,8 @@ namespace NetCoreAPIPostgreSQL.Data.ClassificationRepository
             var sql = @"
                         Update public.""Classifications""
                         SET classif=@Classif
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { classification.Id, classification.Classif });
+                        WHERE id_classif = @Id_Classif";
+            var response = await db.ExecuteAsync(sql, new { classification.Id_Classif, classification.Classif });
             return response > 0;
         }
     }

@@ -8,9 +8,9 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class Branch
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Cant_Rooms { get; set; }
-        public string Address { get; set; }
+        public int Id_Branch { get; set; }
+        public string Name_Branch { get; set; }
+        public int Cant_Rooms_Branch { get; set; }
+        public string Address_Branch { get; set; }
     }
 }

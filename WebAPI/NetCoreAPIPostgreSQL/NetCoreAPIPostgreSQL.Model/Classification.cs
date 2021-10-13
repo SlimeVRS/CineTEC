@@ -8,7 +8,7 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class Classification
     {
-        public int Id { get; set; }
+        public int Id_Classif { get; set; }
         public string Classif { get; set; }
     }
 }

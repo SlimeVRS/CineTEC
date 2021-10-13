@@ -25,8 +25,8 @@ namespace NetCoreAPIPostgreSQL.Data.RolRepository
             var db = dbConnection();
             var sql = @"
                         DELETE FROM public.""Roles""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = rol.Id });
+                        WHERE id_rol = @Id_Rol";
+            var response = await db.ExecuteAsync(sql, new { Id_Rol = rol.Id_Rol });
             return response > 0;
         }
 
@@ -34,31 +34,31 @@ namespace NetCoreAPIPostgreSQL.Data.RolRepository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, name, description
+                        SELECT id_rol, name_rol, description_rol
                         FROM public.""Roles"" ";
             return await db.QueryAsync<Rol>(sql, new { });
         }
 
-        public async Task<Rol> GetRolDetails(int id)
+        public async Task<Rol> GetRolDetails(int id_rol)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, name, description
+                        SELECT id_rol, name_rol, description_rol
                         FROM public.""Roles""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Rol>(sql, new { Id = id });
+                        WHERE id_rol = @Id_Rol";
+            return await db.QueryFirstOrDefaultAsync<Rol>(sql, new { Id_Rol = id_rol });
         }
 
         public async Task<bool> InsertRol(Rol rol)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Roles"" (name, description)
-                        VALUES (@Name, @Description)";
+                        INSERT INTO public.""Roles"" (name_rol, description_rol)
+                        VALUES (@Name_Rol, @Description_Rol)";
             var response = await db.ExecuteAsync(sql, new
             {
-                rol.Name,
-                rol.Description
+                rol.Name_Rol,
+                rol.Description_Rol
             });
             return response > 0;
         }
@@ -68,14 +68,14 @@ namespace NetCoreAPIPostgreSQL.Data.RolRepository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Roles""
-                        SET name = @Name,
-                            description = @Description
-                        WHERE id = @Id";
+                        SET name_rol = @Name_Rol,
+                            description_rol = @Description_Rol
+                        WHERE id_rol = @Id_Rol";
             var response = await db.ExecuteAsync(sql, new
             {
-                rol.Id,
-                rol.Name,
-                rol.Description
+                rol.Id_Rol,
+                rol.Name_Rol,
+                rol.Description_Rol
             });
             return response > 0;
         }

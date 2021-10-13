@@ -56,7 +56,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task <ActionResult>DeleteRoom(int id)
         {
-            await _roomRepositry.DeleteRoom(new Room { Id = id });
+            await _roomRepositry.DeleteRoom(new Room { Id_Room = id });
             return NoContent();
         }
     }

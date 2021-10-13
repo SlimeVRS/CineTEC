@@ -56,7 +56,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
        public async Task<ActionResult> DeleteMovie(int id)
         {
-            await _movieRepository.DeleteMovie(new Movie { Id = id });
+            await _movieRepository.DeleteMovie(new Movie { Id_Movie = id });
             return NoContent();
         }
     }

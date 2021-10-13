@@ -56,7 +56,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteDirector(int id)
         {
-            await _directorsRepository.DeleteDirector(new Director { Id = id });
+            await _directorsRepository.DeleteDirector(new Director { Id_Director = id });
             return NoContent();
         }
     }

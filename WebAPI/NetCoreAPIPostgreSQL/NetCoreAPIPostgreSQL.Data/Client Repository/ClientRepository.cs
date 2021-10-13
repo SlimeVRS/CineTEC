@@ -26,8 +26,8 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
             var sql = @"
                         DELETE
                         FROM public.""Clients""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = client.Id });
+                        WHERE id_client = @Id_Client";
+            var response = await db.ExecuteAsync(sql, new { Id_Client = client.Id_Client });
             return response > 0;
         }
 
@@ -35,37 +35,37 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password AS password, _user AS user
+                        SELECT id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client
                         FROM public.""Clients"" ";
             return await db.QueryAsync<Client>(sql, new { });
         }
 
-        public async Task<Client> GetClientDetails(int id)
+        public async Task<Client> GetClientDetails(int id_client)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password AS password, _user AS user
+                        SELECT id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client
                         FROM public.""Clients""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Client>(sql, new { Id = id });
+                        WHERE id_client = @Id_Client";
+            return await db.QueryFirstOrDefaultAsync<Client>(sql, new { Id_Client = id_client });
         }
 
         public async Task<bool> InsertClient(Client client)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Clients"" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, _password, _user)
-                        VALUES(@Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Password, @User)";
+                        INSERT INTO public.""Clients"" (id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client)
+                        VALUES(@Id_Client, @First_Name_Client, @Second_Name_Client, @First_Last_Name_Client, @Second_Last_Name_Client, @Phone_Client, @Birth_Date_Client, @Password_Client, @User_Client)";
             var response = await db.ExecuteAsync(sql, new {
-                client.Id,
-                client.First_Name,
-                client.Second_Name,
-                client.First_Last_Name,
-                client.Second_Last_Name,
-                client.Phone,
-                client.Birth_Date,
-                client.Password,
-                client.User
+                client.Id_Client,
+                client.First_Name_Client,
+                client.Second_Name_Client,
+                client.First_Last_Name_Client,
+                client.Second_Last_Name_Client,
+                client.Phone_Client,
+                client.Birth_Date_Client,
+                client.Password_Client,
+                client.User_Client
             });
             return response > 0;
         }
@@ -75,25 +75,25 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
             var db = dbConnection();
             var sql = @"
                     UPDATE public.""Clients""
-                    SET first_name=@First_Name,
-                        second_name=@Second_Name,
-                        first_last_Name=@First_Last_Name,
-                        second_last_Name=@Second_Last_Name,
-                        phone=@Phone, 
-                        birth_date=@Birth_Date,
-                        _password=@Password,
-                        _user=@User
-                    WHERE id = @Id";
+                    SET first_name_client = @First_Name_Client,
+                        second_name_client = @Second_Name_Client,
+                        first_last_name_client = @First_Last_Name_Client,
+                        second_last_name_client = @Second_Last_Name_Client,
+                        phone_client = @Phone_Client, 
+                        birth_date_client = @Birth_Date_Client,
+                        password_client = @Password_Client,
+                        user_client = @User_Client
+                    WHERE id_client = @Id_Client";
             var respone = await db.ExecuteAsync(sql, new {
-                client.Id,
-                client.First_Name,
-                client.Second_Name,
-                client.First_Last_Name,
-                client.Second_Last_Name,
-                client.Phone,
-                client.Birth_Date,
-                client.Password,
-                client.User
+                client.Id_Client,
+                client.First_Name_Client,
+                client.Second_Name_Client,
+                client.First_Last_Name_Client,
+                client.Second_Last_Name_Client,
+                client.Phone_Client,
+                client.Birth_Date_Client,
+                client.Password_Client,
+                client.User_Client
             });
             return respone > 0;
         }

@@ -25,8 +25,8 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
             var db = dbConnection();
             var sql = @"
                         DELETE FROM public.""Protagonists""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = protagonist.Id });
+                        WHERE id_protagonist = @Id_Protagonist";
+            var response = await db.ExecuteAsync(sql, new { Id_Protagonist = protagonist.Id_Protagonist });
             return response > 0;
         }
 
@@ -34,33 +34,33 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name
+                        SELECT id_protagonist, first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist
                         FROM public.""Protagonists""";
             return await db.QueryAsync<Protagonist>(sql, new { });
         }
 
-        public async Task<Protagonist> GetProtagonistDetails(int id)
+        public async Task<Protagonist> GetProtagonistDetails(int id_protagonist)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name
+                        SELECT id_protagonist, first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist
                         FROM public.""Protagonists""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Protagonist>(sql, new { Id = id });
+                        WHERE id_protagonist = @Id_Protagonist";
+            return await db.QueryFirstOrDefaultAsync<Protagonist>(sql, new { Id_Protagonist = id_protagonist });
         }
 
         public async Task<bool> InsertProtagonist(Protagonist protagonist)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Protagonists"" (first_name, second_name, first_last_name, second_last_name)
-                        VALUES (@First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name)";
+                        INSERT INTO public.""Protagonists"" (first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist)
+                        VALUES (@First_Name_Protagonist, @Second_Name_Protagonist, @First_Last_Name_Protagonist, @Second_Last_Name_Protagonist)";
             var response = await db.ExecuteAsync(sql, new
             {
-                protagonist.First_Name,
-                protagonist.Second_Name,
-                protagonist.First_Last_Name,
-                protagonist.Second_Last_Name
+                protagonist.First_Name_Protagonist,
+                protagonist.Second_Name_Protagonist,
+                protagonist.First_Last_Name_Protagonist,
+                protagonist.Second_Last_Name_Protagonist
             });
             return response > 0;
         }
@@ -70,18 +70,18 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Protagonists""
-                        SET first_name=@First_Name,
-                            second_name=@Second_Name,
-                            first_last_Name=@First_Last_Name,
-                            second_last_Name=@Second_Last_Name
-                            WHERE id = @Id";
+                        SET first_name_protagonist=@First_Name_Protagonist,
+                            second_name_protagonist=@Second_Name_Protagonist,
+                            first_last_name_protagonist=@First_Last_Name_Protagonist,
+                            second_last_name_protagonist=@Second_Last_Name_Protagonist
+                            WHERE id_protagonist = @Id_Protagonist";
             var response = await db.ExecuteAsync(sql, new
             {
-                protagonist.Id,
-                protagonist.First_Name,
-                protagonist.Second_Name,
-                protagonist.First_Last_Name,
-                protagonist.Second_Last_Name
+                protagonist.Id_Protagonist,
+                protagonist.First_Name_Protagonist,
+                protagonist.Second_Name_Protagonist,
+                protagonist.First_Last_Name_Protagonist,
+                protagonist.Second_Last_Name_Protagonist
             });
             return response > 0;
         }

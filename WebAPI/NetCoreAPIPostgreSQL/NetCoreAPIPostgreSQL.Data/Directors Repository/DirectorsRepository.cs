@@ -25,33 +25,33 @@ namespace NetCoreAPIPostgreSQL.Data.Directors_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name
+                        SELECT id_director, first_name_director, second_name_director, first_last_name_director, second_last_name_director
                         FROM public.""Directors""";
             return await db.QueryAsync<Director>(sql, new { });
         }
 
-        public async Task<Director> GetDirectorDetails(int id)
+        public async Task<Director> GetDirectorDetails(int id_director)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, first_name, second_name, first_last_name, second_last_name
+                        SELECT id_director, first_name_director, second_name_director, first_last_name_director, second_last_name_director
                         FROM public.""Directors""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Director>(sql, new { Id = id});
+                        WHERE id_director = @Id_Director";
+            return await db.QueryFirstOrDefaultAsync<Director>(sql, new { Id_Director = id_director });
         }
 
         public async Task<bool> InsertDirector(Director director)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Directors"" (first_name, second_name, first_last_name, second_last_name)
-                        VALUES (@First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name)";
+                        INSERT INTO public.""Directors"" (first_name_director, second_name_director, first_last_name_director, second_last_name_director)
+                        VALUES (@First_Name_Director, @Second_Name_Director, @First_Last_Name_Director, @Second_Last_Name_Director)";
             var response = await db.ExecuteAsync(sql, new
             {
-                director.First_Name,
-                director.Second_Name,
-                director.First_Last_Name,
-                director.Second_Last_Name
+                director.First_Name_Director,
+                director.Second_Name_Director,
+                director.First_Last_Name_Director,
+                director.Second_Last_Name_Director
             });
             return response > 0;
         }
@@ -61,18 +61,18 @@ namespace NetCoreAPIPostgreSQL.Data.Directors_Repository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Directors""
-                        SET first_name=@First_Name,
-                            second_name=@Second_Name,
-                            first_last_Name=@First_Last_Name,
-                            second_last_Name=@Second_Last_Name
-                            WHERE id = @Id";
+                        SET first_name_director = @First_Name_Director,
+                            second_name_director = @Second_Name_Director,
+                            first_last_Name_director = @First_Last_Name_Director,
+                            second_last_Name_director = @Second_Last_Name_Director
+                            WHERE id_director = @Id_Director";
             var response = await db.ExecuteAsync(sql, new
             {
-                director.Id,
-                director.First_Name,
-                director.Second_Name,
-                director.First_Last_Name,
-                director.Second_Last_Name
+                director.Id_Director,
+                director.First_Name_Director,
+                director.Second_Name_Director,
+                director.First_Last_Name_Director,
+                director.Second_Last_Name_Director
             });
             return response > 0;
         }
@@ -82,8 +82,8 @@ namespace NetCoreAPIPostgreSQL.Data.Directors_Repository
             var db = dbConnection();
             var sql = @"
                         DELETE FROM public.""Directors""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = director.Id });
+                        WHERE id_director = @Id_Director";
+            var response = await db.ExecuteAsync(sql, new { Id_Director = director.Id_Director });
             return response > 0;
         }
     }

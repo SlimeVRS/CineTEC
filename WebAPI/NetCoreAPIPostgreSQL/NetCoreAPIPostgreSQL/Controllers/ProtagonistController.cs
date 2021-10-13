@@ -52,7 +52,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProtagonist(int id)
         {
-            await _protagonistRepository.DeleteProtagonist(new Protagonist { Id = id });
+            await _protagonistRepository.DeleteProtagonist(new Protagonist { Id_Protagonist = id });
             return NoContent();
         }
     }

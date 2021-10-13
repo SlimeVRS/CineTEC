@@ -26,8 +26,8 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
             var sql = @"
                         DELETE
                         FROM public.""Bills""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = bill.Id });
+                        WHERE id_bill = @Id_Bill";
+            var response = await db.ExecuteAsync(sql, new { Id_Bill = bill.Id_Bill });
             return response > 0;
         }
 
@@ -35,32 +35,32 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, total, id_employee, id_client
+                        SELECT id_bill, total_bill, id_employee_bill, id_client_bill
                         FROM public.""Bills""";
             return await db.QueryAsync<Bill>(sql, new { });
         }
 
-        public async Task<Bill> GetBillDetails(int id)
+        public async Task<Bill> GetBillDetails(int id_bill)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, total, id_employee,id_client
+                        SELECT id_bill, total_bill, id_employee_bill, id_client_bill
                         FROM public.""Bills""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Bill>(sql, new { Id = id});
+                        WHERE id_bill = @Id_Bill";
+            return await db.QueryFirstOrDefaultAsync<Bill>(sql, new { Id_Bill = id_bill});
         }
 
         public async Task<bool> InsertBill(Bill bill)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Bills"" (total, id_employee, id_client)
-                        VALUES(@Total, @Id_Employee, @Id_Client)";
+                        INSERT INTO public.""Bills"" (total_bill, id_employee_bill, id_client_bill)
+                        VALUES(@Total_Bill, @Id_Employee_Bill, @Id_Client_Bill)";
             var response = await db.ExecuteAsync(sql, new
             {
-                bill.Total,
-                bill.Id_Employee,
-                bill.Id_Client
+                bill.Total_Bill,
+                bill.Id_Employee_Bill,
+                bill.Id_Client_Bill
             });
             return response > 0;
         }
@@ -70,16 +70,16 @@ namespace NetCoreAPIPostgreSQL.Data.Bill_Repository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Bills""
-                        SET total = @Total,
-                            id_employee = @Id_Employee,
-                            id_employee = @Id_Client
-                        WHERE id = @Id";
+                        SET total_bill = @Total_Bill,
+                            id_employee_bill = @Id_Employee_Bill,
+                            id_client_bill = @Id_Client_Bill
+                        WHERE id_bill = @Id_Bill";
             var response = await db.ExecuteAsync(sql, new
             {
-                bill.Id,
-                bill.Total,
-                bill.Id_Employee,
-                bill.Id_Client
+                bill.Id_Bill,
+                bill.Total_Bill,
+                bill.Id_Employee_Bill,
+                bill.Id_Client_Bill
             });
             return response > 0;
         }

@@ -52,7 +52,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteSeat(int id)
         {
-            await _seatRespository.DeleteSeat(new Seat { Id = id });
+            await _seatRespository.DeleteSeat(new Seat { Id_Seat = id });
             return NoContent();
         }
     }

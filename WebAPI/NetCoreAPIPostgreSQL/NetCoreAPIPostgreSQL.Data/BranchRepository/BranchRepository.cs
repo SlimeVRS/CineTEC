@@ -26,8 +26,8 @@ namespace NetCoreAPIPostgreSQL.Data.BranchRepository
             var sql = @"
                         DELETE
                         FROM public.""Branches""
-                        WHERE id = @Id";
-            var response = await db.ExecuteAsync(sql, new { Id = branch.Id });
+                        WHERE id_branch = @Id_Branch";
+            var response = await db.ExecuteAsync(sql, new { Id_Branch = branch.Id_Branch });
             return response > 0;
         }
 
@@ -35,32 +35,32 @@ namespace NetCoreAPIPostgreSQL.Data.BranchRepository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, name, cant_rooms, address
+                        SELECT id_branch, name_branch, cant_rooms_branch, address_branch
                         FROM public.""Branches""";
             return await db.QueryAsync<Branch>(sql, new { });
         }
 
-        public async Task<Branch> GetBranchDetails(int id)
+        public async Task<Branch> GetBranchDetails(int id_branch)
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id, name, cant_rooms, address
+                        SELECT id_branch, name_branch, cant_rooms_branch, address_branch
                         FROM public.""Branches""
-                        WHERE id = @Id";
-            return await db.QueryFirstOrDefaultAsync<Branch>(sql, new { Id = id });
+                        WHERE id_branch = @Id_Branch";
+            return await db.QueryFirstOrDefaultAsync<Branch>(sql, new { Id_Branch = id_branch });
         }
 
         public async Task<bool> InsertBranch(Branch branch)
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Branches"" (name, cant_rooms, address)
-                        VALUES(@Name, @Cant_Rooms, @Address)
+                        INSERT INTO public.""Branches"" (name_branch, cant_rooms_branch, address_branch)
+                        VALUES(@Name_Branch, @Cant_Rooms_Branch, @Address_Branch)
                         ";
             var response = await db.ExecuteAsync(sql, new {
-                branch.Name,
-                branch.Cant_Rooms,
-                branch.Address
+                branch.Name_Branch,
+                branch.Cant_Rooms_Branch,
+                branch.Address_Branch
             });
             return response > 0;
         }
@@ -70,15 +70,15 @@ namespace NetCoreAPIPostgreSQL.Data.BranchRepository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Branches""
-                        SET name=@Name,
-                            cant_rooms=@Cant_Rooms,
-                            address=@Address
-                        WHERE id=@Id";
+                        SET name_branch=@Name_Branch,
+                            cant_rooms_branch=@Cant_Rooms_Branch,
+                            address_branch=@Address_Branch
+                        WHERE id_branch=@Id_Branch";
             var response = await db.ExecuteAsync(sql, new {
-                branch.Id,
-                branch.Name,
-                branch.Cant_Rooms,
-                branch.Address
+                branch.Id_Branch,
+                branch.Name_Branch,
+                branch.Cant_Rooms_Branch,
+                branch.Address_Branch
             });
             return response > 0;
         }

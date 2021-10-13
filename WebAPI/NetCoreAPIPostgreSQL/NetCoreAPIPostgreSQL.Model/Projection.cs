@@ -8,9 +8,9 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class Projection
     {
-        public int Id { get; set; }
-        public string Time { get; set; }
-        public int Id_Movie { get; set; }
-        public int Id_Room { get; set; }
+        public int Id_Projection { get; set; }
+        public string Time_Projection { get; set; }
+        public int Id_Movie_Projection { get; set; }
+        public int Id_Room_Projection { get; set; }
     }
 }

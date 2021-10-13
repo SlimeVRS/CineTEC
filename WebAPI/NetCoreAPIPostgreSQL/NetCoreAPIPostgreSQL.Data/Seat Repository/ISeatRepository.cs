@@ -10,7 +10,7 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
     public interface ISeatRepository
     {
         Task<IEnumerable<Seat>> GetAllSeats();
-        Task<Seat> GetSeatDetails(int id);
+        Task<Seat> GetSeatDetails(int id_seat);
         Task<bool> InsertSeat(Seat seat);
         Task<bool> UpdateSeat(Seat seat);
         Task<bool> DeleteSeat(Seat seat);

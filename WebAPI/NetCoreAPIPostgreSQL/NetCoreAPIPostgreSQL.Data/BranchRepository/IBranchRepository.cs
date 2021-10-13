@@ -10,7 +10,7 @@ namespace NetCoreAPIPostgreSQL.Data.BranchRepository
     public interface IBranchRepository
     {
         Task<IEnumerable<Branch>> GetAllBranches();
-        Task<Branch> GetBranchDetails(int id);
+        Task<Branch> GetBranchDetails(int id_branch);
         Task<bool> InsertBranch(Branch branch);
         Task<bool> UpdateBranch(Branch branch);
         Task<bool> DeleteBranch(Branch branch);

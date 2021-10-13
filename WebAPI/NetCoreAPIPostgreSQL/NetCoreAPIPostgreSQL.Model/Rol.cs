@@ -8,8 +8,8 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class Rol
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int Id_Rol { get; set; }
+        public string Name_Rol { get; set; }
+        public string Description_Rol { get; set; }
     }
 }

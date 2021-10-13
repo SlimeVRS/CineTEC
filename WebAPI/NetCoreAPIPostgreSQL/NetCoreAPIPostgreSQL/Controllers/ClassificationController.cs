@@ -51,7 +51,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteClassif(int id)
         {
-            await _classificationRepositiry.DeleteClassification(new Classification { Id = id });
+            await _classificationRepositiry.DeleteClassification(new Classification { Id_Classif = id });
             return NoContent();
         }
     }

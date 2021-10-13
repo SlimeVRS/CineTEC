@@ -55,7 +55,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteRol(int id)
         {
-            await _rolRepository.DeleteRol(new Rol { Id = id });
+            await _rolRepository.DeleteRol(new Rol { Id_Rol = id });
             return NoContent();
         }
     }

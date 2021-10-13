@@ -8,10 +8,10 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class Room
     {
-        public int Id { get; set; }
-        public int Capacity { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-        public int Id_Branch { get; set; }
+        public int Id_Room { get; set; }
+        public int Capacity_Room { get; set; }
+        public int Rows_Room { get; set; }
+        public int Columns_Room { get; set; }
+        public int Id_Branch_Room { get; set; }
     }
 }

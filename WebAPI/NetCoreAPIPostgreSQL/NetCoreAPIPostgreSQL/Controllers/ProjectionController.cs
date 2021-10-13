@@ -52,7 +52,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProjection(int id)
         {
-            await _projectionRespository.DeleteProjection(new Projection { Id = id });
+            await _projectionRespository.DeleteProjection(new Projection { Id_Projection = id });
             return NoContent();
         }
     }

@@ -29,7 +29,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _employeeRepository.GetEmployeeDetails(id));
         }
-
+        
         [HttpPost]
         public async Task<ActionResult> CreateEmployee([FromBody] Employee employee)
         {
@@ -41,8 +41,19 @@ namespace NetCoreAPIPostgreSQL.Controllers
             var created = await _employeeRepository.InsertEmployee(employee);
             return Created("Client created", created);
         }
+        /**
+        [HttpPost]
+        public async Task<ActionResult> CreateEmployee([FromBody] EmployeeFRONTEND employee)
+        {
+            if (employee == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var created = await _employeeRepository.InsertEmployeeFrontEnd(employee);
+            return Created("employee created", created);
+        }**/
 
-        [HttpPut]
+            [HttpPut]
         public async Task<ActionResult> UpdateEmployee([FromBody] Employee employee)
         {
             if (employee == null)
@@ -56,7 +67,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteEmploye(int id)
         {
-            await _employeeRepository.DeleteEmployee(new Employee { Id = id });
+            await _employeeRepository.DeleteEmployee(new Employee { Id_Employee = id });
             return NoContent();
         }
     }
