@@ -14,5 +14,6 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
         Task<bool> InsertMovie(Movie rol);
         Task<bool> UpdateMovie(Movie rol);
         Task<bool> DeleteMovie(Movie rol);
+        Task<bool> InsertMovieFrontEnd(MovieFRONTEND movie);
     }
 }

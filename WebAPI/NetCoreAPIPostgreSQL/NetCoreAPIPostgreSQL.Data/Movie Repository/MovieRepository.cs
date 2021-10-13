@@ -100,5 +100,45 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
             });
             return response > 0;
         }
+
+        public async Task<bool> InsertMovieFrontEnd(MovieFRONTEND movie)
+        {
+            var db = dbConnection();
+            var id_director_sql = @"
+                                SELECT id_director
+                                FROM public.""Directors"" 
+                                WHERE name_director = @Name_Director_Movie";
+            var id_director = await db.QueryFirstOrDefaultAsync<Director>(id_director_sql, new { Name_Director_Movie = movie.Name_Director_Movie });
+
+            var id_classif_sql = @"
+                                SELECT id_classif
+                                FROM public.""Classifications""
+                                WHERE classif = @Classif_Movie";
+            var id_classif = await db.QueryFirstOrDefaultAsync<Classification>(id_classif_sql, new { Classif_Movie = movie.Classif_Movie });
+
+            var id_protagonist_sql = @"
+                                SELECT id_protagonist
+                                FROM public.""Protagonists""
+                                WHERE name_protagonist = @Name_Protagonist";
+            var id_protagonist = await db.QueryFirstOrDefaultAsync<Protagonist>(id_protagonist_sql, new { Name_Protagonist = movie.Name_Protagonist_Movie });
+
+            var sql = @"
+                        INSERT INTO public.""Movies"" (name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie)
+                        VALUES (@Name_Movie, @Duration_Movie, @Poster_Movie, @Price_Elder_Movie, @Price_Adult_Movie, @Price_Kid_Movie, @Id_Director, @Id_Classif, @Id_Protagonist)";
+            var response = await db.ExecuteAsync(sql, new
+            {
+                movie.Id_Movie,
+                movie.Name_Movie,
+                movie.Duration_Movie,
+                movie.Poster_Movie,
+                movie.Price_Elder_Movie,
+                movie.Price_Adult_Movie,
+                movie.Price_Kid_Movie,
+                id_director.Id_Director,
+                id_classif.Id_Classif,
+                id_protagonist.Id_Protagonist
+            });
+            return response > 0;
+        }
     }
 }

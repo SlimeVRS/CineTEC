@@ -30,14 +30,14 @@ namespace NetCoreAPIPostgreSQL.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateMovie([FromBody] Movie movie)
+        public async Task<ActionResult> CreateMovie([FromBody] MovieFRONTEND movie)
         {
             if (movie == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 BadRequest();
 
-            var created = await _movieRepository.InsertMovie(movie);
+            var created = await _movieRepository.InsertMovieFrontEnd(movie);
             return Created("Movie created", created);
         }
 

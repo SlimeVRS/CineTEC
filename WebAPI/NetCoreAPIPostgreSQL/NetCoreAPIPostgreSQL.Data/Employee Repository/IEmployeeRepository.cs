@@ -14,6 +14,6 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
         Task<bool> InsertEmployee(Employee employee);
         Task<bool> UpdateEmployee(Employee employee);
         Task<bool> DeleteEmployee(Employee employee);
-        //Task<bool> InsertEmployeeFrontEnd(EmployeeFRONTEND employee);
+        Task<bool> InsertEmployeeFrontEnd(EmployeeFRONTEND employee);
     }
 }

@@ -34,7 +34,7 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id_protagonist, first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist
+                        SELECT id_protagonist, name_protagonist
                         FROM public.""Protagonists""";
             return await db.QueryAsync<Protagonist>(sql, new { });
         }
@@ -43,7 +43,7 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id_protagonist, first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist
+                        SELECT id_protagonist, name_protagonist
                         FROM public.""Protagonists""
                         WHERE id_protagonist = @Id_Protagonist";
             return await db.QueryFirstOrDefaultAsync<Protagonist>(sql, new { Id_Protagonist = id_protagonist });
@@ -53,14 +53,11 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        INSERT INTO public.""Protagonists"" (first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist)
-                        VALUES (@First_Name_Protagonist, @Second_Name_Protagonist, @First_Last_Name_Protagonist, @Second_Last_Name_Protagonist)";
+                        INSERT INTO public.""Protagonists"" (name_protagonist)
+                        VALUES (@Name_Protagonist)";
             var response = await db.ExecuteAsync(sql, new
             {
-                protagonist.First_Name_Protagonist,
-                protagonist.Second_Name_Protagonist,
-                protagonist.First_Last_Name_Protagonist,
-                protagonist.Second_Last_Name_Protagonist
+                protagonist.Name_Protagonist
             });
             return response > 0;
         }
@@ -70,18 +67,12 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
             var db = dbConnection();
             var sql = @"
                         UPDATE public.""Protagonists""
-                        SET first_name_protagonist=@First_Name_Protagonist,
-                            second_name_protagonist=@Second_Name_Protagonist,
-                            first_last_name_protagonist=@First_Last_Name_Protagonist,
-                            second_last_name_protagonist=@Second_Last_Name_Protagonist
+                        SET name_protagonist=@Name_Protagonist
                             WHERE id_protagonist = @Id_Protagonist";
             var response = await db.ExecuteAsync(sql, new
             {
                 protagonist.Id_Protagonist,
-                protagonist.First_Name_Protagonist,
-                protagonist.Second_Name_Protagonist,
-                protagonist.First_Last_Name_Protagonist,
-                protagonist.Second_Last_Name_Protagonist
+                protagonist.Name_Protagonist
             });
             return response > 0;
         }

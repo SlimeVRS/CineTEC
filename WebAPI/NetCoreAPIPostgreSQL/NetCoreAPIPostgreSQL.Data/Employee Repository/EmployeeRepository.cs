@@ -106,24 +106,24 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
             });
             return response > 0;
         }
-        /**
+        
         public async Task<bool> InsertEmployeeFrontEnd(EmployeeFRONTEND employee)
         {
             var db = dbConnection();
             var id_branch_sql = @"
-                                    SELECT id
+                                    SELECT id_branch
                                     FROM public.""Branches""
-                                    WHERE name = @Branch_Name";
+                                    WHERE name_branch = @Branch_Name";
             var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = employee.Branch_Name });
             var id_rol_sql = @"
-                                SELECT id
+                                SELECT id_rol
                                 FROM public.""Roles""
-                                WHERE name = @Rol_Name";
-            var ID_ROL = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Rol_Name });
+                                WHERE name_rol = @Rol_Name";
+            var id_rol = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Rol_Name });
 
             var sql = @"
-                        INSERT INTO public.""Employees"" (id, first_name, second_name, first_last_name, second_last_name, phone, birth_date, admission_date, _password, _user, id_branch, id_rol)
-                        VALUES(@Employee_Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Admission_Date,@Password, @User, @Id, @Rol_Id)";
+                        INSERT INTO public.""Employees"" (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee)
+                        VALUES(@Employee_Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Admission_Date,@Password, @User, @Id_Branch, @Id_Rol)";
             var response = await db.ExecuteAsync(sql, new
             {
                 employee.Employee_Id,
@@ -136,9 +136,11 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                 employee.Admission_Date,
                 employee.Password,
                 employee.User,
-                id_branch.Id,
+                id_branch.Id_Branch,
+                id_rol.Id_Rol
+
             });
             return response > 0;
-        }**/
+        }
     }
 }
