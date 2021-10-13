@@ -34,10 +34,7 @@ CREATE TABLE IF NOT EXISTS public."Clients"
 CREATE TABLE IF NOT EXISTS public."Directors"
 (
     id_director integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    first_name_director text COLLATE pg_catalog."default" NOT NULL,
-    second_name_director text COLLATE pg_catalog."default",
-    first_last_name_director text COLLATE pg_catalog."default" NOT NULL,
-    second_last_name_director text COLLATE pg_catalog."default",
+    name_director text COLLATE pg_catalog."default",
     CONSTRAINT "Directors_pkey" PRIMARY KEY (id_director)
 );
 
@@ -45,10 +42,7 @@ CREATE TABLE IF NOT EXISTS public."Directors"
 CREATE TABLE IF NOT EXISTS public."Protagonists"
 (
     id_protagonist integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    first_name_protagonist text COLLATE pg_catalog."default" NOT NULL,
-    second_name_protagonist text COLLATE pg_catalog."default",
-    first_last_name_protagonist text COLLATE pg_catalog."default" NOT NULL,
-    second_last_name_protagonist text COLLATE pg_catalog."default",
+    name_protagonist text COLLATE pg_catalog."default",
     CONSTRAINT "Protagonists_pkey" PRIMARY KEY (id_protagonist)
 );
 
@@ -229,11 +223,11 @@ VALUES('Adulto');
 INSERT INTO public."Classifications" (classif)
 VALUES('Niño');
 
-INSERT INTO public."Directors" (first_name_director, second_name_director, first_last_name_director, second_last_name_director)
-VALUES ('Dnombre1','Dnombre1','Dapellido1','Dapellido1');
+INSERT INTO public."Directors" (name_director)
+VALUES ('Director Inventado');
 
-INSERT INTO public."Protagonists" (first_name_protagonist, second_name_protagonist, first_last_name_protagonist, second_last_name_protagonist)
-VALUES ('Pnombre1', 'Pnombre1', 'Papellido1', 'Papellido1');
+INSERT INTO public."Protagonists" (name_protagonist)
+VALUES ('Personaje inventado');
 
 INSERT INTO public."Roles" (name_rol, description_rol)
 VALUES('cajero','cobra dinero');
