@@ -28,14 +28,14 @@ namespace NetCoreAPIPostgreSQL.Controllers
             return Ok(await _projectionRespository.GetProjectionDetails(id));
         }
         [HttpPost]
-        public async Task<ActionResult> CreateProjection([FromBody] Projection projection)
+        public async Task<ActionResult> CreateProjection([FromBody] ProjectionFRONTEND projection)
         {
             if (projection == null)
                 return BadRequest();
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var created = await _projectionRespository.InsertProjection(projection);
+            var created = await _projectionRespository.InsertProjectionFrontEnd(projection);
             return Created("Projection created", created);
         }
         [HttpPut]
