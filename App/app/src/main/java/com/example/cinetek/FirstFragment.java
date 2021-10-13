@@ -48,6 +48,10 @@ public class FirstFragment extends Fragment {
     private SQLiteDatabase db;
     private String mov;
     private String room;
+    private boolean boll_cine;
+    private boolean boll_peli;
+    private boolean boll_tipo;
+    private boolean boll_seat;
 
 
     @Override
@@ -128,6 +132,7 @@ public class FirstFragment extends Fragment {
                     pelicula = datos[0];
                     horario=datos[1];
                     room=datos[2];
+                    cargar_img();
                     spin_asiento_tipo();
                 }
             }
@@ -157,7 +162,6 @@ public class FirstFragment extends Fragment {
                 horario = (String) SpinHora.getAdapter().getItem(posicion);
                 if (posicion>0){
                     Toast.makeText(getActivity(),"cine:"+cinema+", pelicula:"+pelicula+", hora:"+horario,Toast.LENGTH_LONG).show();
-                    cargar_img();
                     spin_asientos_();
                 }
 
@@ -186,7 +190,7 @@ public class FirstFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int posicion, long l) {
                 String asiento = (String) SpinAsientos.getAdapter().getItem(posicion);
                 if (posicion>0){
-                    spin_pelicula();
+
                 }
             }
 
