@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS public."Clients"
     phone_client text COLLATE pg_catalog."default" NOT NULL,
     birth_date_client date NOT NULL,
     password_client text COLLATE pg_catalog."default" NOT NULL,
-    user_client text COLLATE pg_catalog."default" NOT NULL,
+    user_client text COLLATE pg_catalog."default" NOT NULL UNIQUE,
     CONSTRAINT "Clients_pkey" PRIMARY KEY (id_client)
 );
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS public."Employees"
     birth_date_employee date NOT NULL,
     admission_date_employee date NOT NULL,
     password_employee text COLLATE pg_catalog."default" NOT NULL,
-    user_employee text COLLATE pg_catalog."default" NOT NULL,
+    user_employee text COLLATE pg_catalog."default" NOT NULL UNIQUE,
     id_branch_employee integer NOT NULL,
     id_rol_employee integer NOT NULL,
     CONSTRAINT "Employees_pkey" PRIMARY KEY (id_employee)
