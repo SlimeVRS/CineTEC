@@ -15,8 +15,8 @@ export class RolComponent implements OnInit {
   rol: rolModel;
   constructor(private formBuilder: FormBuilder, private rolService: RolService, private toastr: ToastrService) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      description: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
+      name_rol: ['', [Validators.required]],
+      description_rol: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
     });
    }
 
@@ -26,17 +26,16 @@ export class RolComponent implements OnInit {
       console.log(data);
       this.rol = data;
       this.form.patchValue({
-        name: this.rol.name,
-        description: this.rol.description,
+        name_rol: this.rol.name_Rol,
+        description_rol: this.rol.description_Rol,
        
       })
     })
   }
-
   guardarCliente() {
     const rol: rolModel = {
-      name: this.form.get('name').value,
-      description: this.form.get('description').value
+      name_Rol: this.form.get('name_rol').value,
+      description_Rol: this.form.get('description_rol').value
     }
     this.rolService.guardarRol(rol).subscribe(data => {
       this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');

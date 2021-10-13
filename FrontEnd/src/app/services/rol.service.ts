@@ -29,4 +29,7 @@ export class RolService {
     this.actualizarForm.next(cliente);
   }
  
+  eliminarTarjeta(id: number): Observable<rolModel>{
+    return this.http.delete<rolModel>('http://localhost:15451/api/Rol/'+ id);
+  }
 }
