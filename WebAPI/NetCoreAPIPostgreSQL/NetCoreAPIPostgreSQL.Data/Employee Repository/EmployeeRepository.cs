@@ -142,5 +142,19 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
             });
             return response > 0;
         }
+
+        public async Task<Employee> GetEmployeeByUserPassword(string user, string password)
+        {
+            var db = dbConnection();
+            var sql = @"
+                        SELECT password_employee, user_employee
+                        FROM public.""Employees""
+                        WHERE password_employee = @Password_Employee AND user_employee = @User_Employee";
+            return await db.QueryFirstOrDefaultAsync<Employee>(sql, new
+            {
+                Password_Employee = password,
+                User_Employee = user
+            });
+        }
     }
 }
