@@ -6,7 +6,6 @@
                 <img src="assets/CineTecLogo.png">
             </a>
         </a>
-
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -20,12 +19,13 @@
                         Opciones Administrador
                     </a>
                     <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="navbarScrollingDropdown">
-                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/login">Gestion de Clientes</a></li>
-                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/tarjetas">Gestion de Salas</a></li>
-                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/tarjetas">Gestion de Empleados</a></li>
-                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/tarjetas">Gestion de Peliculas</a></li>    
-                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/tarjetas">Gestion de Sucursales</a></li>
-                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/tarjetas">Asignacion de Proyecciones</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/cliente">Gestion de Clientes</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/seat-reserv">Gestion de Salas</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/empleadosC">Gestion de Empleados</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/movies">Gestion de Peliculas</a></li>    
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/offices">Gestion de Sucursales</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/screens">Asignacion de Proyecciones</a></li>
+                        <li ngbDropdownItem><a class="dropdown-item" routerLink="/tools">Gestion de Roles</a></li>
                         
                     </ul>
                 </li>
@@ -33,16 +33,13 @@
                 <a>&nbsp;&nbsp;</a>
                 <a>&nbsp;&nbsp;</a>
                 
+                
                 <i class="fas fa-sign-in-alt fa-2x" style="color: white; float: right;" ></i>
                 <div class="form-group">
-                    <button class="button1 btn-sucess btn-lg btn-block" type="submit" routerLink="/employees" >LOGOUT</button>
+                    <button class="button1 btn-sucess btn-lg btn-block" type="submit" routerLink="/home" >LOGOUT</button>
                 </div>
-               
-                
-
-
-               
             </ul>
         </div>
     </div>
 </nav>
+<router-outlet></router-outlet>

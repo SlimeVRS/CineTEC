@@ -1,1 +1,111 @@
-<p>clients works!</p>
+<app-employees></app-employees>
+<body>
+    <div class="jumbtrom">
+    <div class="row">
+        <div class="col-md-5">
+            <h6 class="text-center">
+                Agregar Cliente
+            </h6>
+            <form [formGroup]="form" (ngSubmit)="guardarCliente()">
+                <div class="row">
+                    <div class="form-group col-md-7">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <div class="form-grop">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="nombre2"
+                                    placeholder="Segundo Nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-7">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="apellido1"
+                                    placeholder="Apellido 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <div class="form-grop">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="apellido2"
+                                    placeholder="Apellido 2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h6> </h6>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="numeroTelefono"
+                            placeholder="Numero de Telefono">
+                    </div>
+                </div>
+
+                <h6> </h6>
+                <div class="row">
+                    <div class="form-group col-md-7">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="cedula" placeholder="Cedula">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group col-md-5">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="fechaNacimiento"
+                                    placeholder="Nacimiento (AAAA-MM-DD)">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-7">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="usuario" placeholder="Usuario">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <div class="form-grop">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="password"
+                                    placeholder="Contraseña">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h6> </h6>
+
+                <div class="form-group">
+                    <button class="button btn-sucess btn-lg btn-block" [disabled]="form.invalid"
+                        type="submit">Aceptar</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-7">
+            <h6 class="text-center">
+                Clientes
+            </h6>
+            <app-clientslist></app-clientslist>
+        </div>
+    </div>
+</div>
+</body>
+

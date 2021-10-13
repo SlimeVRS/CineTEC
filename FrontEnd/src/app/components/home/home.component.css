@@ -1,0 +1,46 @@
+table.GeneratedTable {
+    width: fit-content;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #271b3f;
+    border-style: solid;
+  
+    
+    color: #000000;
+  }
+  
+  .GeneratedTable {
+    border-width: 2px;
+    border-color: #271b3f;
+    border-style: solid;
+    padding: 3px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table.GeneratedTable td{
+    border-width: 2px;
+    border-color: #271b3f;
+    border-style: solid;
+    padding: 3px;
+  }
+  
+  table.GeneratedTable thead {
+    background-color: #271b3f;
+  
+  }
+  .example-card {
+    max-width: 300px;
+    align-content: center;
+    background-color: #271b3f;
+  }
+  
+  .example-header-image {
+   
+    background-size: cover;
+  }
+  div{
+    width: fit-content;
+    background-color: #271b3f;
+  }
+  

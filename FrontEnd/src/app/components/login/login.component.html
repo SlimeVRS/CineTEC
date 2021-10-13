@@ -1,1 +1,48 @@
-<p>login works!</p>
+<!--<app-employees></app-employees>-->
+<app-navbar></app-navbar>
+<!DOCTYPE html> <!--indica que es html5-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+</head>
+<body class="text-center">
+<!--
+    Se usa este form, para logearse a la aplicación web app
+    se recibe un User y una contraseña única de tipo password
+-->
+  <main class="form-signin">
+    <form>
+      <h1 class="h3 mb-3 fw-normal" style="color: white;">Login</h1>  <!-- este es una etiqueta, con su formato-->
+      <a style="color: white;">Usuario</a>
+      <label for="inputEmail" class="visually-hidden">User</label>
+
+    <!-- 
+          crea el placeholder que recibe el user, 
+        y además no puede pasar y dejar en blanco 
+    -->
+      <input id="inputEmail" class="form-control" placeholder="Ingrese su usuario" required autofocus #usernameInput>  
+      <a style="color: white;">Contraseña</a>
+      <label for="inputPassword" class="visually-hidden">Password</label><!-- este es una etiqueta, con su formato-->
+      <!--
+          Este placeholder recibe la contraseña, 
+          que es de tipo password, es protegida 
+          y no debe quedar vacío
+      -->
+      <input type="password" id="inputPassword" class="form-control" placeholder="Ingrese su contraseña" required #passwordInput>  
+
+    <!--
+        Este es el botón que envía los valores 
+        para logear al usuario correspondiente
+
+      <button class="btn btn-sucess btn-lg btn-block" type="submit"><i class="fas fa-database"></i> Ingresar</button>
+      </form>
+    -->
+      <button class="btn btn-sucess btn-lg btn-block" type="submit" style="color: white;"> Ingresar</button>
+      <div class="d-flex justify-content-center links" style="color: white;">
+        No tienes cuenta?<a href="/singup" style="color: white;">Registrar</a>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
