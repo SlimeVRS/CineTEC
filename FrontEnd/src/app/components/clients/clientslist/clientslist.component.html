@@ -1,1 +1,38 @@
-<p>clientslist works!</p>
+<table class="table table-sm">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <tr *ngFor="let client of clientService.list">
+        <td style="color: white;">
+            {{client.id_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.first_Name_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.first_Last_Name_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.second_Last_Name_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.phone_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.birth_Date_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.user_Client}}
+        </td>
+        <td style="color: white;">
+            {{client.password_Client}}
+        </td>
+        <td>
+            <i class="far fa-edit fa-lg text-info"  (click)="editar(client)" style="cursor: pointer;"></i>  
+        </td>
+        
+        <td>
+            <i class="far fa-trash-alt fa-lg text-danger" (click)="eliminarTarjeta(client.id_Client)" style="cursor: pointer;"></i>
+        </td>
+       
+    </tr>
+
+</table>

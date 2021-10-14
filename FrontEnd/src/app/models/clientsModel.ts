@@ -1,12 +1,12 @@
 export class clientsModel {
     id1?: number;
-    first_name: string;
-    second_name: string;
-    first_last_name: string;
-    second_last_name: string;
-    id: number;
-    phone: string;
-    birth_date: string;
-    _user: string;
-    _password: string;
+    first_Name_Client: string;
+    second_Name_Client: string;
+    first_Last_Name_Client: string;
+    second_Last_Name_Client: string;
+    id_Client: number;
+    phone_Client: string;
+    birth_Date_Client: string;
+    user_Client: string;
+    password_Client: string;
 }

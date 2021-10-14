@@ -37,30 +37,30 @@ export class ClientsComponent implements OnInit {
       console.log(data);
       this.cliente = data;
       this.form.patchValue({
-        nombre: this.cliente.first_name,
-        nombre2: this.cliente.second_name,
-        apellido1: this.cliente.first_last_name,
-        apellido2: this.cliente.second_last_name,
-        cedula: this.cliente.id,
-        numeroTelefono: this.cliente.phone,
-        fechaNacimiento: this.cliente.birth_date,
-        usuario: this.cliente._user,
-        password: this.cliente._password,
+        nombre: this.cliente.first_Name_Client,
+        nombre2: this.cliente.second_Name_Client,
+        apellido1: this.cliente.first_Last_Name_Client,
+        apellido2: this.cliente.second_Last_Name_Client,
+        cedula: this.cliente.id_Client,
+        numeroTelefono: this.cliente.phone_Client,
+        fechaNacimiento: this.cliente.birth_Date_Client,
+        usuario: this.cliente.user_Client,
+        password: this.cliente.password_Client,
       })
     })
   }
   guardarCliente() {
     const cliente: clientsModel = {
-      first_name: this.form.get('nombre').value,
-      second_name: this.form.get('nombre2').value,
-      first_last_name: this.form.get('apellido1').value,
-      second_last_name: this.form.get('apellido2').value,
-      id: this.form.get('cedula').value,
-      phone: this.form.get('numeroTelefono').value,
-      _password: this.form.get('password').value,
-      _user: this.form.get('usuario').value,
+      first_Name_Client: this.form.get('nombre').value,
+      second_Name_Client: this.form.get('nombre2').value,
+      first_Last_Name_Client: this.form.get('apellido1').value,
+      second_Last_Name_Client: this.form.get('apellido2').value,
+      id_Client: this.form.get('cedula').value,
+      phone_Client: this.form.get('numeroTelefono').value,
+      password_Client: this.form.get('password').value,
+      user_Client: this.form.get('usuario').value,
       
-      birth_date: this.form.get('fechaNacimiento').value+"T00:00:00",
+      birth_Date_Client: this.form.get('fechaNacimiento').value+"T00:00:00",
     
     }
     this.clientService.guardarCliente(cliente).subscribe(data => {

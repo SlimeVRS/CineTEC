@@ -11,14 +11,10 @@
       <form>
         <h1 class="h3 mb-3 fw-normal">Registro de Peliculas</h1>
 
-        <a>Nombre Original</a>
-        <label for="inputOriginalName" class="visually-hidden">Nombre Original Pelicula</label>
-        <input id="inputOriginalName" class="form-control" placeholder="Introduzca el nombre original" required #onameInput>
-
         <a>Nombre</a>
         <label for="inputName" class="visually-hidden">Nombre</label>
         <input id="inputName" class="form-control" placeholder="Ingrese el nombre" required #nameInput>
-
+        
         <a>Subir Imagen</a>
         <app-imagemanager></app-imagemanager>
 
@@ -37,10 +33,25 @@
         <a>Clasificacion</a>
         <label for="inputClasificacion" class="visually-hidden">Clasificacion</label>
         <input id="inputClasificacion" class="form-control" placeholder="Ingrese Clasificacion" required #ClasificacionInput>
-        <h1></h1>
         
+        <a>Precio Adulto</a>
+        <label for="inputAdult" class="visually-hidden">Precio Adulto</label>
+        <input id="inputAdult" class="form-control" placeholder="Ingrese Precio Adulto" required #AdultInput>
+       
+        <a>Precio Adulto Mayor</a>
+        <label for="inputAdultElder" class="visually-hidden">Precio Adulto</label>
+        <input id="inputAdultElder" class="form-control" placeholder="Ingrese Precio Adulto Mayor" required #ElderInput>
+       
+        <a>Precio Niño</a>
+        <label for="inputChild" class="visually-hidden">Precio Niño</label>
+        <input id="inputChild" class="form-control" placeholder="Ingrese Precio Niño" required #ChildInput>
+       
+        <h1></h1>
+
         <button class="button btn-sucess btn-lg btn-block" type="submit"> Registrar Pelicula</button>
       </form>
+      
+
     </main>
 
   </body>

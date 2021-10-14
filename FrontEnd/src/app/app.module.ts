@@ -33,6 +33,20 @@ import { ToastrModule } from 'ngx-toastr';
 import { SeatReservComponent } from './components/seat-reserv/seat-reserv.component';
 import { RolComponent } from './components/rol/rol.component';
 import { RollistComponent } from './components/rol/rollist/rollist.component';
+import {CloudinaryModule} from '@cloudinary/angular';
+import { ViewPhotosComponent } from './components/movies/view-photos/view-photos.component';
+import {MatInputModule} from '@angular/material/input';
+import { AngularFireModule } from '@angular/fire/compat' ;
+import { environment } from 'src/environments/environment';
+
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {
+  AngularFireStorageReference,
+  AngularFireUploadTask
+} from "@angular/fire/compat/storage";
+
 
 @NgModule({
   declarations: [
@@ -58,7 +72,8 @@ import { RollistComponent } from './components/rol/rollist/rollist.component';
     NavbarClientComponent,
     SeatReservComponent,
     RolComponent,
-    RollistComponent
+    RollistComponent,
+    ViewPhotosComponent
 
   ],
   imports: [
@@ -68,6 +83,12 @@ import { RollistComponent } from './components/rol/rollist/rollist.component';
     ReactiveFormsModule,NgbModule,
     MatTabsModule,MatCardModule,
     HttpClientModule,
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    CloudinaryModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     ToastrModule.forRoot(),
   
     RouterModule.forRoot([
