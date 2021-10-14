@@ -6,9 +6,9 @@
 
   </head>
   <body class="text-center">
-
+  
     <main class="form2">
-      <form>
+      <form [formGroup]="form2" (ngSubmit)="guardarOffices()">
         <h1 class="h3 mb-3 fw-normal">Registro de Sucursales</h1>
 
         <a>Nombre de la Sucursal</a>
@@ -27,6 +27,12 @@
         <button class="button btn-sucess btn-lg btn-block" type="submit"> Registrar Sucursal</button>
       </form>
     </main>
-
+    <div class="col-md-7">
+      <h6 class="text-center">
+          Sucursales
+      </h6>
+      <app-officeslist></app-officeslist>
+  </div>
+  
   </body>
 </html>

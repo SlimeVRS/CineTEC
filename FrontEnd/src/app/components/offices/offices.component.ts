@@ -29,9 +29,9 @@ export class OfficesComponent implements OnInit {
   }
   guardarOffices(){
     const offices: oficcesModel = {
-      offices_name : this.form2.get('inputOfficesName').value,
-      location_name : this.form2.get('inputLocation').value,
-      Number_rooms : this.form2.get('inputNumberRooms').value,
+      name_Branch : this.form2.get('inputOfficesName').value,
+      cant_Rooms_Branch : this.form2.get('inputLocation').value,
+      address_Branch : this.form2.get('inputNumberRooms').value,
     }
   
   this.officesService.guardarOffices(offices).subscribe(data=>{
