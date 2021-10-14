@@ -33,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SeatReservComponent } from './components/seat-reserv/seat-reserv.component';
 import { RolComponent } from './components/rol/rol.component';
 import { RollistComponent } from './components/rol/rollist/rollist.component';
-import {CloudinaryModule} from '@cloudinary/angular';
+//import {CloudinaryModule} from '@cloudinary/angular';
 import { ViewPhotosComponent } from './components/movies/view-photos/view-photos.component';
 import {MatInputModule} from '@angular/material/input';
 import { AngularFireModule } from '@angular/fire/compat' ;
@@ -87,7 +87,7 @@ import { OfficeslistComponent } from './components/offices/officeslist/officesli
     HttpClientModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    CloudinaryModule,
+    //CloudinaryModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
