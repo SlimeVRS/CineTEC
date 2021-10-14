@@ -46,6 +46,7 @@ import {
   AngularFireStorageReference,
   AngularFireUploadTask
 } from "@angular/fire/compat/storage";
+import { OfficeslistComponent } from './components/offices/officeslist/officeslist.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {
     ClientsComponent,
     MoviesComponent,
     OfficesComponent,
+    OfficeslistComponent,
     ScreensComponent,
     CarouselComponent,
     LoginComponent,

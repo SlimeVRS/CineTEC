@@ -13,15 +13,15 @@
 
         <a>Nombre de la Sucursal</a>
         <label for="inputOfficesName" class="visually-hidden">Nombre del cine</label>
-        <input id="inputOfficesName" class="form-control" placeholder="Introduzca nombre del cine" required #cineInput>
+        <input id="inputOfficesName" class="form-control" formControlName="inputOfficesName" placeholder="Introduzca nombre del cine" required #cineInput>
 
         <a>Ubicacion</a>
         <label for="inputLocation" class="visually-hidden">Ubicacion</label>
-        <input id="inputLocation" class="form-control" placeholder="Ingrese la ubicación" required #ubicacionInput>
+        <input id="inputLocation" class="form-control"  formControlName="inputLocation"  placeholder="Ingrese la ubicación" required #ubicacionInput>
 
         <a>Cantidad de salas</a>
         <label for="inputNumberRooms" class="visually-hidden">Cant_salas</label>
-        <input id="inputNumberRooms" class="form-control" placeholder="Ingrese la cantidad de salas" required #Cant_salasInput>
+        <input id="inputNumberRooms" class="form-control" formControlName="inputNumberRooms" placeholder="Ingrese la cantidad de salas" required #Cant_salasInput>
         <h1></h1>
         
         <button class="button btn-sucess btn-lg btn-block" type="submit"> Registrar Sucursal</button>

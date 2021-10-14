@@ -7,7 +7,7 @@ import { oficcesModel } from '../models/oficcesModels';
   providedIn: 'root'
 })
 export class OfficesService {
-  myAppUrl: 'http://localhost:15451/api/Office';
+  myAppUrl: 'http://localhost:15451/api/Branch';
   list: oficcesModel[];
   private actualizarForm = new BehaviorSubject<oficcesModel>({} as any);
 
@@ -15,11 +15,11 @@ export class OfficesService {
 
   
   guardarOffices(offices: oficcesModel): Observable<oficcesModel> {
-    return this.http.post<oficcesModel>('http://localhost:15451/api/Office ', offices);
+    return this.http.post<oficcesModel>('http://localhost:15451/api/Branch ', offices);
 
   }
   obtenerOffices() {
-    this.http.get('http://localhost:15451/api/Office').toPromise().then(data => {
+    this.http.get('http://localhost:15451/api/Branch').toPromise().then(data => {
       this.list = data as oficcesModel[];
     }
     );
@@ -29,12 +29,12 @@ export class OfficesService {
     this.actualizarForm.next(offices);
   }
   actualizarOffices(id:number , offices: oficcesModel): Observable<oficcesModel>{
-    return this.http.put<oficcesModel>('http://localhost:15451/api/Office/'+id,offices);
+    return this.http.put<oficcesModel>('http://localhost:15451/api/Branch/'+id,offices);
   }
   obtenerOffice(): Observable<oficcesModel>{
     return this.actualizarForm.asObservable();
   }
   eliminarOffices(id: number): Observable<oficcesModel>{
-    return this.http.delete<oficcesModel>('http://localhost:15451/api/Office'+ id);
+    return this.http.delete<oficcesModel>('http://localhost:15451/api/Branch/'+ id);
   }
 }
