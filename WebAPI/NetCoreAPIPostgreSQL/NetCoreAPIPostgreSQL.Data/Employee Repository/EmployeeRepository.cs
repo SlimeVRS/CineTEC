@@ -123,7 +123,7 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
 
             var sql = @"
                         INSERT INTO public.""Employees"" (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee)
-                        VALUES(@Employee_Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Admission_Date,@Password, @User, @Id_Branch, @Id_Rol)";
+                        VALUES(@Id_Employee, @First_Name_Employee, @Second_Name_Employee, @First_Last_Name_Employee, @Second_Last_Name_Employee, @Phone_Employee, @Birth_Date_Employee, @Admission_Date_Employee, @Password_Employee, @User_Employee, @Id_Branch, @Id_Rol)";
             var response = await db.ExecuteAsync(sql, new
             {
                 employee.Id_Employee,
