@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace NetCoreAPIPostgreSQL.Model
 {
+    // Director model
     public class Director
     {
-        public int Id_Director { get; set; }
-        public string Name_Director { get; set; }
+        public int Id_Director { get; set; }        // Id of the director
+        public string Name_Director { get; set; }   // Full name of the director
     }
 }

@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace NetCoreAPIPostgreSQL.Model
 {
+    // Model of the movie
     public class Movie
     {
-        public int Id_Movie { get; set; }
-        public string Name_Movie { get; set; }
-        public string Duration_Movie { get; set; }
-        public string Poster_Movie { get; set; }
-        public int Price_Elder_Movie { get; set; }
-        public int Price_Adult_Movie { get; set; }
-        public int Price_Kid_Movie { get; set; }
-        public int Id_Director_Movie { get; set; }
-        public int Id_Classif_Movie { get; set; }
-        public int Id_Protagonist_Movie { get; set; }
+        public int Id_Movie { get; set; }               // Id of the movie
+        public string Name_Movie { get; set; }          // Name of the movie
+        public string Duration_Movie { get; set; }      // Duration of the movie
+        public string Poster_Movie { get; set; }        // Poster of the movie
+        public int Price_Elder_Movie { get; set; }      // Elder price of the movie
+        public int Price_Adult_Movie { get; set; }      // Adult price of the movie
+        public int Price_Kid_Movie { get; set; }        // Kid price of the movie
+        public int Id_Director_Movie { get; set; }      // Director's id of the movie
+        public int Id_Classif_Movie { get; set; }       // Classification id of the movie
+        public int Id_Protagonist_Movie { get; set; }   // Protagonist's id of the movie
     }
 }
