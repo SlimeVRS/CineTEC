@@ -14,5 +14,6 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
         Task<bool> InsertSeat(Seat seat);
         Task<bool> UpdateSeat(Seat seat);
         Task<bool> DeleteSeat(Seat seat);
+        Task<IEnumerable<Seat>> GetSeatByRoomId(int id);
     }
 }

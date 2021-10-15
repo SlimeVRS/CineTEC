@@ -86,5 +86,15 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
             });
             return response > 0;
         }
+
+        public async Task<IEnumerable<Seat>> GetSeatByRoomId(int id)
+        {
+            var db = dbConnection();
+            var sql = @"
+                        SELECT id_seat, row_seat, column_seat, state_seat, id_room_seat
+                        FROM public.""Seats""
+                        WHERE id_room_seat = @Id_Room_Seat";
+            return await db.QueryAsync<Seat>(sql, new { Id_Room_Seat = id}); 
+        }
     }
 }
