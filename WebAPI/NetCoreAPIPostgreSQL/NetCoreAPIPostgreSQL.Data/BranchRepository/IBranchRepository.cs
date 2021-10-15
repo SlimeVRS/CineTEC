@@ -9,10 +9,10 @@ namespace NetCoreAPIPostgreSQL.Data.BranchRepository
 {
     public interface IBranchRepository
     {
-        Task<IEnumerable<Branch>> GetAllBranches();
-        Task<Branch> GetBranchDetails(int id_branch);
-        Task<bool> InsertBranch(Branch branch);
-        Task<bool> UpdateBranch(Branch branch);
-        Task<bool> DeleteBranch(Branch branch);
+        Task<IEnumerable<Branch>> GetAllBranches();     // Gets all the branches
+        Task<Branch> GetBranchDetails(int id_branch);   // Gets a branch using id
+        Task<bool> InsertBranch(Branch branch);         // Inserts a new branch
+        Task<bool> UpdateBranch(Branch branch);         // Updates a branch
+        Task<bool> DeleteBranch(Branch branch);         // Deletes a branch
     }
 }

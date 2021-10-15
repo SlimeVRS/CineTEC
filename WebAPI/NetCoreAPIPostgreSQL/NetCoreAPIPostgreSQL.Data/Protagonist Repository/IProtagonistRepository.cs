@@ -9,10 +9,10 @@ namespace NetCoreAPIPostgreSQL.Data.Protagonist_Repository
 {
     public interface IProtagonistRepository
     {
-        Task<IEnumerable<Protagonist>> GetAllProtagonists();
-        Task<Protagonist> GetProtagonistDetails(int id_protagonist);
-        Task<bool> InsertProtagonist(Protagonist protagonist);
-        Task<bool> UpdateProtagonist(Protagonist protagonist);
-        Task<bool> DeleteProtagonist(Protagonist protagonist);
+        Task<IEnumerable<Protagonist>> GetAllProtagonists();            // Gets all the protagonists
+        Task<Protagonist> GetProtagonistDetails(int id_protagonist);    // Gets a protagonist by id
+        Task<bool> InsertProtagonist(Protagonist protagonist);          // Inserts a new protagonist
+        Task<bool> UpdateProtagonist(Protagonist protagonist);          // Updates a protagonist
+        Task<bool> DeleteProtagonist(Protagonist protagonist);          // Deletes a protagonist
     }
 }

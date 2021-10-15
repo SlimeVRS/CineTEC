@@ -9,12 +9,12 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
 {
     public interface IProjectionRepository
     {
-        Task<IEnumerable<Projection>> GetAllProjections();
-        Task<Projection> GetProjectionDetails(int id_projection);
-        Task<bool> InsertProjection(Projection projection);
-        Task<bool> UpdateProjection(Projection projection);
-        Task<bool> DeleteProjection(Projection projection);
-        Task<bool> InsertProjectionFrontEnd(ProjectionFRONTEND projection);
-        Task<bool> UpdateInsertionByMovieName(ProjectionFRONTEND projection);
+        Task<IEnumerable<Projection>> GetAllProjections();                      // Gets all projections
+        Task<Projection> GetProjectionDetails(int id_projection);               // Gets a projection using id
+        Task<bool> InsertProjection(Projection projection);                     // Inserts a new projection
+        Task<bool> UpdateProjection(Projection projection);                     // Updates a projection
+        Task<bool> DeleteProjection(Projection projection);                     // Deletes a projection
+        Task<bool> InsertProjectionFrontEnd(ProjectionFRONTEND projection);     // Inserts a projection using the name of the movie
+        Task<bool> UpdateInsertionByMovieName(ProjectionFRONTEND projection);   // Updates a projection with the name of the movie
     }
 }
