@@ -96,5 +96,22 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
                         WHERE id_room_seat = @Id_Room_Seat";
             return await db.QueryAsync<Seat>(sql, new { Id_Room_Seat = id}); 
         }
+
+        public async Task<bool> UpdateSeatByRoomIdandState(Seat seat)
+        {
+            var db = dbConnection();
+            var sql = @"
+                        UPDATE public.""Seats""
+                        SET state_seat = @State_Seat
+                        WHERE row_seat = @Row_Seat AND column_seat = @Column_Seat AND id_room_seat = @Id_Room_Seat";
+            var response = await db.ExecuteAsync(sql, new
+            {
+                seat.State_Seat,
+                seat.Row_Seat,
+                seat.Column_Seat,
+                seat.Id_Room_Seat
+            });
+            return response > 0;
+        }
     }
 }

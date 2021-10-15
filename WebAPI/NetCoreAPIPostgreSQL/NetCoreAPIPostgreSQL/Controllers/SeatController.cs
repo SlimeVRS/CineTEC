@@ -43,6 +43,17 @@ namespace NetCoreAPIPostgreSQL.Controllers
             var created = await _seatRespository.InsertSeat(seat);
             return Created("Seat created", created);
         }
+        [HttpPut("checkin")]
+        public async Task<ActionResult> BuySeat([FromBody] Seat seat)
+        {
+            if (seat == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var created = await _seatRespository.UpdateSeatByRoomIdandState(seat);
+            return NoContent();
+        }
+
         [HttpPut]
         public async Task<ActionResult> UpdateSeat([FromBody] Seat seat)
         {
