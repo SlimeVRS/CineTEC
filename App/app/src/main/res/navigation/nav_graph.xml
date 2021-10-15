@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.cinetek.FirstFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_first">
 
         <action
@@ -18,11 +18,20 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.cinetek.SecondFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_second">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/InicialFragment"
+        android:name="com.example.cinetek.inicial"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_inicial">
+        <action
+            android:id="@+id/action_InicialFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
