@@ -15,4 +15,7 @@
     <string name="iniciar">Iniciar</string>
     <string name="Asiento">Asientos</string>
     <string name="reservar">Reservar</string>
+    <string name="rellenar">Debe rellenar todos los espacios</string>
+    <string name="Compra_exito">Su compra fue realizada con exito</string>
+    <string name="Otra_compra">Realizar otra compra</string>
 </resources>
