@@ -54,6 +54,7 @@ public class FirstFragment extends Fragment {
     private boolean boll_seat;
     private boolean boll_seat_type;
     private int precio;
+    private int id_asiento;
 
 
 
@@ -87,8 +88,9 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 if (boll_cine && boll_peli && boll_seat && boll_seat_type){
                     db.rawQuery("INSERT INTO Bills (total_bill, id_employee_bill, id_client_bill) VALUES ("+precio+", 101110111, 202220222);",null);
+                    db.execSQL("UPDATE Seats SET state_seat=0 WHERE id_seat="+id_asiento+";");
                     String query="INSERT INTO Bills (total_bill, id_employee_bill, id_client_bill) VALUES ("+precio+", 101110111, 202220222);" ;
-                    
+
 
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_SecondFragment);
@@ -193,6 +195,10 @@ public class FirstFragment extends Fragment {
                 horario = (String) SpinHora.getAdapter().getItem(posicion);
                 if (posicion>0){
                     boll_seat_type=true;
+                    String[] datos=horario.split(":");
+                    precio=Integer.parseInt(datos[1]);
+                    System.out.println("precio");
+                    System.out.println(precio);
                 }else{
                     boll_seat_type=false;
                 }
@@ -223,8 +229,13 @@ public class FirstFragment extends Fragment {
                 String asiento = (String) SpinAsientos.getAdapter().getItem(posicion);
                 if (posicion>0){
                     boll_seat=true;
+                    String[] datos=asiento.split(",");
+                    id_asiento=Integer.parseInt(datos[0]);
+                    System.out.println("id asiento");
+                    System.out.println(id_asiento);
                 }else{
                     boll_seat=false;
+                    precio=0;
                 }
             }
 
@@ -269,9 +280,9 @@ public class FirstFragment extends Fragment {
                 @SuppressLint("Range")String ancino = consulta.getString(consulta.getColumnIndex("price_elder_movie"));
                 @SuppressLint("Range")String adulto= consulta.getString(consulta.getColumnIndex("price_adult_movie"));
                 @SuppressLint("Range") String nino= consulta.getString(consulta.getColumnIndex("price_kid_movie"));
-                hora.add("Adulto mayor: "+ancino);
-                hora.add("Adulto: "+adulto);
-                hora.add("Niño: "+nino);
+                hora.add("Adulto mayor:"+ancino);
+                hora.add("Adulto:"+adulto);
+                hora.add("Niño:"+nino);
             } while (consulta.moveToNext());
         }
     }
