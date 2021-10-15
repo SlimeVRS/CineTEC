@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     this.movieService.obtenerMovies();
   }
 
-  // obtenerPelicula() {
+  //  obtenerPelicula() {
   //   var count = 1;
   //   var tabla = document.getElementById('tabla') as HTMLTableElement;
   //   const rows = tabla.tBodies[0].rows;

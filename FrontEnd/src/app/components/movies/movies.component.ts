@@ -7,6 +7,7 @@ import { ImageService } from 'src/app/services/image.service';
 import { MovieService } from 'src/app/services/movie.service';
 import { map, finalize } from "rxjs/operators";
 import { Observable } from 'rxjs';
+import { image } from '@cloudinary/url-gen/qualifiers/source';
 
 @Component({
   selector: 'app-movies',
@@ -118,8 +119,10 @@ export class MoviesComponent implements OnInit {
           var nueva = movie.poster_Movie;
           this.urlArray.push(movie.poster_Movie);
         }
-        console.log(this.urlArray);
+       // console.log(this.urlArray);
       });
+      this.testTabla();
+      //console.log(this.urlArray);
       //this.lista = this.movieService.lista;
       // console.log(this.urlArray);
       // // if(this.lista.length !== undefined){
@@ -132,5 +135,42 @@ export class MoviesComponent implements OnInit {
   //   console.log(url);
   //   this.urlArray.push(url);
   // }
+  testTabla(){
+    var tabla = document.getElementById('tabla') as HTMLTableElement;
+    var count = 1;
+    const filas = this.urlArray.length;
+    const columnas =3 ;
+    console.log(this.urlArray);
+     var imagen = document.createElement('img') as HTMLImageElement;
+     if(this.urlArray[0]!== undefined){
+      imagen.src = this.urlArray[0];
+      tabla.appendChild(imagen);
+     }
+  
+   
+    //this.lista = this.movieService.lista;
+
+    // if(this.lista.length !== undefined){
+    //   console.log(this.movieService.lista.length);
+    // }
+    // console.log(this.lista.find(({poster_Movie})=>poster_Movie));
+    //  for (var i = 0; i < filas; i++) {
+    //   var newRow = tabla.insertRow(i);
+    //   for (var j = 0; j < columnas; j++) {
+    //     var newCell = newRow.insertCell(j);
+    //       var disponible = document.createElement('img') as HTMLImageElement;
+    //       disponible.src = this.urlArray[0];
+    //       newCell.appendChild(disponible);
+        
+        
+    //     count++;
+    //   }
+    // }
+    for (var movie of this.movieService.lista) {
+      movie.poster_Movie;
+      console.log(movie.poster_Movie);
+    }
+  }
+  
 
 }
