@@ -1,1 +1,47 @@
-<p>normal-employees-list works!</p>
+<table class="table table-sm">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <tr *ngFor="let employee of employeeService.list">
+        <td style="color: white;">
+            {{employee.id_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.first_Name_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.second_Name_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.first_Last_Name_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.second_Last_Name_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.phone_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.birth_Date_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.admission_Date_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.id_Rol_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.id_Branch_Employee}}
+        </td>
+        <td style="color: white;">
+            {{employee.user_Employee}}
+        </td>
+        <td>
+            <i class="far fa-edit fa-lg text-info"  (click)="editar(employee)" style="cursor: pointer;"></i>  
+        </td>
+        
+        <td>
+            <i class="far fa-trash-alt fa-lg text-danger" (click)="eliminarTarjeta(employee.id_Employee)" style="cursor: pointer;"></i>
+        </td>
+       
+    </tr>
+
+</table>

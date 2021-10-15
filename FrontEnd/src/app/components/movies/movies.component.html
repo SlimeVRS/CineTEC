@@ -1,58 +1,91 @@
 <app-employees></app-employees>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
+
+<head>
+  <meta charset="utf-8" />
 
 
-  </head>
-  <body class="text-center">
+</head>
 
-    <main class="form-signin">
-      <form>
-        <h1 class="h3 mb-3 fw-normal">Registro de Peliculas</h1>
+<body class="text-center">
 
-        <a>Nombre</a>
-        <label for="inputName" class="visually-hidden">Nombre</label>
-        <input id="inputName" class="form-control" placeholder="Ingrese el nombre" required #nameInput>
-        
-        <a>Subir Imagen</a>
-        <app-imagemanager></app-imagemanager>
+  <main class="form-signin">
+    <form [formGroup]="form">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+      <h1 class="h3 mb-3 fw-normal">Registro de Peliculas</h1>
 
-        <a>Duracion</a>
-        <label for="inputDuracion" class="visually-hidden">Duracion</label>
-        <input id="inputDuracion" class="form-control" placeholder="Ingrese duracion de la pelicula" required #duracionInput>
+      <a>Nombre</a>
+      <label for="inputName" class="visually-hidden">Nombre</label>
+      <input id="inputName" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre" required
+        #nameInput>
 
-        <a>Protagonistas</a>
-        <label for="inputProtagonista" class="visually-hidden">Protagonistas</label>
-        <input id="inputProtagonista" class="form-control" placeholder="Ingrese Protagonistas" required #IDcardInput>
+      <a>Subir Imagen</a>
+      <div class="form-group col-12 image">
+        <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+      </div>
+      <div *ngIf="fb" class="list">
+        <img src="{{ fb }}" alt="" />
+      </div>
 
-        <a>Director</a>
-        <label for="inputDirector" class="visually-hidden">Director</label>
-        <input id="inputDirector" class="form-control" placeholder="Ingrese Director" required #DirectorInput>
+      <a>Duracion</a>
+      <label for="inputDuracion" class="visually-hidden">Duracion</label>
+      <input id="inputDuracion" class="form-control" formControlName="duracion"
+        placeholder="Ingrese duracion de la pelicula" required #duracionInput>
 
-        <a>Clasificacion</a>
-        <label for="inputClasificacion" class="visually-hidden">Clasificacion</label>
-        <input id="inputClasificacion" class="form-control" placeholder="Ingrese Clasificacion" required #ClasificacionInput>
-        
-        <a>Precio Adulto</a>
-        <label for="inputAdult" class="visually-hidden">Precio Adulto</label>
-        <input id="inputAdult" class="form-control" placeholder="Ingrese Precio Adulto" required #AdultInput>
-       
-        <a>Precio Adulto Mayor</a>
-        <label for="inputAdultElder" class="visually-hidden">Precio Adulto</label>
-        <input id="inputAdultElder" class="form-control" placeholder="Ingrese Precio Adulto Mayor" required #ElderInput>
-       
-        <a>Precio Niño</a>
-        <label for="inputChild" class="visually-hidden">Precio Niño</label>
-        <input id="inputChild" class="form-control" placeholder="Ingrese Precio Niño" required #ChildInput>
-       
-        <h1></h1>
+      <a>Protagonistas</a>
+      <label for="inputProtagonista" class="visually-hidden">Protagonistas</label>
+      <input id="inputProtagonista" class="form-control" formControlName="protagonistas"
+        placeholder="Ingrese Protagonistas" required #IDcardInput>
 
-        <button class="button btn-sucess btn-lg btn-block" type="submit"> Registrar Pelicula</button>
-      </form>
-      
+      <a>Director</a>
+      <label for="inputDirector" class="visually-hidden">Director</label>
+      <input id="inputDirector" class="form-control" formControlName="director" placeholder="Ingrese Director" required
+        #DirectorInput>
 
-    </main>
+      <a>Clasificacion</a>
+      <label for="inputClasificacion" class="visually-hidden">Clasificacion</label>
+      <input id="inputClasificacion" class="form-control" formControlName="clasificacion"
+        placeholder="Ingrese Clasificacion" required #ClasificacionInput>
 
-  </body>
+      <a>Precio Adulto</a>
+      <label for="inputAdult" class="visually-hidden">Precio Adulto</label>
+      <input id="inputAdult" class="form-control" formControlName="precio_adulto" placeholder="Ingrese Precio Adulto"
+        required #AdultInput>
+
+      <a>Precio Adulto Mayor</a>
+      <label for="inputAdultElder" class="visually-hidden">Precio Adulto</label>
+      <input id="inputAdultElder" class="form-control" formControlName="precio_adulto_mayor"
+        placeholder="Ingrese Precio Adulto Mayor" required #ElderInput>
+
+      <a>Precio Niño</a>
+      <label for="inputChild" class="visually-hidden">Precio Niño</label>
+      <input id="inputChild" class="form-control" formControlName="precio_child" placeholder="Ingrese Precio Niño"
+        required #ChildInput>
+
+      <h1></h1>
+
+      <div>
+        <button class="button btn-sucess btn-lg btn-block" (click)="guardarPelicula()">Generar Sala</button>
+      </div>
+      <div>
+        <button class="button btn-sucess btn-lg btn-block" (click)="obtenerPelicula()">Generar Sala</button>
+      </div>
+
+      <!-- <tr *ngFor="let movie of movieService.list">
+        <td style="color: white;">
+          {{movie.poster_Movie}}
+        </td>
+        <td>
+          <i class="far fa-edit fa-lg text-info" (click)="obtenerPelicula(movie)" style="cursor: pointer;"></i>
+        </td>
+      </tr> -->
+
+    </form>
+
+
+
+  </main>
+
+</body>
+
 </html>

@@ -1,4 +1,4 @@
-export class rolModel {
+export class salaModel {
     id_Room?: number;
     capacity_Room:number;
     rows_Room:number;

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { salaModel } from 'src/app/models/salaModel';
+import { SalaService } from 'src/app/services/sala.service';
 
 @Component({
   selector: 'app-seat-reserv',
@@ -10,8 +14,9 @@ export class SeatReservComponent implements OnInit {
   rows: number;
   columns: number;
   seatsMatrix = [];
-
-  constructor() { }
+  formData:FormGroup;
+  sala: salaModel;
+  constructor(private salaService:SalaService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -108,7 +113,7 @@ export class SeatReservComponent implements OnInit {
           else if(this.seatsMatrix[idx][idxC] == 2){
             row.deleteCell(idxC);
             var newCell=table1.rows[idx].insertCell(idxC);
-            newCell.appendChild(disponible);
+            newCell.appendChild(vendido);
             this.seatsMatrix[idx][idxC]=0; 
           }
         
@@ -118,12 +123,34 @@ export class SeatReservComponent implements OnInit {
         });
       });
     });
-    
-
-
-
   }
 
+  guardarSala(){
+    var filas = (document.getElementById("filas")) as HTMLSelectElement;
+  
+    var columnas = (document.getElementById("columnas")) as HTMLSelectElement;
+    var sites = (document.getElementById("sites")) as HTMLSelectElement;
+    var selF = filas.selectedIndex;
+    var selfS= sites.selectedIndex;
+    var selC = columnas.selectedIndex;
+    var optC = columnas.options[selC];
+    var optF = filas.options[selF];
+    var optS = sites.options[selfS];
+    var valorFilas = (<HTMLSelectElement><unknown>optF).value;
+    var valorColumnas = (<HTMLSelectElement><unknown>optC).value;
+    var intvalorColumnas = parseInt(valorColumnas);
+    var intvalorFilas = parseInt(valorFilas);
+    const sala: salaModel={
+      capacity_Room:intvalorColumnas*intvalorFilas,
+      rows_Room:intvalorFilas,
+      columns_Room:intvalorColumnas,
+      name_Branch_Room:optS.textContent
+    }
+    console.log(sala);
+    this.salaService.guardarSala(sala).subscribe(data => {
+      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+    })
+  }
 
 
 }

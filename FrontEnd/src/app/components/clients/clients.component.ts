@@ -59,9 +59,7 @@ export class ClientsComponent implements OnInit {
       phone_Client: this.form.get('numeroTelefono').value,
       password_Client: this.form.get('password').value,
       user_Client: this.form.get('usuario').value,
-      
       birth_Date_Client: this.form.get('fechaNacimiento').value+"T00:00:00",
-    
     }
     this.clientService.guardarCliente(cliente).subscribe(data => {
       this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');

@@ -1,5 +1,5 @@
 export class movieModel {
-    id1?: number;
+    id_Movie?: number;
     name_Movie: string;
     duration_Movie: string;
     poster_Movie: string;

@@ -34,7 +34,7 @@ export class ClienteService {
     return this.actualizarForm.asObservable();
   }
   eliminarCliente(id: number): Observable<clientsModel>{
-    return this.http.delete<clientsModel>('http://localhost:15451/api/Client'+ id);
+    return this.http.delete<clientsModel>('http://localhost:15451/api/Client/'+ id);
   }
 
 }

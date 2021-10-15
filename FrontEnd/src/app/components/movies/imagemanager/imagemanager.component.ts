@@ -12,12 +12,7 @@ import { map, finalize } from "rxjs/operators";
 })
 
 
-export class ImagemanagerComponent implements OnInit {
-  
-  // public imageTitle:string;
-  // public imageDescription:string;
-  // public imageFile: File;
-  
+export class ImagemanagerComponent implements OnInit {  
   ngOnInit(): void {
     
   }

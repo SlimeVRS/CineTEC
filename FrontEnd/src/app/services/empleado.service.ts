@@ -32,7 +32,7 @@ export class EmpleadoService {
     return this.actualizarForm.asObservable();
   }
   eliminarEmpleado(id: number): Observable<employeesModel>{
-    return this.http.delete<employeesModel>('http://localhost:15451/api/Employee'+ id);
+    return this.http.delete<employeesModel>('http://localhost:15451/api/Employee/'+ id);
   }
 
 
