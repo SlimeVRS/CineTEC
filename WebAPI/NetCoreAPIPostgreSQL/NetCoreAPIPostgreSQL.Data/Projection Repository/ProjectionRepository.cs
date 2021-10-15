@@ -103,5 +103,29 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             });
             return response > 0;
         }
+
+        public async Task<bool> UpdateInsertionByMovieName(ProjectionFRONTEND projection)
+        {
+            var db = dbConnection();
+            var id_movie_sql = @"
+                            SELECT id_movie
+                            FROM public.""Movies""
+                            WHERE name_movie = @Name_Movie_Projection";
+            var id_movie = await db.QueryFirstOrDefaultAsync<Movie>(id_movie_sql, new { Name_Movie_Projection = projection.Name_Movie_Projection });
+            var sql = @"
+                        UPDATE public.""Projections""
+                        SET time_projection = @Time_Projection,
+                            id_room_projection = @Id_Room_Projection,
+                            id_movie_projection = @Id_Movie
+                        WHERE id_projection = @Id_Projection";
+            var response = await db.ExecuteAsync(sql, new
+            {
+                projection.Id_Projection,
+                projection.Time_Projection,
+                projection.Id_Room_Projection,
+                id_movie.Id_Movie
+            });
+            return response > 0;
+        }
     }
 }

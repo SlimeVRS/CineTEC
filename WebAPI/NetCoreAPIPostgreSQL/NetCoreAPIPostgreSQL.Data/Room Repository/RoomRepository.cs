@@ -124,5 +124,32 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
             }
             return response > 0;
         }
+
+        public async Task<bool> UpdateRoomByBranchName(RoomFRONTEND room)
+        {
+            var db = dbConnection();
+            var id_branch_sql = @"
+                                SELECT id_branch 
+                                FROM public.""Branches""
+                                WHERE name_branch = @Branch_Name";
+            var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = room.Name_Branch_Room });
+
+            var sql = @"
+                        UPDATE public.""Rooms""
+                        SET capacity_room=@Capacity_Room,
+                            rows_room=@Rows_Room,
+                            columns_room=@Columns_Room,
+                            id_branch_room = @Id_Branch_Room
+                        WHERE id_room = @Id_Room";
+            var response = await db.ExecuteAsync(sql, new
+            {
+                room.Id_Room,
+                room.Capacity_Room,
+                room.Rows_Room,
+                room.Columns_Room,
+                id_branch.Id_Branch
+            });
+            return response > 0;
+        }
     }
 }

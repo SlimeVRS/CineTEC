@@ -41,6 +41,16 @@ namespace NetCoreAPIPostgreSQL.Controllers
             return Created("Room created", created);
         }
 
+        [HttpPut("update")]
+        public async Task<ActionResult>asjkhdaksjd([FromBody] RoomFRONTEND room)
+        {
+            if (room == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+            await _roomRepositry.UpdateRoomByBranchName(room);
+            return NoContent();
+        }
         [HttpPut]
         public async Task<ActionResult>UpdateRoom([FromBody] Room room)
         {

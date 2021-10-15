@@ -15,5 +15,6 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
         Task<bool> UpdateProjection(Projection projection);
         Task<bool> DeleteProjection(Projection projection);
         Task<bool> InsertProjectionFrontEnd(ProjectionFRONTEND projection);
+        Task<bool> UpdateInsertionByMovieName(ProjectionFRONTEND projection);
     }
 }
