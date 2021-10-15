@@ -156,5 +156,51 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                 User_Employee = user
             });
         }
+
+        public async Task<bool> UpdateEmlpoyeeFromFrontEnd(EmployeeFRONTEND employee)
+        {
+            var db = dbConnection();
+
+            var id_branch_sql = @"
+                                    SELECT id_branch
+                                    FROM public.""Branches""
+                                    WHERE name_branch = @Branch_Name";
+            var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = employee.Id_Branch_Employee });
+            var id_rol_sql = @"
+                                SELECT id_rol
+                                FROM public.""Roles""
+                                WHERE name_rol = @Rol_Name";
+            var id_rol = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Id_Rol_Employee });
+
+            var sql = @"
+                        UPDATE public.""Employees""
+                        SET first_name_employee=@First_Name_Employee,
+                            second_name_employee=@Second_Name_Employee,
+                            first_last_name_employee=@First_Last_Name_Employee,
+                            second_last_name_employee=@Second_Last_Name_Employee,
+                            phone_employee=@Phone_Employee, 
+                            birth_date_employee=@Birth_Date_Employee,
+                            admission_date_employee=@Admission_Date_Employee,
+                            password_employee=@Password_Employee,
+                            user_employee=@User_Employee,
+                            id_branch_employee=@Id_Branch,
+                            id_rol_employee = @Id_Rol
+                        WHERE id_employee = @Id_Employee";
+            var response = await db.ExecuteAsync(sql, new
+            {
+                employee.First_Name_Employee,
+                employee.Second_Name_Employee,
+                employee.First_Last_Name_Employee,
+                employee.Second_Last_Name_Employee,
+                employee.Phone_Employee,
+                employee.Birth_Date_Employee,
+                employee.Admission_Date_Employee,
+                employee.Password_Employee,
+                employee.User_Employee,
+                id_branch.Id_Branch,
+                id_rol.Id_Rol
+            });
+            return response > 0;
+        }
     }
 }
