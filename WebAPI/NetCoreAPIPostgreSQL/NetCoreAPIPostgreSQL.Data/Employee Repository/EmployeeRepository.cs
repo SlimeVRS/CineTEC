@@ -114,28 +114,28 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                                     SELECT id_branch
                                     FROM public.""Branches""
                                     WHERE name_branch = @Branch_Name";
-            var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = employee.Branch_Name });
+            var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = employee.Id_Branch_Employee });
             var id_rol_sql = @"
                                 SELECT id_rol
                                 FROM public.""Roles""
                                 WHERE name_rol = @Rol_Name";
-            var id_rol = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Rol_Name });
+            var id_rol = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Id_Rol_Employee });
 
             var sql = @"
                         INSERT INTO public.""Employees"" (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee)
                         VALUES(@Employee_Id, @First_Name, @Second_Name, @First_Last_Name, @Second_Last_Name, @Phone, @Birth_Date, @Admission_Date,@Password, @User, @Id_Branch, @Id_Rol)";
             var response = await db.ExecuteAsync(sql, new
             {
-                employee.Employee_Id,
-                employee.First_Name,
-                employee.Second_Name,
-                employee.First_Last_Name,
-                employee.Second_Last_Name,
-                employee.Phone,
-                employee.Birth_Date,
-                employee.Admission_Date,
-                employee.Password,
-                employee.User,
+                employee.Id_Employee,
+                employee.First_Name_Employee,
+                employee.Second_Name_Employee,
+                employee.First_Last_Name_Employee,
+                employee.Second_Last_Name_Employee,
+                employee.Phone_Employee,
+                employee.Birth_Date_Employee,
+                employee.Admission_Date_Employee,
+                employee.Password_Employee,
+                employee.User_Employee,
                 id_branch.Id_Branch,
                 id_rol.Id_Rol
 

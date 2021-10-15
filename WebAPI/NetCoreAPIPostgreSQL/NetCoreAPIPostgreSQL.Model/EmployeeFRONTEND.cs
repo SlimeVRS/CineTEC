@@ -9,19 +9,19 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class EmployeeFRONTEND
     {
-        public int Employee_Id { get; set; }
-        public string First_Name { get; set; }
-        public string Second_Name { get; set; }
-        public string First_Last_Name { get; set; }
-        public string Second_Last_Name { get; set; }
-        public string Phone { get; set; }
+        public int Id_Employee { get; set; }
+        public string First_Name_Employee { get; set; }
+        public string Second_Name_Employee { get; set; }
+        public string First_Last_Name_Employee { get; set; }
+        public string Second_Last_Name_Employee { get; set; }
+        public string Phone_Employee { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Birth_Date { get; set; }
+        public DateTime Birth_Date_Employee { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Admission_Date { get; set; }
-        public string Password { get; set; }
-        public string User { get; set; }
-        public string Branch_Name { get; set; }
-        public string Rol_Name { get; set; }
+        public DateTime Admission_Date_Employee { get; set; }
+        public string Password_Employee { get; set; }
+        public string User_Employee { get; set; }
+        public string Id_Branch_Employee { get; set; }
+        public string Id_Rol_Employee { get; set; }
     }
 }
