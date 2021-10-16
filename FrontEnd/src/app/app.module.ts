@@ -47,6 +47,10 @@ import {
   AngularFireUploadTask
 } from "@angular/fire/compat/storage";
 import { OfficeslistComponent } from './components/offices/officeslist/officeslist.component';
+import { ProtagonistComponent } from './components/protagonist/protagonist.component';
+import { DirectorComponent } from './components/director/director.component';
+import { ProtagonistlistComponent } from './components/protagonist/protagonistlist/protagonistlist.component';
+import { DirectorlistComponent } from './components/director/directorlist/directorlist.component';
 
 
 @NgModule({
@@ -75,7 +79,11 @@ import { OfficeslistComponent } from './components/offices/officeslist/officesli
     SeatReservComponent,
     RolComponent,
     RollistComponent,
-    ViewPhotosComponent
+    ViewPhotosComponent,
+    ProtagonistComponent,
+    DirectorComponent,
+    ProtagonistlistComponent,
+    DirectorlistComponent
 
   ],
   imports: [
@@ -105,6 +113,8 @@ import { OfficeslistComponent } from './components/offices/officeslist/officesli
       {path: 'screens', component: ScreensComponent},
       {path: 'admin', component: AdminviewComponent},
       {path: 'tools', component: RolComponent},
+      {path: 'protagonist', component: ProtagonistComponent},
+      {path: 'director', component:  DirectorComponent},
       {path: 'seat-reserv', component: SeatReservComponent},
       { path: '**', redirectTo: 'login', pathMatch: 'full' },
       

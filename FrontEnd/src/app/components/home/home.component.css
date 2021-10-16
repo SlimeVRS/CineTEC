@@ -1,4 +1,4 @@
-table.GeneratedTable {
+/* table.GeneratedTable {
     width: fit-content;
     background-color: #ffffff;
     border-collapse: collapse;
@@ -38,9 +38,34 @@ table.GeneratedTable {
   .example-header-image {
    
     background-size: cover;
+  } */
+  html{
+    margin-bottom: 0;
+     background-color: #271b3f;
+  }
+  body{
+    width: fit-content;
+    background-color: #271b3f;
+    margin-bottom: 0;
+    align-items: center;
   }
   div{
     width: fit-content;
     background-color: #271b3f;
+    align-items: center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .contenedor{
+    align-items: center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  td{
+    max-width: 30px;
+    align-content: center;
+    background-color: #271b3f;
+    margin-left: auto;
+    margin-right: auto;
   }
   
