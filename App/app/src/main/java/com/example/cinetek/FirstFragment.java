@@ -402,7 +402,7 @@ public class FirstFragment extends Fragment {
         //tabla de peliculas
         db.rawQuery("CREATE TABLE Movies (id_movie integer NOT NULL CONSTRAINT Movies_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, name_movie text NOT NULL, duration_movie text NOT NULL, poster_movie text NOT NULL, price_elder_movie integer NOT NULL, price_adult_movie integer NOT NULL, price_kid_movie integer NOT NULL, id_director_movie integer NOT NULL CONSTRAINT \"id_movie_director_fk \" REFERENCES Directors (id_director), id_classif_movie integer NOT NULL CONSTRAINT id_movie_classif_fk REFERENCES Classifications (id_classif), id_protagonist_movie integer NOT NULL CONSTRAINT id_movie_prota_fk REFERENCES Protagonists (id_protagonist));\n",null);
         //tabla de Proyecciones
-        db.rawQuery("CREATE TABLE Projections (id_projection integer NOT NULL CONSTRAINT Projections_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, time_projection text NOT NULL, id_movie_projection integer NOT NULL CONSTRAINT \"id_movie_fk \" REFERENCES Movies (id_movie), id_room_projection integer NOT NULL CONSTRAINT \"id_room_fk \" REFERENCES Rooms (id_room));",null);
+        db.rawQuery("CREATE TABLE Projections (id_projection integer NOT NULL CONSTRAINT Projections_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, time_projection text NOT NULL,day_projection DATE NOT NULL, id_movie_projection integer NOT NULL CONSTRAINT \"id_movie_fk \" REFERENCES Movies (id_movie), id_room_projection integer NOT NULL CONSTRAINT \"id_room_fk \" REFERENCES Rooms (id_room));",null);
         //tabla de protagonistas
         db.rawQuery("CREATE TABLE \"Protagonists\"\n" +
                 "(\n" +
@@ -432,7 +432,7 @@ public class FirstFragment extends Fragment {
         db.rawQuery("INSERT INTO Directors (id_director, name_director) VALUES (1, 'Director Inventado');",null);
         db.rawQuery("INSERT INTO Employees (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee) VALUES (101110111, 'Nombre1', 'Nombre1', 'Apellido1', 'Apellido2', '11111111', '1999-02-10', '2021-10-10', 'Contraseña', 'Usuario', 1, 1);",null);
         db.rawQuery("INSERT INTO Movies (id_movie, name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie) VALUES (1, 'Peli1', '1:45', 'poster1', 1400, 1500, 1200, 1, 2, 1);",null);
-        db.rawQuery("INSERT INTO Projections (id_projection, time_projection, id_movie_projection, id_room_projection) VALUES (1, '14:40', 1, 1);",null);
+        db.rawQuery("INSERT INTO Projections (id_projection, time_projection,day_projection, id_movie_projection, id_room_projection) VALUES (1, '14:40','2021-11-1', 1, 1);",null);
         db.rawQuery("INSERT INTO Protagonists (id_protagonist, name_protagonist) VALUES (1, 'Personaje inventado');",null);
         db.rawQuery("INSERT INTO Roles (id_rol, name_rol, description_rol) VALUES (1, 'cajero', 'cobra dinero');",null);
         db.rawQuery("INSERT INTO Rooms (id_room, capacity_room, rows_room, columns_room, id_branch_room) VALUES (1, 30, 6, 5, 1);",null);
