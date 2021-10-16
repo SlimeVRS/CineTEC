@@ -53,7 +53,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
 
             // SQL query, it uses double quotes because of the upper case
             var sql = @"
-                        SELECT id_projection, time_projection, id_movie_projection, id_room_projection
+                        SELECT id_projection, time_projection, day_projection, id_movie_projection, id_room_projection
                         FROM public.""Projections""";
             // Returns all the protagonists
             return await db.QueryAsync<Projection>(sql, new { });
@@ -64,7 +64,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT id_projection, time_projection, id_movie_projection, id_room_projection
+                        SELECT id_projection, time_projection, day_projection, id_movie_projection, id_room_projection
                         FROM public.""Projections""
                         WHERE id_projection = @Id_Projection";
             return await db.QueryFirstOrDefaultAsync<Projection>(sql, new { Id_Projection = id_projection });
@@ -78,12 +78,13 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
 
             // SQL query, it uses double quotes because of the upper case
             var sql = @"
-                        INSERT INTO public.""Projections"" (time_projection, id_movie_projection, id_room_projection)
-                        VALUES(@Time_Projection, @Id_Movie_Projection, @Id_Room_Projection)";
+                        INSERT INTO public.""Projections"" (time_projection, day_projection, id_movie_projection, id_room_projection)
+                        VALUES(@Time_Projection, Day_Projection, @Id_Movie_Projection, @Id_Room_Projection)";
             // New projection's attributes, the id isn't here because it is auto incremental
             var response = await db.ExecuteAsync(sql, new
             {
                 projection.Time_Projection,
+                projection.Day_Projection,
                 projection.Id_Movie_Projection,
                 projection.Id_Room_Projection
             });
@@ -102,6 +103,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             var sql = @"
                         UPDATE public.""Projections""
                         SET time_projection = @Time_Projection,
+                            day_projection = @Day_Projection,
                             id_movie_projection = @Id_Movie_Projection,
                             id_room_projection = @Id_Room_Projection
                         WHERE id_projection = @Id_Projection";
@@ -110,6 +112,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             var response = await db.ExecuteAsync(sql, new
             {
                 projection.Id_Projection,
+                projection.Day_Projection,
                 projection.Time_Projection,
                 projection.Id_Movie_Projection,
                 projection.Id_Room_Projection
@@ -134,13 +137,14 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
 
             // Another SQL query, it uses double quotes because of the upper case
             var sql = @"
-                        INSERT INTO public.""Projections"" (time_projection, id_movie_projection, id_room_projection)
-                        VALUES(@Time_Projection, @Id_Movie, @Id_Room_Projection)";
+                        INSERT INTO public.""Projections"" (time_projection, day_projection, id_movie_projection, id_room_projection)
+                        VALUES(@Time_Projection, @Day_Projection, @Id_Movie, @Id_Room_Projection)";
 
             // New projection's attributes, the id isn't here because it is auto incremental
             var response = await db.ExecuteAsync(sql, new
             {
                 projection.Time_Projection,
+                projection.Day_Projection,
                 id_movie.Id_Movie,
                 projection.Id_Room_Projection
             });
@@ -167,6 +171,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             var sql = @"
                         UPDATE public.""Projections""
                         SET time_projection = @Time_Projection,
+                            day_projection = @Day_Projection,
                             id_room_projection = @Id_Room_Projection,
                             id_movie_projection = @Id_Movie
                         WHERE id_projection = @Id_Projection";
@@ -176,6 +181,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             {
                 projection.Id_Projection,
                 projection.Time_Projection,
+                projection.Day_Projection,
                 projection.Id_Room_Projection,
                 id_movie.Id_Movie
             });
