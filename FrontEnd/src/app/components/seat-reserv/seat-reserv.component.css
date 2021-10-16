@@ -123,10 +123,11 @@ p.text span{
     font-size: 16px;  
     font-weight:bold;
     color:rgb(0, 0, 0);
+    
   }
   .seatContainer{
     margin-left: auto;
-  margin-right: auto;
+    margin-right: auto;
   }
   .button1 {
     background-color: #d6c41e; /* Green */
@@ -138,4 +139,6 @@ p.text span{
     display: inline-block;
     font-size: 16px;  
     font-weight:bold;
+    position:relative;
+    margin-top:55%;
   }

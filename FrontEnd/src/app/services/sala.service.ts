@@ -32,4 +32,9 @@ export class SalaService {
   eliminarSala(id: number): Observable<salaModel>{
     return this.http.delete<salaModel>('http://localhost:15451/api/Room/'+ id);
   }
+  getHeroes(): Promise<salaModel[]> {
+    return this.http.get('http://localhost:15451/api/Room')
+               .toPromise()
+               .then(response => this.list= response as salaModel[]);         
+  }
 }

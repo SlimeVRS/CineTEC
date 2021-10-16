@@ -37,4 +37,9 @@ export class OfficesService {
   eliminarOffices(id: number): Observable<oficcesModel>{
     return this.http.delete<oficcesModel>('http://localhost:15451/api/Branch/'+ id);
   }
+  getHeroes(): Promise<oficcesModel[]> {
+    return this.http.get('http://localhost:15451/api/Branch')
+               .toPromise()
+               .then(response => this.list= response as oficcesModel[]);         
+  }
 }

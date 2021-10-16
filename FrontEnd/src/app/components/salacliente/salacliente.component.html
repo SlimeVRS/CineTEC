@@ -1,0 +1,53 @@
+<app-navbar-client></app-navbar-client>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="salacliente.component.css" />
+    <title>Movie Seat Booking</title>
+  </head>
+  <body>
+      <h1></h1>
+      <!-- <div class="selectPlace">
+        <label> Seleccione Sucursal:</label>
+        <select id="sites">  
+          <option value="1">Cartago</option>
+        </select>
+      </div> -->
+      <form [formGroup]="sucursalesForm">
+        <label> Seleccione Sucursal:</label>
+        <select formControlName="sucursalControl" (click)="getValue()">
+            <option [value]="sucursal" *ngFor="let sucursal of lugares"> {{sucursal}}</option>
+        </select>
+    </form> 
+      <div>
+        <button class="button btn-sucess btn-lg btn-block">Ver Salas</button>
+      </div> 
+
+    <ul class="showcase">
+      <li>
+        <div class="seat" id="disponible"></div>
+        <small>Disponible</small>
+      </li>
+      <li>
+        <div class="seat selected" id="seleccionado"></div>
+        <small>Seleccionado</small>
+      </li>
+      <li>
+        <div class="seat sold" id="vendido"></div>
+        <small>No disponible</small>
+      </li>
+    </ul>
+    <div class="container">
+      <div class="screen"></div>
+      <table class="seatContainer" id="seatTable" (click)="updater()"></table>
+    </div>
+    <div>
+      <button class="button1 btn-sucess btn-lg btn-block">Guardar Sala</button>
+    </div>
+    <script></script>
+   
+  </body>
+</html>

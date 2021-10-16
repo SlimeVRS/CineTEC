@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { salaModel } from 'src/app/models/salaModel';
+import { OfficesService } from 'src/app/services/offices.service';
 import { SalaService } from 'src/app/services/sala.service';
 
 @Component({
@@ -16,9 +17,12 @@ export class SeatReservComponent implements OnInit {
   seatsMatrix = [];
   formData:FormGroup;
   sala: salaModel;
-  constructor(private salaService:SalaService, private toastr: ToastrService) { }
+  sucursales: any[];
+  constructor(private salaService:SalaService, private toastr: ToastrService, private sucursalService:OfficesService) { }
 
   ngOnInit(): void {
+    this.sucursalService.obtenerOffices();
+    this.sucursales=[];
   }
   selectValidator() {
     var filas = (document.getElementById("filas")) as HTMLSelectElement;
@@ -102,13 +106,13 @@ export class SeatReservComponent implements OnInit {
             row.deleteCell(idxC);
             var newCell=table1.rows[idx].insertCell(idxC);
             newCell.appendChild(seleccionado);
-            this.seatsMatrix[idx][idxC]=2;
+            this.seatsMatrix[idx][idxC]=1;
           }
           else if(this.seatsMatrix[idx][idxC] == 1){
             row.deleteCell(idxC);
             var newCell=table1.rows[idx].insertCell(idxC);
             newCell.appendChild(disponible);
-            this.seatsMatrix[idx][idxC]=2; 
+            this.seatsMatrix[idx][idxC]=0; 
           } 
           else if(this.seatsMatrix[idx][idxC] == 2){
             row.deleteCell(idxC);
