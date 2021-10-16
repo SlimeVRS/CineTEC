@@ -136,6 +136,8 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
                                     FROM public.""Branches""
                                     WHERE name_branch = @Branch_Name";
             var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = room.Name_Branch_Room });
+            if (id_branch == null)
+                return false;
 
             // Another SQL query, it uses double quotes because of the upper case
             var sql = @"
@@ -193,6 +195,8 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
                                 FROM public.""Branches""
                                 WHERE name_branch = @Branch_Name";
             var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = room.Name_Branch_Room });
+            if (id_branch == null)
+                return false;
 
             // Another SQL query, it uses double quotes because of the upper case
             var sql = @"

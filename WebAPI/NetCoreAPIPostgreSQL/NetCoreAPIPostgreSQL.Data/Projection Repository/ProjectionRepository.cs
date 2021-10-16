@@ -134,6 +134,8 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
                             FROM public.""Movies""
                             WHERE name_movie = @Name_Movie_Projection";
             var id_movie = await db.QueryFirstOrDefaultAsync<Movie>(id_movie_sql, new { Name_Movie_Projection = projection.Name_Movie_Projection });
+            if (id_movie == null)
+                return false;
 
             // Another SQL query, it uses double quotes because of the upper case
             var sql = @"
@@ -166,6 +168,8 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
                             WHERE name_movie = @Name_Movie_Projection";
 
             var id_movie = await db.QueryFirstOrDefaultAsync<Movie>(id_movie_sql, new { Name_Movie_Projection = projection.Name_Movie_Projection });
+            if (id_movie == null)
+                return false;
 
             // Another SQL query, it uses double quotes because of the upper case
             var sql = @"

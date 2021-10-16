@@ -120,7 +120,8 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                                 FROM public.""Roles""
                                 WHERE name_rol = @Rol_Name";
             var id_rol = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Id_Rol_Employee });
-
+            if (id_branch == null || id_rol == null)
+                return false;
             var sql = @"
                         INSERT INTO public.""Employees"" (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee)
                         VALUES(@Id_Employee, @First_Name_Employee, @Second_Name_Employee, @First_Last_Name_Employee, @Second_Last_Name_Employee, @Phone_Employee, @Birth_Date_Employee, @Admission_Date_Employee, @Password_Employee, @User_Employee, @Id_Branch, @Id_Rol)";
@@ -171,7 +172,8 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                                 FROM public.""Roles""
                                 WHERE name_rol = @Rol_Name";
             var id_rol = await db.QueryFirstOrDefaultAsync<Rol>(id_rol_sql, new { Rol_Name = employee.Id_Rol_Employee });
-
+            if (id_branch == null || id_rol == null)
+                return false;
             var sql = @"
                         UPDATE public.""Employees""
                         SET first_name_employee=@First_Name_Employee,
