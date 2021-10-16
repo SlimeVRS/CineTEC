@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { image } from '@cloudinary/url-gen/qualifiers/source';
 import { movieModel } from 'src/app/models/movieModel';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -39,22 +40,32 @@ export class HomeComponent implements OnInit {
     
     console.log(this.urlArray);
     console.log(posters);
-    for (var i = 0; i < posters; i++) {
-      if(posters < 3 && count===0){
-        var newRow= tabla.insertRow(0);
-        count=1;
-      }
-      for (var j = 0; j < 1; j++) {
-        if (this.urlArray[i] !== undefined) {
+    var numero= Math.floor(posters/4);
+    Math.round(numero);
+ 
+    var size;
+    var controller= Math.round((posters-1)/4);
+    console.log("numero: "+controller); 
+    if (posters<4){
+      size = posters;
+    }else{
+      size=posters;
+    }
+    for (var i = 0; i <= controller; i++) {
+          var newRow= tabla.insertRow(i);
+
+      for (var j = 0; j < 4; j++) {
+        if(this.urlArray[count]!==undefined){
           var imagen = document.createElement('img') as HTMLImageElement;
           var newCell = newRow.insertCell(j);
-          imagen.src = this.urlArray[i];
+          imagen.src = this.urlArray[count];
+          count =count+1;
           newCell.style.maxWidth = "234px";
-
           newCell.appendChild(imagen);
-          
         }
+        
       }
+      size=0;
     }
     //  var imagen = document.createElement('img') as HTMLImageElement;
     //  if(this.urlArray[0]!== undefined){
