@@ -47,7 +47,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
             return Created("employee created", created);
         }
 
-            [HttpPut]
+        [HttpPut]
         public async Task<ActionResult> UpdateEmployee([FromBody] Employee employee)
         {
             if (employee == null)
@@ -55,6 +55,16 @@ namespace NetCoreAPIPostgreSQL.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
             await _employeeRepository.UpdateEmployee(employee);
+            return NoContent();
+        }
+        [HttpPut("update")]
+        public async Task<ActionResult> UpdateEmlpoyeeFromFrontEnd([FromBody] EmployeeFRONTEND employee)
+        {
+            if (employee == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+            await _employeeRepository.UpdateEmlpoyeeFromFrontEnd(employee);
             return NoContent();
         }
 

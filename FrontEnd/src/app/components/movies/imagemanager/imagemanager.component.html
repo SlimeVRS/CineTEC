@@ -1,6 +1,7 @@
-<label class="image-upload-container btn btn-bwm">
-    <input #imageInput
-           type="file"
-           accept="image/*"
-           (change)="processFile(imageInput)">
-  </label>
+<div class="form-group col-12 image">
+  <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+</div>
+<div *ngIf="fb" class="list">
+  <img src="{{ fb }}" alt="" />
+</div>
+<router-outlet></router-outlet>

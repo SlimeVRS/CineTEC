@@ -1,0 +1,24 @@
+<table class="table table-sm">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <tr *ngFor="let offices of officesService.list">
+        <td style="color: white;">
+            {{offices.name_Branch}}
+        </td>
+        <td style="color: white;">
+            {{offices.cant_Rooms_Branch}}
+        </td>
+        <td style="color: white;">
+            {{offices.address_Branch}}
+        </td>
+
+        <td>
+            <i class="far fa-edit fa-lg text-info"  (click)="editar(offices)" style="cursor: pointer;"></i>  
+        </td>
+        
+        <td>
+            <i class="far fa-trash-alt fa-lg text-danger" (click)="eliminarOffices(offices.id_Branch)" style="cursor: pointer;"></i>
+        </td>
+       
+    </tr>
+
+</table>

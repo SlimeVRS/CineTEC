@@ -19,11 +19,11 @@ export class RollistComponent implements OnInit {
     if(confirm('Desea eliminar la tarjeta?')){
     const index = this.rolService.list.indexOf(id);
      this.rolService.list.splice(index,1);
-     //  this.tarjetaService.eliminarTarjeta(id).subscribe(data=>{
-     //    this.toastr.warning('Eliminar Exitoso', 'Tarjeta Eliminada');
+      this.rolService.eliminarTarjeta(id).subscribe(data=>{
+         this.toastr.warning('Eliminar Exitoso', 'Tarjeta Eliminada');
  
-     //    this.tarjetaService.obtenerTarjetas();
-     //  })
+         this.rolService.obtenerRoles();
+      })
     }
    }
    editar(tarjeta){

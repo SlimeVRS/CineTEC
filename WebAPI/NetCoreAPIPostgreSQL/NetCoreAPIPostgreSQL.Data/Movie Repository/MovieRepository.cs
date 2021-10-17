@@ -121,7 +121,8 @@ namespace NetCoreAPIPostgreSQL.Data.Movie_Repository
                                 FROM public.""Protagonists""
                                 WHERE name_protagonist = @Name_Protagonist";
             var id_protagonist = await db.QueryFirstOrDefaultAsync<Protagonist>(id_protagonist_sql, new { Name_Protagonist = movie.Name_Protagonist_Movie });
-
+            if (id_director == null || id_classif == null || id_protagonist == null)
+                return false;
             var sql = @"
                         INSERT INTO public.""Movies"" (name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie)
                         VALUES (@Name_Movie, @Duration_Movie, @Poster_Movie, @Price_Elder_Movie, @Price_Adult_Movie, @Price_Kid_Movie, @Id_Director, @Id_Classif, @Id_Protagonist)";

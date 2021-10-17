@@ -1,0 +1,35 @@
+<app-employees></app-employees>
+<body>
+    <div class="jumbtrom">
+    <div class="row">
+        <div class="col-md-5">
+            <h6 class="text-center">
+                Agregar Protagonista
+            </h6>
+            <form [formGroup]="form" (ngSubmit)="guardarCliente()">
+                <h6> </h6>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="name_Protagonist"
+                            placeholder="Nombre del Protagonista">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <button class="button btn-sucess btn-lg btn-block" [disabled]="form.invalid"
+                        type="submit">Aceptar</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-7">
+            <h6 class="text-center">
+                Protagonistas
+            </h6>
+            <app-protagonistlist></app-protagonistlist>
+        </div>
+    </div>
+</div>
+</body>
+

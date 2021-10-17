@@ -9,11 +9,11 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
 {
     public interface IClientRepository
     {
-        Task<IEnumerable<Client>> GetAllClients();
-        Task<Client> GetClientDetails(int id_client);
-        Task<bool> InsertClient(Client client);
-        Task<bool> UpdateClient(Client client);
-        Task<bool> DeleteClient(Client client);
-        Task<Client> GetClientByUserPassword(string user, string password);
+        Task<IEnumerable<Client>> GetAllClients();                              // Gets all clients
+        Task<Client> GetClientDetails(int id_client);                           // Gets a client using id
+        Task<bool> InsertClient(Client client);                                 // Inserts a new client
+        Task<bool> UpdateClient(Client client);                                 // Updates a client
+        Task<bool> DeleteClient(Client client);                                 // Deletes a client
+        Task<Client> GetClientByUserPassword(string user, string password);     // Gets a client using the password and user
     }
 }

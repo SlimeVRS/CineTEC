@@ -38,6 +38,17 @@ namespace NetCoreAPIPostgreSQL.Controllers
             var created = await _projectionRespository.InsertProjectionFrontEnd(projection);
             return Created("Projection created", created);
         }
+        [HttpPut("update")]
+        public async Task<ActionResult> UpdateInsertionByMovieName([FromBody] ProjectionFRONTEND projection)
+        {
+            if (projection == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            await _projectionRespository.UpdateInsertionByMovieName(projection);
+            return NoContent();
+        }
         [HttpPut]
         public async Task<ActionResult> UpdateProjection([FromBody] Projection projection)
         {

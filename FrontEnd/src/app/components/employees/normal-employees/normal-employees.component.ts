@@ -15,11 +15,12 @@ export class NormalEmployeesComponent implements OnInit {
   list: employeesModel[];
   empleado: employeesModel;
   form1: FormGroup;
-
+  put:boolean;
+ 
 
   constructor(private formBuilder: FormBuilder, private employeeService: EmpleadoService, private toastr: ToastrService) { 
     this.form1 = this.formBuilder.group({
-      id: 0,
+      
       nombre: ['', [Validators.required]],
       nombre2: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       apellido1: ['', [Validators.required, Validators.maxLength(16)]],
@@ -28,10 +29,11 @@ export class NormalEmployeesComponent implements OnInit {
       numeroTelefono: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       fechaNacimiento: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       fechaIngreso: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      rol: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      usuario: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      contraseña: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-
+      rol: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      usuario: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      contraseña: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      branch: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      
     })
   }
   
@@ -40,43 +42,75 @@ export class NormalEmployeesComponent implements OnInit {
       console.log(data);
       this.empleado =data;
       this.form1.patchValue({
-        nombre: this.empleado.first_name,
-        nombre2: this.empleado.second_name,
-        apellido1:this.empleado.first_last_name,
-        apellido2:this.empleado.second_last_name,
-        cedula: this.empleado.id,
-        numeroTelefono: this.empleado.phone,
-        fechaNacimiento: this.empleado.birth_date,
-        fechaIngreso: this.empleado.birth_date,
-        rol: this.empleado.rol,
-        usuario:this.empleado._user,
-        contraseña: this.empleado._password
+        nombre: this.empleado.first_Name_Employee,
+        nombre2: this.empleado.second_Name_Employee,
+        apellido1:this.empleado.first_Last_Name_Employee,
+        apellido2:this.empleado.second_Last_Name_Employee,
+        cedula: this.empleado.id_Employee,
+        numeroTelefono: this.empleado.phone_Employee,
+        fechaNacimiento: this.empleado.birth_Date_Employee,
+        fechaIngreso: this.empleado.birth_Date_Employee,
+        rol: this.empleado.id_Rol_Employee,
+        usuario:this.empleado.user_Employee,
+        contraseña: this.empleado.password_Employee,
+        branch: this.empleado.id_Branch_Employee,
       })
     })
+    this.put=false;
   }
 
   guardarEmpleado(){
+    console.log(this.put);
+    if(this.put===true){
+      this.editar();
+    }else{
+      this.agregar();
+    }
+  }
+  agregar(){
     const empleado: employeesModel = {
-      first_name : this.form1.get('nombre').value,
-      second_name : this.form1.get('nombre2').value,
-      first_last_name : this.form1.get('apellido1').value,
-      second_last_name : this.form1.get('apellido2').value,
-      id : this.form1.get('cedula').value,
-      phone : this.form1.get('numeroTelefono').value,
-      birth_date : this.form1.get('fechaNacimiento').value,
-      admission_date: this.form1.get('fechaIngreso').value,
-      rol: this.form1.get('rol').value,
-      _user : this.form1.get('usuario').value,
-      _password : this.form1.get('contraseña').value,
-      
+      first_Name_Employee : this.form1.get('nombre').value,
+      second_Name_Employee : this.form1.get('nombre2').value,
+      first_Last_Name_Employee : this.form1.get('apellido1').value,
+      second_Last_Name_Employee : this.form1.get('apellido2').value,
+      id_Employee : this.form1.get('cedula').value,
+      phone_Employee : this.form1.get('numeroTelefono').value,
+      birth_Date_Employee : this.form1.get('fechaNacimiento').value,
+      admission_Date_Employee: this.form1.get('fechaIngreso').value,
+      id_Rol_Employee: this.form1.get('rol').value,
+      user_Employee : this.form1.get('usuario').value,
+      password_Employee : this.form1.get('contraseña').value,
+      id_Branch_Employee: this.form1.get('branch').value,
     }
     this.employeeService.guardarEmpleado(empleado).subscribe(data=>{
       this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
       this.form1.reset();
     })
-    
-    console.log(this.form1);
+  }
+  editar(){
+    const empleado: employeesModel = {
+      first_Name_Employee : this.form1.get('nombre').value,
+      second_Name_Employee : this.form1.get('nombre2').value,
+      first_Last_Name_Employee : this.form1.get('apellido1').value,
+      second_Last_Name_Employee : this.form1.get('apellido2').value,
+      id_Employee :this.empleado.id_Employee,
+      phone_Employee : this.form1.get('numeroTelefono').value,
+      birth_Date_Employee : this.form1.get('fechaNacimiento').value,
+      admission_Date_Employee: this.form1.get('fechaIngreso').value,
+      id_Rol_Employee: this.form1.get('rol').value,
+      user_Employee : this.form1.get('usuario').value,
+      password_Employee : this.form1.get('contraseña').value,
+      id_Branch_Employee: this.form1.get('branch').value,
+    }
+    this.employeeService.actualizarEmpleados(empleado).subscribe(data=>{
+      this.toastr.success('Empleado Actualizado', 'Agregada Exitosamente');
+      this.employeeService.obtenerEmpleados();
+      this.form1.reset();
+      
+    })
     console.log(empleado);
+    this.put=false;
+
   }
 
 }

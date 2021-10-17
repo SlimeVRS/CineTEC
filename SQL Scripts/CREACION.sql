@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS public."Projections"
 (
     id_projection integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     time_projection text COLLATE pg_catalog."default" NOT NULL,
+	day_projection date NOT NULL,
     id_movie_projection integer NOT NULL,
     id_room_projection integer NOT NULL,
     CONSTRAINT "Projections_pkey" PRIMARY KEY (id_projection)
@@ -244,8 +245,8 @@ VALUES (30, 6, 5, 1);
 INSERT INTO public."Bills" (total_bill, id_employee_bill, id_client_bill)
 VALUES(4700, 101110111, 202220222);
 
-INSERT INTO public."Projections" (time_projection, id_movie_projection, id_room_projection)
-VALUES ('14:40', 1, 1);
+INSERT INTO public."Projections" (time_projection, day_projection, id_movie_projection, id_room_projection)
+VALUES ('14:40', '2021-11-11', 1, 1);
 
 INSERT INTO public."Seats" (row_seat, column_seat, state_seat, id_room_seat)
 VALUES(3,4,1,1);

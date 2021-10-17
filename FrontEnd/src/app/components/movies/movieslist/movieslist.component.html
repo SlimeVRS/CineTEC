@@ -1,0 +1,24 @@
+<table class="table table-sm">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <tr *ngFor="let movie of movieService.lista">
+        <td style="color: white;">
+            {{movie.name_Movie}}
+        </td>
+        <td style="color: white;">
+            {{movie.price_Kid_Movie}}
+        </td>
+        <td style="color: white;">
+            {{movie.price_Adult_Movie}}
+        </td>
+        <td style="color: white;">
+            {{movie.price_Elder_Movie}}
+        </td>
+        <!-- <td>
+            <i class="far fa-edit fa-lg text-info"  (click)="editar(movie)" style="cursor: pointer;"></i>  
+        </td> -->
+        
+        <td>
+            <i class="far fa-trash-alt fa-lg text-danger" (click)="eliminarTarjeta(movie.id_Movie)" style="cursor: pointer;"></i>
+        </td>
+    </tr>
+</table>

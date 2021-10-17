@@ -9,16 +9,16 @@ namespace NetCoreAPIPostgreSQL.Model
 {
     public class Client
     {
-        public int Id_Client { get; set; }
-        public string First_Name_Client { get; set; }
-        public string Second_Name_Client { get; set; }
-        public string First_Last_Name_Client { get; set; }
-        public string Second_Last_Name_Client { get; set; }
-        public string Phone_Client { get; set; }
+        public int Id_Client { get; set; }                      // Id of the client
+        public string First_Name_Client { get; set; }           // First name of the client
+        public string Second_Name_Client { get; set; }          // Second name of the client
+        public string First_Last_Name_Client { get; set; }      // First last name of the client
+        public string Second_Last_Name_Client { get; set; }     // Second last of the client
+        public string Phone_Client { get; set; }                // Phone number of the client
 
         [DataType(DataType.Date)]
-        public DateTime Birth_Date_Client { get; set; }
-        public string Password_Client { get; set; }
-        public string User_Client { get; set; }
+        public DateTime Birth_Date_Client { get; set; }         // Birth date of the client
+        public string Password_Client { get; set; }             // Password of the client
+        public string User_Client { get; set; }                 // User of the client
     }
 }

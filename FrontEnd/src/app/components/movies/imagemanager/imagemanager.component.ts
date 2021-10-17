@@ -1,7 +1,9 @@
 
 import { ImageService } from 'src/app/services/image.service';
 import { Component, OnInit } from '@angular/core';
-import { ImageSnippet } from './imageSnipet.component';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { map, finalize } from "rxjs/operators";
 
 @Component({
   selector: 'app-imagemanager',
@@ -10,53 +12,39 @@ import { ImageSnippet } from './imageSnipet.component';
 })
 
 
-export class ImagemanagerComponent implements OnInit {
-  selectedFile: ImageSnippet;
-  onFileSelected(event: any) {
-    console.log(event);
-  }
-  onUpload() {
-
-  }
-
-  constructor(private imageService: ImageService) { }
-  private onSuccess() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'ok';
-  }
-
-  private onError() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'fail';
-    this.selectedFile.src = '';
-  }
-
-  processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener('load', function (e) {
-      e.preventDefault();
-      let formData = new FormData();
-      formData.append('file', file);
-      fetch('http://localhost:15451/api/Movie', {
-        method: 'POST',
-        body: formData
-      })
-        .then(resp => resp.json())
-        .then(data => {
-          if (data.errors) {
-            alert(data.errors)
-          }
-          else {
-            console.log(data)
-          }
-        })
-    });
-
-    reader.readAsDataURL(file);
-  }
+export class ImagemanagerComponent implements OnInit {  
   ngOnInit(): void {
+    
+  }
+  title = "CineTEC";
+  selectedFile: File = null;
+  fb;
+  downloadURL: Observable<string>;
+  constructor(private Api: ImageService, private storage: AngularFireStorage) {}
+ 
+  onFileSelected(event) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
   }
 
 }

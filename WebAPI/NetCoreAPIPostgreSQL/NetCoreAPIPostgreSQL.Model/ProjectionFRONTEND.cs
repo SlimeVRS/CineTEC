@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NetCoreAPIPostgreSQL.Model
 {
+    // Model of projection (just for better communication with front end)
     public class ProjectionFRONTEND
     {
-        public int Id_Projection { get; set; }
-        public string Time_Projection { get; set; }
-        public string Name_Movie_Projection { get; set; }
-        public int Id_Room_Projection { get; set; }
+        public int Id_Projection { get; set; }              // Id of the projection
+        public string Time_Projection { get; set; }         // Time of the projection
+        [DataType(DataType.Date)]
+        public DateTime Day_Projection { get; set; }        // Day of projection
+        public string Name_Movie_Projection { get; set; }   // Name of the movie that will be projected 
+        public int Id_Room_Projection { get; set; }         // Id of the room of the projection
     }
 }

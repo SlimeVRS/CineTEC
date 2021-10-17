@@ -1,20 +1,49 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
-
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+ 
+ 
+interface ImageInfo{
+  title:string;
+  description:string;
+  link:string;
+}
+ 
 @Injectable({
   providedIn: 'root'
 })
+ 
 export class ImageService {
-
-  constructor(private http: HttpClient) { }
+  private images:object[] = [];
+  private url: string = 'https://api.imgur.com/3/image';
+  private clientId: string = '73bec0473e40be8';
+  imageLink:any;
+ 
+ 
+  constructor(private http:HttpClient) { }
   
-  public uploadImage(image: File): Observable<Response> {
-    const formData = new FormData();
-
-    formData.append('image', image);
-
-    return this.http.post<any>('http://localhost:15451/api/Movie', formData);
+  async uploadImage(imageFile:File, infoObject:{}){
+    let formData = new FormData();
+    formData.append('image', imageFile, imageFile.name);
+ 
+    let header = new HttpHeaders({
+      "authorization": 'Client-ID '+this.clientId
+    });
+   
+    const imageData = await this.http.post(this.url, formData, {headers:header}).toPromise();
+    this.imageLink = imageData['data'].link;
+ 
+    let newImageObject:ImageInfo = {
+      title:infoObject["title"],
+      description:infoObject["description"],
+      link:this.imageLink
+    };
+ 
+    this.images.unshift(newImageObject);
+ 
+  }
+ 
+  getImages(){
+    return this.images;
   }
 }

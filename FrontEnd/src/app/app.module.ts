@@ -33,6 +33,28 @@ import { ToastrModule } from 'ngx-toastr';
 import { SeatReservComponent } from './components/seat-reserv/seat-reserv.component';
 import { RolComponent } from './components/rol/rol.component';
 import { RollistComponent } from './components/rol/rollist/rollist.component';
+//import {CloudinaryModule} from '@cloudinary/angular';
+import { ViewPhotosComponent } from './components/movies/view-photos/view-photos.component';
+import {MatInputModule} from '@angular/material/input';
+import { AngularFireModule } from '@angular/fire/compat' ;
+import { environment } from 'src/environments/environment';
+
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {
+  AngularFireStorageReference,
+  AngularFireUploadTask
+} from "@angular/fire/compat/storage";
+import { OfficeslistComponent } from './components/offices/officeslist/officeslist.component';
+import { ProtagonistComponent } from './components/protagonist/protagonist.component';
+import { DirectorComponent } from './components/director/director.component';
+import { ProtagonistlistComponent } from './components/protagonist/protagonistlist/protagonistlist.component';
+import { DirectorlistComponent } from './components/director/directorlist/directorlist.component';
+import { CarteleraComponent } from './components/cartelera/cartelera.component';
+import { SalaclienteComponent } from './components/salacliente/salacliente.component';
+import { MovieslistComponent } from './components/movies/movieslist/movieslist.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +64,7 @@ import { RollistComponent } from './components/rol/rollist/rollist.component';
     ClientsComponent,
     MoviesComponent,
     OfficesComponent,
+    OfficeslistComponent,
     ScreensComponent,
     CarouselComponent,
     LoginComponent,
@@ -58,7 +81,15 @@ import { RollistComponent } from './components/rol/rollist/rollist.component';
     NavbarClientComponent,
     SeatReservComponent,
     RolComponent,
-    RollistComponent
+    RollistComponent,
+    ViewPhotosComponent,
+    ProtagonistComponent,
+    DirectorComponent,
+    ProtagonistlistComponent,
+    DirectorlistComponent,
+    CarteleraComponent,
+    SalaclienteComponent,
+    MovieslistComponent
 
   ],
   imports: [
@@ -68,6 +99,12 @@ import { RollistComponent } from './components/rol/rollist/rollist.component';
     ReactiveFormsModule,NgbModule,
     MatTabsModule,MatCardModule,
     HttpClientModule,
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    //CloudinaryModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     ToastrModule.forRoot(),
   
     RouterModule.forRoot([
@@ -82,6 +119,9 @@ import { RollistComponent } from './components/rol/rollist/rollist.component';
       {path: 'screens', component: ScreensComponent},
       {path: 'admin', component: AdminviewComponent},
       {path: 'tools', component: RolComponent},
+      {path: 'protagonist', component: ProtagonistComponent},
+      {path: 'director', component:  DirectorComponent},
+      {path: 'cartelera', component:  SalaclienteComponent},
       {path: 'seat-reserv', component: SeatReservComponent},
       { path: '**', redirectTo: 'login', pathMatch: 'full' },
       

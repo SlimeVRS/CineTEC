@@ -25,14 +25,14 @@ export class EmpleadoService {
   actualizar(empleado){
     this.actualizarForm.next(empleado);
   }
-  actualizarEmpleados(id:number , empleado: employeesModel): Observable<employeesModel>{
-    return this.http.put<employeesModel>('http://localhost:15451/api/Employee/'+id,empleado);
+  actualizarEmpleados(empleado: employeesModel): Observable<employeesModel>{
+    return this.http.put<employeesModel>('http://localhost:15451/api/Employee/update',empleado);
   }
   obtenerEmpleado(): Observable<employeesModel>{
     return this.actualizarForm.asObservable();
   }
   eliminarEmpleado(id: number): Observable<employeesModel>{
-    return this.http.delete<employeesModel>('http://localhost:15451/api/Employee'+ id);
+    return this.http.delete<employeesModel>('http://localhost:15451/api/Employee/'+ id);
   }
 
 

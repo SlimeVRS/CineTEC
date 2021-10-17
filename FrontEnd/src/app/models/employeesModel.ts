@@ -1,14 +1,15 @@
 export class employeesModel{
     
-    first_name:string;
-    second_name:string;
-    first_last_name:string;
-    second_last_name:string;
-    id:number;
-    phone:string;
-    birth_date:string;
-    admission_date:string;
-    rol:string;
-    _user:string;
-    _password:string;
+    first_Name_Employee:string;
+    second_Name_Employee:string;
+    first_Last_Name_Employee:string;
+    second_Last_Name_Employee:string;
+    id_Employee?:number;
+    phone_Employee:string;
+    birth_Date_Employee:string;
+    admission_Date_Employee:string;
+    id_Rol_Employee:string;
+    user_Employee:string;
+    password_Employee:string;
+    id_Branch_Employee: string;
 }

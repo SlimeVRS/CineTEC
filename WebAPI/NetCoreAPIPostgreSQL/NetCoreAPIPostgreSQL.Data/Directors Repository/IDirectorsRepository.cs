@@ -9,10 +9,10 @@ namespace NetCoreAPIPostgreSQL.Data.Directors_Repository
 {
     public interface IDirectorsRepository
     {
-        Task<IEnumerable<Director>> GetAllDirectors();
-        Task<Director> GetDirectorDetails(int id_director);
-        Task<bool> InsertDirector(Director director);
-        Task<bool> UpdateDirector(Director director);
-        Task<bool> DeleteDirector(Director director);
+        Task<IEnumerable<Director>> GetAllDirectors();          // Gets all the directors
+        Task<Director> GetDirectorDetails(int id_director);     // Gets a director using id
+        Task<bool> InsertDirector(Director director);           // Inserts a new director
+        Task<bool> UpdateDirector(Director director);           // Updates a director
+        Task<bool> DeleteDirector(Director director);           // Deletes a director
     }
 }

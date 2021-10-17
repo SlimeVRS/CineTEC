@@ -28,6 +28,11 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _roomRepositry.GetRoomDetails(id));
         }
+        [HttpGet("byroomid/{branch_name}")]
+        public async Task<ActionResult> GetAllRoomsByBranchID(string branch_name)
+        {
+            return Ok(await _roomRepositry.GetAllRoomsByBranchID(branch_name));
+        }
 
         [HttpPost]
         public async Task<ActionResult> CreateRoom([FromBody] RoomFRONTEND room)
@@ -41,6 +46,16 @@ namespace NetCoreAPIPostgreSQL.Controllers
             return Created("Room created", created);
         }
 
+        [HttpPut("update")]
+        public async Task<ActionResult>asjkhdaksjd([FromBody] RoomFRONTEND room)
+        {
+            if (room == null)
+                return BadRequest();
+            if (!ModelState.IsValid)
+                return BadRequest();
+            await _roomRepositry.UpdateRoomByBranchName(room);
+            return NoContent();
+        }
         [HttpPut]
         public async Task<ActionResult>UpdateRoom([FromBody] Room room)
         {
