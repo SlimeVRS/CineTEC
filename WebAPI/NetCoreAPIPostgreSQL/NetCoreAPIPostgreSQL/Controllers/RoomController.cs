@@ -28,7 +28,7 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _roomRepositry.GetRoomDetails(id));
         }
-        [HttpGet("byroomid")]
+        [HttpGet("byroomid/{branch_name}")]
         public async Task<ActionResult> GetAllRoomsByBranchID(string branch_name)
         {
             return Ok(await _roomRepositry.GetAllRoomsByBranchID(branch_name));
