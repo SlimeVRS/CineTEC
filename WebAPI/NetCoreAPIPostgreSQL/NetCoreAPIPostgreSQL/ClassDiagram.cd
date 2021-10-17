@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NetCoreAPIPostgreSQL.Data.Bill_Repository.BillRepository" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAgAAAAAAAAAAAAAACAAAAIAAAAAAAAgAg=</HashCode>
+      <FileName>Bill Repository\BillRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.BranchRepository.BranchRepository" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAIAAAAACAAAAAAAAAAAAIACABAAIAAAA=</HashCode>
+      <FileName>BranchRepository\BranchRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.ClassificationRepository.ClassificationRepository" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAEAAAAhAAAAAAAQAAAAAAAAAEAAIAAAAAAAAAAA=</HashCode>
+      <FileName>ClassificationRepository\ClassificationRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Client_Repository.ClientRepository" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAEAQAAAAQAAAAAAAAAAAAAAAAAIAAABAAAAAAQ=</HashCode>
+      <FileName>Client Repository\ClientRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Directors_Repository.DirectorsRepository" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAEAAAAAgAAAAAAAAAAQAAQAAAAIAAAAEAAAAAA=</HashCode>
+      <FileName>Directors Repository\DirectorsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Employee_Repository.EmployeeRepository" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAQAAAAAAIAAAAIAAAAAEAAAAAAGAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Employee Repository\EmployeeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Movie_Repository.MovieRepository" BaseTypeListCollapsed="true">
+    <Position X="15" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAQAAAEAAAAAAAABAAAAAAAAAIABAQAAAAAAA=</HashCode>
+      <FileName>Movie Repository\MovieRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Projection_Repository.ProjectionRepository" BaseTypeListCollapsed="true">
+    <Position X="19" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAAIAAAQAAAAAAAAAQAAAAABAIAABAAAQAAAA=</HashCode>
+      <FileName>Projection Repository\ProjectionRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Protagonist_Repository.ProtagonistRepository" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAAAAAAAAAAAAgAIAACAAAAAACAIAAAAAAAAAAA=</HashCode>
+      <FileName>Protagonist Repository\ProtagonistRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.RolRepository.RolRepository" BaseTypeListCollapsed="true">
+    <Position X="24" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAACAAAAAAAACAAgAAAAAAAAAgAIAAAAAAAAAAA=</HashCode>
+      <FileName>RolRepository\RolRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Room_Repository.RoomRepository" BaseTypeListCollapsed="true">
+    <Position X="27.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBgQAAAAAAAAAAAAEAAwAAAAAAAAAAAIBAAAAAAAAEA=</HashCode>
+      <FileName>Room Repository\RoomRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.Seat_Repository.SeatRepository" BaseTypeListCollapsed="true">
+    <Position X="30.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAAAEAAAAAAAAAAAAAAAAAAABAAAAAIAARABQAAAAA=</HashCode>
+      <FileName>Seat Repository\SeatRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Data.PostgreSQLConfiguration">
+    <Position X="32.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>PostgreSQLConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Bill">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Branch">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Classification">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Client">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Director">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Employee">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.EmployeeFRONTEND">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Movie">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.MovieFRONTEND">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Projection">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.ProjectionFRONTEND">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Protagonist">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Rol">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Room">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.RoomFRONTEND">
+    <Position X="28" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NetCoreAPIPostgreSQL.Model.Seat">
+    <Position X="30.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Bill_Repository.IBillRepository">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAgAg=</HashCode>
+      <FileName>Bill Repository\IBillRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.BranchRepository.IBranchRepository">
+    <Position X="2.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAACAAAAAAAAAAAAAACABAAIAAAA=</HashCode>
+      <FileName>BranchRepository\IBranchRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.ClassificationRepository.IClassificationRepository">
+    <Position X="4.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAhAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClassificationRepository\IClassificationRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Client_Repository.IClientRepository">
+    <Position X="6.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAEAQAAAAQAAAAAAAAAAAAAAAAAAAAABAAAAAAQ=</HashCode>
+      <FileName>Client Repository\IClientRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Directors_Repository.IDirectorsRepository">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAgAAAAAAAAAAQAAQAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Directors Repository\IDirectorsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Employee_Repository.IEmployeeRepository">
+    <Position X="11.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQAAAAAAIAAAAIAAAAAEAAAAAAGAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Employee Repository\IEmployeeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Movie_Repository.IMovieRepository">
+    <Position X="15" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAEAAAAAAAABAAAAAAAAAIABAQAAAAAAA=</HashCode>
+      <FileName>Movie Repository\IMovieRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Projection_Repository.IProjectionRepository">
+    <Position X="19" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAIAAAQAAAAAAAAAQAAAAABAAAABAAAQAAAA=</HashCode>
+      <FileName>Projection Repository\IProjectionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Protagonist_Repository.IProtagonistRepository">
+    <Position X="21.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAgAIAACAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Protagonist Repository\IProtagonistRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.RolRepository.IRolRepository">
+    <Position X="24" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAAAAAAAACAAgAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>RolRepository\IRolRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Room_Repository.IRoomRepository">
+    <Position X="27.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgQAAAAAAAAAAAAEAAwAAAAAAAAAAAABAAAAAAAAEA=</HashCode>
+      <FileName>Room Repository\IRoomRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NetCoreAPIPostgreSQL.Data.Seat_Repository.ISeatRepository">
+    <Position X="30.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAEAAAAAAAAAAAAAAAAAAABAAAAAAAARABQAAAAA=</HashCode>
+      <FileName>Seat Repository\ISeatRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
