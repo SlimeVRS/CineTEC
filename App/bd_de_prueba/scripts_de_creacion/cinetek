@@ -1,0 +1,159 @@
+--
+-- File generated with SQLiteStudio v3.3.3 on Sun Oct 17 14:11:05 2021
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: Bills
+CREATE TABLE Bills (id_bill integer NOT NULL CONSTRAINT Bills_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, total_bill DOUBLE NOT NULL, id_employee_bill integer NOT NULL CONSTRAINT "id_employee_fk " REFERENCES Employees (id_employee), id_client_bill integer NOT NULL CONSTRAINT "id_client_fk " REFERENCES Clients (id_client));
+INSERT INTO Bills (id_bill, total_bill, id_employee_bill, id_client_bill) VALUES (1, 4700.0, 101110111, 202220222);
+
+-- Table: Branches
+CREATE TABLE "Branches"
+(
+    id_branch integer NOT NULL CONSTRAINT "Branches_pkey" PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name_branch text NOT NULL,
+    cant_rooms_branch integer NOT NULL,
+    address_branch text NOT NULL
+);
+INSERT INTO Branches (id_branch, name_branch, cant_rooms_branch, address_branch) VALUES (1, 'Cartago', 10, 'Cartago');
+INSERT INTO Branches (id_branch, name_branch, cant_rooms_branch, address_branch) VALUES (300, 'Perolini', 2, 'Tres Rios');
+INSERT INTO Branches (id_branch, name_branch, cant_rooms_branch, address_branch) VALUES (301, 'Fetuchini', 1, 'Alajuela');
+
+-- Table: Classifications
+CREATE TABLE "Classifications"
+(
+    id_classif integer NOT NULL CONSTRAINT "Classifications_pkey" PRIMARY KEY AUTOINCREMENT NOT NULL,
+    classif text NOT NULL
+);
+INSERT INTO Classifications (id_classif, classif) VALUES (1, 'Adulto');
+INSERT INTO Classifications (id_classif, classif) VALUES (2, 'Niño');
+
+-- Table: Clients
+CREATE TABLE "Clients"
+(
+    id_client integer NOT NULL,
+    first_name_client text NOT NULL,
+    second_name_client text,
+    first_last_name_client text NOT NULL,
+    second_last_name_client text,
+    phone_client text NOT NULL,
+    birth_date_client date NOT NULL,
+    password_client text NOT NULL,
+    user_client text NOT NULL UNIQUE,
+    CONSTRAINT "Clients_pkey" PRIMARY KEY (id_client)
+);
+INSERT INTO Clients (id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client) VALUES (200, 'APP', NULL, 'MOVIL', NULL, '000000000', '01-01-2021', 'Pasword123', 'User1235');
+INSERT INTO Clients (id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client) VALUES (101110111, 'Primer Nombre', 'Segundo Nombre', 'Primer Apellido', 'Segundo Apellido', '11111111', '01-01-2021', 'Pasword123', 'User123');
+INSERT INTO Clients (id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client) VALUES (202220222, 'Nombre1', 'SegNombre1', 'Apellido1', 'SegApellido1', '22222222', '2000-01-01', 'contraseña', 'usuario');
+
+-- Table: Directors
+CREATE TABLE "Directors"
+(
+    id_director integer NOT NULL CONSTRAINT "Directors_pkey" PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name_director text
+);
+INSERT INTO Directors (id_director, name_director) VALUES (1, 'Director Inventado');
+
+-- Table: Employees
+CREATE TABLE Employees (id_employee integer NOT NULL CONSTRAINT Employees_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, first_name_employee text NOT NULL, second_name_employee text, first_last_name_employee text NOT NULL, second_last_name_employee text, phone_employee text NOT NULL, birth_date_employee date NOT NULL, admission_date_employee date NOT NULL, password_employee text NOT NULL, user_employee text NOT NULL UNIQUE, id_branch_employee integer NOT NULL CONSTRAINT "id_employee_branch_fk " REFERENCES Branches (id_branch), id_rol_employee integer NOT NULL CONSTRAINT id_employee_rol_fk REFERENCES Roles (id_rol));
+INSERT INTO Employees (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee) VALUES (200, 'APP', NULL, 'MOVIL', NULL, '000000000', '1999-02-10', '2021-10-10', 'Contraseña', 'Usuario1', 1, 1);
+INSERT INTO Employees (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee) VALUES (101110111, 'Nombre1', 'Nombre1', 'Apellido1', 'Apellido2', '11111111', '1999-02-10', '2021-10-10', 'Contraseña', 'Usuario', 1, 1);
+
+-- Table: Movies
+CREATE TABLE Movies (id_movie integer NOT NULL CONSTRAINT Movies_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, name_movie text NOT NULL, duration_movie text NOT NULL, poster_movie text NOT NULL, price_elder_movie integer NOT NULL, price_adult_movie integer NOT NULL, price_kid_movie integer NOT NULL, id_director_movie integer NOT NULL CONSTRAINT "id_movie_director_fk " REFERENCES Directors (id_director), id_classif_movie integer NOT NULL CONSTRAINT id_movie_classif_fk REFERENCES Classifications (id_classif), id_protagonist_movie integer NOT NULL CONSTRAINT id_movie_prota_fk REFERENCES Protagonists (id_protagonist));
+INSERT INTO Movies (id_movie, name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie) VALUES (1, 'Peli1', '1:45', 'poster1', 1400, 1500, 1200, 1, 2, 1);
+INSERT INTO Movies (id_movie, name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie) VALUES (500, 'Fast & Furious 3', '2:00', 'poster500', 1400, 1500, 1200, 1, 2, 1);
+INSERT INTO Movies (id_movie, name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie) VALUES (501, 'Quieren volverme loco', '1:30', 'poster501', 1400, 1500, 1200, 1, 2, 1);
+INSERT INTO Movies (id_movie, name_movie, duration_movie, poster_movie, price_elder_movie, price_adult_movie, price_kid_movie, id_director_movie, id_classif_movie, id_protagonist_movie) VALUES (502, 'Cars 8', '1:30', 'poster502', 1400, 1500, 1200, 1, 2, 1);
+
+-- Table: Projections
+CREATE TABLE Projections (id_projection integer NOT NULL CONSTRAINT Projections_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, time_projection text NOT NULL, day_projection DATE NOT NULL, id_movie_projection integer NOT NULL CONSTRAINT "id_movie_fk " REFERENCES Movies (id_movie), id_room_projection integer NOT NULL CONSTRAINT "id_room_fk " REFERENCES Rooms (id_room));
+INSERT INTO Projections (id_projection, time_projection, day_projection, id_movie_projection, id_room_projection) VALUES (1, '14:40', '2021-11-1', 1, 1);
+INSERT INTO Projections (id_projection, time_projection, day_projection, id_movie_projection, id_room_projection) VALUES (600, '14:40', '2021-11-1', 500, 200);
+INSERT INTO Projections (id_projection, time_projection, day_projection, id_movie_projection, id_room_projection) VALUES (601, '10:00', '2021-11-1', 500, 200);
+INSERT INTO Projections (id_projection, time_projection, day_projection, id_movie_projection, id_room_projection) VALUES (602, '14:40', '2021-11-1', 501, 201);
+INSERT INTO Projections (id_projection, time_projection, day_projection, id_movie_projection, id_room_projection) VALUES (603, '14:40', '2021-11-1', 502, 202);
+INSERT INTO Projections (id_projection, time_projection, day_projection, id_movie_projection, id_room_projection) VALUES (604, '10:00', '2021-11-1', 1, 202);
+
+-- Table: Protagonists
+CREATE TABLE "Protagonists"
+(
+    id_protagonist integer NOT NULL CONSTRAINT  "Protagonists_pkey" PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name_protagonist text
+);
+INSERT INTO Protagonists (id_protagonist, name_protagonist) VALUES (1, 'Personaje inventado');
+
+-- Table: Roles
+CREATE TABLE "Roles"
+(
+    id_rol integer NOT NULL CONSTRAINT "Roles_pkey" PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name_rol text NOT NULL,
+    description_rol text NOT NULL
+);
+INSERT INTO Roles (id_rol, name_rol, description_rol) VALUES (1, 'cajero', 'cobra dinero');
+
+-- Table: Rooms
+CREATE TABLE Rooms (id_room integer NOT NULL CONSTRAINT rooms_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, capacity_room integer NOT NULL, rows_room integer NOT NULL, columns_room integer NOT NULL, id_branch_room integer NOT NULL CONSTRAINT id_room_branch_fk REFERENCES Branches (id_branch));
+INSERT INTO Rooms (id_room, capacity_room, rows_room, columns_room, id_branch_room) VALUES (1, 30, 6, 5, 1);
+INSERT INTO Rooms (id_room, capacity_room, rows_room, columns_room, id_branch_room) VALUES (200, 12, 5, 5, 1);
+INSERT INTO Rooms (id_room, capacity_room, rows_room, columns_room, id_branch_room) VALUES (201, 64, 4, 4, 1);
+INSERT INTO Rooms (id_room, capacity_room, rows_room, columns_room, id_branch_room) VALUES (202, 12, 3, 4, 1);
+
+-- Table: Seats
+CREATE TABLE Seats (id_seat integer NOT NULL CONSTRAINT Seats_pkey PRIMARY KEY AUTOINCREMENT NOT NULL, row_seat integer NOT NULL, column_seat integer NOT NULL, state_seat integer NOT NULL, id_room_seat integer NOT NULL CONSTRAINT "id_room_seat_fk " REFERENCES Rooms (id_room));
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (1, 3, 4, 1, 1);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (2, 1, 1, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (3, 1, 2, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (4, 1, 3, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (5, 1, 4, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (6, 1, 5, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (7, 2, 1, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (8, 2, 2, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (9, 2, 3, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (10, 2, 4, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (11, 2, 5, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (12, 3, 1, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (13, 3, 2, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (14, 3, 3, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (15, 3, 4, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (16, 3, 5, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (17, 4, 1, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (18, 4, 2, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (19, 4, 3, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (20, 4, 4, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (21, 4, 5, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (22, 5, 1, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (23, 5, 2, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (24, 5, 3, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (25, 5, 4, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (26, 5, 5, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (27, 1, 1, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (28, 1, 2, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (29, 1, 3, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (30, 2, 1, 0, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (31, 2, 2, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (32, 2, 3, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (33, 3, 1, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (34, 3, 2, 0, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (35, 3, 3, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (36, 4, 1, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (37, 4, 2, 0, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (38, 4, 3, 1, 201);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (39, 1, 1, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (40, 1, 2, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (41, 1, 3, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (42, 1, 4, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (43, 2, 1, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (44, 2, 2, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (45, 2, 3, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (46, 2, 4, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (47, 3, 1, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (48, 3, 2, 0, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (49, 3, 3, 1, 200);
+INSERT INTO Seats (id_seat, row_seat, column_seat, state_seat, id_room_seat) VALUES (50, 3, 4, 0, 200);
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;
