@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS public."Projections"
 (
     id_projection integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     time_projection text COLLATE pg_catalog."default" NOT NULL,
+	day_projection date NOT NULL,
     id_movie_projection integer NOT NULL,
     id_room_projection integer NOT NULL,
     CONSTRAINT "Projections_pkey" PRIMARY KEY (id_projection)

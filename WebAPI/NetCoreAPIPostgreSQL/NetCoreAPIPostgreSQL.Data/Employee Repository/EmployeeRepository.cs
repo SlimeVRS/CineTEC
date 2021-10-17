@@ -9,34 +9,51 @@ using System.Threading.Tasks;
 
 namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
 {
-
+    // Repository of Employees
     public class EmployeeRepository : IEmployeeRepository
     {
+        // Varible connection with postgreSQL
         private PostgreSQLConfiguration _connectionString;
+
+        // Assignation of all the necessary information
         public EmployeeRepository(PostgreSQLConfiguration connectionString)
         {
             _connectionString = connectionString;
         }
+
+        // Connection with postgreSQL
         protected NpgsqlConnection dbConnection()
         {
             return new NpgsqlConnection(_connectionString.ConnectionString);
         }
+
+        // Delete method for an employee
         public async Task<bool> DeleteEmployee(Employee employee)
         {
+            // Stablishing a connection
             var db = dbConnection();
+
+            // SQL query, it uses double quotes because of the upper case
             var sql = @"
                         DELETE FROM public.""Employees""
                         WHERE id_employee = @Id_Employee";
+            // Waiting of the response if a row were deleted
             var response = await db.ExecuteAsync(sql, new { Id_Employee = employee.Id_Employee });
+            // Returns if one or more employees were deleted
             return response > 0;
         }
 
+        // Get method for all the seats
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
+            // Stablishing a connection
             var db = dbConnection();
+
+            // SQL query, it uses double quotes because of the upper case
             var sql = @"
                         SELECT id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee
                         FROM public.""Employees"" ";
+            // Returns all the employees
             return await db.QueryAsync<Employee>(sql, new { });
         }
 
