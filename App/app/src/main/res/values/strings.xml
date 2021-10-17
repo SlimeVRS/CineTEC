@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CINETEC</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="Cine">Cine</string>
+    <string name="pelicula">Pelicula</string>
+    <string name="hora">Tipo de asiento</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="Asiento">Asientos</string>
+    <string name="reservar">Reservar</string>
+    <string name="rellenar">Debe rellenar todos los espacios</string>
+    <string name="Compra_exito">Su compra fue realizada con exito</string>
+    <string name="Otra_compra">Realizar otra compra</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Procedeer">Proceder a comprar</string>
+    <string name="Bienvenido">Bienvenido</string>
+</resources>
