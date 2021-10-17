@@ -200,9 +200,14 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             var sql = @"
                         SELECT name_movie, duration_movie, poster_movie, name_protagonist, name_director, price_adult_movie, price_kid_movie, price_elder_movie
                         FROM public.""Projections""
-                        Natural JOIN public.""Movies""
-                        Natural JOIN public.""Protagonists""
-                        Natural JOIN public.""Directors""";
+                        INNER JOIN public.""Movies""
+                        ON id_movie_projection = id_movie
+                        INNER JOIN public.""Protagonists""
+                        ON id_protagonist = id_protagonist_movie
+                        INNER JOIN public.""Directors""
+                        ON id_director = id_director_movie
+";
+        
             return await db.QueryAsync<ShowProjection>(sql, new { });
         }
     }
