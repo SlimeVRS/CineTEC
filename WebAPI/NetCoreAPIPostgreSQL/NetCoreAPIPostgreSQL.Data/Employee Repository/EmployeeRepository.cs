@@ -57,22 +57,33 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
             return await db.QueryAsync<Employee>(sql, new { });
         }
 
+        // Get method for one employee using id
         public async Task<Employee> GetEmployeeDetails(int id_employee)
         {
+            // Stablishing a connection
             var db = dbConnection();
+
+            // SQL query, it uses double quotes because of the upper case
             var sql = @"
                         SELECT id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee
                         FROM public.""Employees""
                         WHERE id_employee = @Id_Employee";
+            // Returns a employee by id
             return await db.QueryFirstOrDefaultAsync<Employee>(sql, new { Id_Employee = id_employee });
         }
 
+        // Creates a new employee
         public async Task<bool> InsertEmployee(Employee employee)
         {
+            // Stablishing a connection
             var db = dbConnection();
+
+            // SQL query, it uses double quotes because of the upper case
             var sql = @"
                         INSERT INTO public.""Employees"" (id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee)
                         VALUES(@Id_Employee, @First_Name_Employee, @Second_Name_Employee, @First_Last_Name_Employee, @Second_Last_Name_Employee, @Phone_Employee, @Birth_Date_Employee, @Admission_Date_Employee, @Password_Employee, @User_Employee, @Id_Branch_Employee, @Id_Rol_Employee)";
+
+            // New employee's attributes
             var response = await db.ExecuteAsync(sql, new {
                 employee.Id_Employee,
                 employee.First_Name_Employee,
@@ -87,12 +98,18 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                 employee.Id_Branch_Employee,
                 employee.Id_Rol_Employee
             });
+
+            // Returns true if one or more employees were added
             return response > 0;
         }
 
+        // Update for a employee
         public async Task<bool> UpdateEmployee(Employee employee)
         {
+            // Stablishing a connection
             var db = dbConnection();
+
+            // SQL query, it uses double quotes because of the upper case
             var sql = @"
                     UPDATE public.""Employees""
                     SET first_name_employee=@First_Name_Employee,
@@ -107,6 +124,8 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                         id_branch_employee=@Id_Branch_Employee,
                         id_rol_employee = @Id_Rol_Employee
                     WHERE id_employee = @Id_Employee";
+
+            // The attributes of the employee
             var response = await db.ExecuteAsync(sql, new {
                 employee.Id_Employee,
                 employee.First_Name_Employee,
@@ -121,12 +140,17 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                 employee.Id_Branch_Employee,
                 employee.Id_Rol_Employee
             });
+            // Returns true if one or more employees were modified
             return response > 0;
         }
         
+        // Insert method from front end
         public async Task<bool> InsertEmployeeFrontEnd(EmployeeFRONTEND employee)
         {
+            // Stablishing a connection
             var db = dbConnection();
+
+            // SQL query, it uses double quotes because of the upper case
             var id_branch_sql = @"
                                     SELECT id_branch
                                     FROM public.""Branches""
@@ -207,6 +231,7 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
                         WHERE id_employee = @Id_Employee";
             var response = await db.ExecuteAsync(sql, new
             {
+                employee.Id_Employee,
                 employee.First_Name_Employee,
                 employee.Second_Name_Employee,
                 employee.First_Last_Name_Employee,

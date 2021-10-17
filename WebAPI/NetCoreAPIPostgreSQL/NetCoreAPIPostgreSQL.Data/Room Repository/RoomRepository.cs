@@ -219,5 +219,11 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
             // Returns true if one or more room were modified
             return response > 0;
         }
+        /**
+        public async Task<IEnumerable<Room>> GetAllRoomsByBranchID()
+        {
+            var db = dbConnection();
+
+        }*/
     }
 }

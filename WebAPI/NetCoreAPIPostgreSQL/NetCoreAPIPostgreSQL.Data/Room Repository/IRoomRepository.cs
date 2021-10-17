@@ -17,5 +17,6 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
         Task<bool> DeleteRoom(Room room);                       // Deletes a room
         Task<bool> InsertRoomFrontEnd(RoomFRONTEND room);       // Inserts a room using the name of the branch
         Task<bool> UpdateRoomByBranchName(RoomFRONTEND room);   // Updates a room using the name of the branch
+        // Task<IEnumerable<Room>> GetAllRoomsByBranchID(string );        // 
     }
 }
