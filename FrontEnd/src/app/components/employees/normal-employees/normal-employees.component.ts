@@ -15,7 +15,8 @@ export class NormalEmployeesComponent implements OnInit {
   list: employeesModel[];
   empleado: employeesModel;
   form1: FormGroup;
-
+  put:boolean;
+ 
 
   constructor(private formBuilder: FormBuilder, private employeeService: EmpleadoService, private toastr: ToastrService) { 
     this.form1 = this.formBuilder.group({
@@ -28,10 +29,10 @@ export class NormalEmployeesComponent implements OnInit {
       numeroTelefono: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       fechaNacimiento: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       fechaIngreso: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      rol: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      usuario: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      contraseña: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
-      branch: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
+      rol: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      usuario: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      contraseña: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
+      branch: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(1)]],
       
     })
   }
@@ -55,9 +56,18 @@ export class NormalEmployeesComponent implements OnInit {
         branch: this.empleado.id_Branch_Employee,
       })
     })
+    this.put=false;
   }
 
   guardarEmpleado(){
+    console.log(this.put);
+    if(this.put===true){
+      this.editar();
+    }else{
+      this.agregar();
+    }
+  }
+  agregar(){
     const empleado: employeesModel = {
       first_Name_Employee : this.form1.get('nombre').value,
       second_Name_Employee : this.form1.get('nombre2').value,
@@ -76,9 +86,31 @@ export class NormalEmployeesComponent implements OnInit {
       this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
       this.form1.reset();
     })
-    
-    console.log(this.form1);
+  }
+  editar(){
+    const empleado: employeesModel = {
+      first_Name_Employee : this.form1.get('nombre').value,
+      second_Name_Employee : this.form1.get('nombre2').value,
+      first_Last_Name_Employee : this.form1.get('apellido1').value,
+      second_Last_Name_Employee : this.form1.get('apellido2').value,
+      id_Employee :this.empleado.id_Employee,
+      phone_Employee : this.form1.get('numeroTelefono').value,
+      birth_Date_Employee : this.form1.get('fechaNacimiento').value,
+      admission_Date_Employee: this.form1.get('fechaIngreso').value,
+      id_Rol_Employee: this.form1.get('rol').value,
+      user_Employee : this.form1.get('usuario').value,
+      password_Employee : this.form1.get('contraseña').value,
+      id_Branch_Employee: this.form1.get('branch').value,
+    }
+    this.employeeService.actualizarEmpleados(empleado).subscribe(data=>{
+      this.toastr.success('Empleado Actualizado', 'Agregada Exitosamente');
+      this.employeeService.obtenerEmpleados();
+      this.form1.reset();
+      
+    })
     console.log(empleado);
+    this.put=false;
+
   }
 
 }

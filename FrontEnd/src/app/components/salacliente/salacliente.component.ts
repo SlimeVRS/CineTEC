@@ -17,7 +17,9 @@ export class SalaclienteComponent implements OnInit {
   filas: any[];
   columnas: any[];
   lugares: any[];
+  salasDeBranch: any[];
   sucursalesForm:FormGroup;
+  salasForm:FormGroup;
   
   constructor(private fb:FormBuilder,private salaService:SalaService, private sucursalService:OfficesService ) { }
 
@@ -33,6 +35,10 @@ export class SalaclienteComponent implements OnInit {
 
     this.sucursalesForm = this.fb.group({
       sucursalControl: []
+    });
+    
+    this.salasForm = this.fb.group({
+      salaControl: []
     });
     this.obtenerSala();
     this.obtenerSucursal();

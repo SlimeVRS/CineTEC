@@ -19,7 +19,13 @@
       <form [formGroup]="sucursalesForm">
         <label> Seleccione Sucursal:</label>
         <select formControlName="sucursalControl" (click)="getValue()">
-            <option [value]="sucursal" *ngFor="let sucursal of lugares"> {{sucursal}}</option>
+            <option [value]="sucursal" *ngFor="let sucursal of lugares">{{sucursal}}</option>
+        </select>
+    </form> 
+    <form [formGroup]="salasForm">
+        <label>Seleccione Sala:</label>
+        <select formControlName="salaControl" id="salas" >
+            <option [value]='sala' *ngFor="let sala of salasDeBranch">{{sala}}</option>
         </select>
     </form> 
       <div>

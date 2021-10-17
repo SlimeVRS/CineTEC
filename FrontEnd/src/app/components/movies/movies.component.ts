@@ -8,6 +8,10 @@ import { MovieService } from 'src/app/services/movie.service';
 import { map, finalize } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { image } from '@cloudinary/url-gen/qualifiers/source';
+import { ProtagonistService } from 'src/app/services/protagonist.service';
+import { protagonistModel } from 'src/app/models/protagonistModel';
+import { DirectorService } from 'src/app/services/director.service';
+import { directorModel } from 'src/app/models/directorModel';
 
 @Component({
   selector: 'app-movies',
@@ -18,6 +22,15 @@ export class MoviesComponent implements OnInit {
   list: movieModel[];
   lista: any[];
   cliente: movieModel;
+
+  repertorio:any[];
+  protagonistaForm:FormGroup;
+  arrayProtagonistas:any[];
+
+  directores:any[];
+  directorForm:FormGroup;
+  arrayDirectores:any[];
+
   form: FormGroup;
   f2;
   title = "CineTEC";
@@ -53,7 +66,7 @@ export class MoviesComponent implements OnInit {
         }
       });
   }
-  constructor( private Api: ImageService, private storage: AngularFireStorage,private formBuilder: FormBuilder, public movieService: MovieService, private toastr: ToastrService) {
+  constructor(private directorService:DirectorService,private Api: ImageService, private storage: AngularFireStorage,private formBuilder: FormBuilder, public movieService: MovieService, private toastr: ToastrService,private protagonistaService:ProtagonistService) {
     this.form = this.formBuilder.group({
       id1:0,
       nombre: ['', [Validators.required]],
@@ -69,6 +82,8 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.obtenerMovie().subscribe(data => {
       console.log(data);
+      this.arrayProtagonistas=[];
+      this.arrayDirectores=[];
       this.cliente = data;
       this.form.patchValue({
         nombre: this.cliente.name_Movie,
@@ -81,15 +96,50 @@ export class MoviesComponent implements OnInit {
         precio_child: this.cliente.price_Kid_Movie,
       });
     })
+    this.protagonistaForm = this.formBuilder.group({
+      protagonistas: []
+    });
+    this.directorForm = this.formBuilder.group({
+      directoresx: []
+    });
+    this.protagonistaService.obtenerClientes();
     this.movieService.obtenerMovies();
     this.urlArray=[];
+    this.obtenerProtagonistas();
+    this.obtenerDirectores();
+  }
+  obtenerProtagonistas() {
+    this.protagonistaService.obtenerClientes();
+    this.protagonistaService.getHeroes().then(data => {
+      this.repertorio as protagonistModel[];
+      this.repertorio = data as protagonistModel[];
+      for (let protagonista of this.repertorio) {
+        var nombreprota = protagonista.name_Protagonist;
+        this.arrayProtagonistas.push(nombreprota);
+      }
+      //  this.populateArray(this.filas,this.columnas);
+      console.log(this.arrayProtagonistas);
+    });
+  }
+  obtenerDirectores() {
+    this.directorService.obtenerClientes();
+    this.directorService.getHeroes().then(data => {
+      this.directores as directorModel[];
+      this.directores = data as directorModel[];
+      for (let director of this.directores) {
+        var nombredirector = director.name_Director;
+        this.arrayDirectores.push(nombredirector);
+      }
+      //  this.populateArray(this.filas,this.columnas);
+      console.log(this.arrayProtagonistas);
+    });
   }
   guardarPelicula(){
     const cliente: movieModel = {
       name_Movie : this.form.get('nombre').value,
       duration_Movie : this.form.get('duracion').value,
-      name_Protagonist_Movie : this.form.get('protagonistas').value,
-      name_Director_Movie : this.form.get('director').value,
+      name_Protagonist_Movie : this.protagonistaForm.get('protagonistas').value,
+      name_Director_Movie : this.directorForm.get('directoresx').value,
       classif_Movie : this.form.get('clasificacion').value,
       price_Adult_Movie : this.form.get('precio_adulto').value,
       price_Elder_Movie : this.form.get('precio_adulto_mayor').value,

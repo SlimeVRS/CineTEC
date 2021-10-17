@@ -23,6 +23,11 @@ export class ProtagonistService {
     }
     );
   }
+  getHeroes(): Promise<protagonistModel[]> {
+    return this.http.get('http://localhost:15451/api/Protagonist')
+               .toPromise()
+               .then(response => this.list= response as protagonistModel[]);         
+  }
   actualizar(cliente){
     this.actualizarForm.next(cliente);
   }

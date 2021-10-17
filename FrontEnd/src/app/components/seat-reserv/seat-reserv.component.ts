@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { oficcesModel } from 'src/app/models/oficcesModels';
 import { salaModel } from 'src/app/models/salaModel';
 import { OfficesService } from 'src/app/services/offices.service';
 import { SalaService } from 'src/app/services/sala.service';
@@ -17,12 +18,39 @@ export class SeatReservComponent implements OnInit {
   seatsMatrix = [];
   formData:FormGroup;
   sala: salaModel;
+  lugares: any[];
   sucursales: any[];
-  constructor(private salaService:SalaService, private toastr: ToastrService, private sucursalService:OfficesService) { }
+  sucursalesForm:FormGroup;
+  constructor(private fb:FormBuilder,private salaService:SalaService, private toastr: ToastrService, private sucursalService:OfficesService) { }
 
   ngOnInit(): void {
     this.sucursalService.obtenerOffices();
     this.sucursales=[];
+    this.lugares=[];
+    this.sucursalesForm = this.fb.group({
+      sucursalControl: []
+    });
+    this.obtenerSucursal();
+  }
+  obtenerSucursal() {
+    this.sucursalService.obtenerOffices();
+    this.sucursalService.getHeroes().then(data => {
+      this.sucursales as oficcesModel[];
+      this.sucursales = data as oficcesModel[];
+      for (let sucursalx of this.sucursales) {
+        var nombreSucursal = sucursalx.name_Branch;
+        this.lugares.push(nombreSucursal);
+      }
+      //  this.populateArray(this.filas,this.columnas);
+      console.log(this.lugares);
+    });
+  }
+  getValue(){
+    console.log(this.sucursalesForm.value);
+    var sites = (document.getElementById("sites")) as HTMLSelectElement;
+    var selfS= sites.selectedIndex;
+    var optS = sites.options[selfS];
+    console.log(optS.textContent);
   }
   selectValidator() {
     var filas = (document.getElementById("filas")) as HTMLSelectElement;
@@ -131,7 +159,6 @@ export class SeatReservComponent implements OnInit {
 
   guardarSala(){
     var filas = (document.getElementById("filas")) as HTMLSelectElement;
-  
     var columnas = (document.getElementById("columnas")) as HTMLSelectElement;
     var sites = (document.getElementById("sites")) as HTMLSelectElement;
     var selF = filas.selectedIndex;
@@ -148,11 +175,11 @@ export class SeatReservComponent implements OnInit {
       capacity_Room:intvalorColumnas*intvalorFilas,
       rows_Room:intvalorFilas,
       columns_Room:intvalorColumnas,
-      name_Branch_Room:optS.textContent
+      name_Branch_Room:optS.textContent.toString(),
     }
     console.log(sala);
     this.salaService.guardarSala(sala).subscribe(data => {
-      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.toastr.success('Sala Guardada', 'Agregada Exitosamente');
     })
   }
 

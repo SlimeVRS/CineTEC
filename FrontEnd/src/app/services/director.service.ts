@@ -24,6 +24,11 @@ export class DirectorService {
     }
     );
   }
+  getHeroes(): Promise<directorModel[]> {
+    return this.http.get('http://localhost:15451/api/Directors')
+               .toPromise()
+               .then(response => this.list= response as directorModel[]);         
+  }
   actualizar(cliente){
     this.actualizarForm.next(cliente);
   }

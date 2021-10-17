@@ -53,6 +53,7 @@ import { ProtagonistlistComponent } from './components/protagonist/protagonistli
 import { DirectorlistComponent } from './components/director/directorlist/directorlist.component';
 import { CarteleraComponent } from './components/cartelera/cartelera.component';
 import { SalaclienteComponent } from './components/salacliente/salacliente.component';
+import { MovieslistComponent } from './components/movies/movieslist/movieslist.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { SalaclienteComponent } from './components/salacliente/salacliente.compo
     ProtagonistlistComponent,
     DirectorlistComponent,
     CarteleraComponent,
-    SalaclienteComponent
+    SalaclienteComponent,
+    MovieslistComponent
 
   ],
   imports: [

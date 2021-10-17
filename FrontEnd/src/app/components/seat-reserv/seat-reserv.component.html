@@ -43,7 +43,7 @@
         <button class="button btn-sucess btn-lg btn-block" (click)="selectValidator()">Generar Sala</button>
       </div>
       <h1></h1>
-      <div class="selectPlace">
+      <!-- <div class="selectPlace">
         <label> Seleccione Sucursal:</label>
         <select id="sites">  
           <option value="1">Cartago</option>
@@ -52,7 +52,13 @@
           <option value="4">Citicinemas</option>
           <option value="5">Multiplaza del Este</option>      
         </select>
-      </div>  
+      </div>   -->
+      <form [formGroup]="sucursalesForm">
+        <label>Seleccione Sucursal:</label>
+        <select formControlName="sucursalControl" id="sites" (click)="getValue()">
+            <option [value]='sucursal' *ngFor="let sucursal of lugares">{{sucursal}}</option>
+        </select>
+    </form> 
 
     <ul class="showcase">
       <li>
