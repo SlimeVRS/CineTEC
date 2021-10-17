@@ -193,5 +193,17 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
             // Returns if one or more projections were modified
             return response > 0;
         }
+
+        public async Task<IEnumerable<ShowProjection>> GetDetailedProjections()
+        {
+            var db = dbConnection();
+            var sql = @"
+                        SELECT name_movie, duration_movie, poster_movie, name_protagonist, name_director, price_adult_movie, price_kid_movie, price_elder_movie
+                        FROM public.""Projections""
+                        Natural JOIN public.""Movies""
+                        Natural JOIN public.""Protagonists""
+                        Natural JOIN public.""Directors""";
+            return await db.QueryAsync<ShowProjection>(sql, new { });
+        }
     }
 }

@@ -17,5 +17,6 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
         Task<bool> InsertEmployeeFrontEnd(EmployeeFRONTEND employee);               // Inserts an employee using names of the branch and rol
         Task<Employee> GetEmployeeByUserPassword(string user, string password);     // Gets an employee using the password and user
         Task<bool> UpdateEmlpoyeeFromFrontEnd(EmployeeFRONTEND employee);           // Updates an employee using names of the branch and rol
+        Task<IEnumerable<Employee>> GetEmployeeDetailsWithNames();
     }
 }

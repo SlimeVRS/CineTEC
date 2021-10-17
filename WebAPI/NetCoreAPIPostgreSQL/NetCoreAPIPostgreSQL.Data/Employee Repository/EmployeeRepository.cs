@@ -246,5 +246,18 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
             });
             return response > 0;
         }
+
+        public async Task<IEnumerable<Employee>> GetEmployeeDetailsWithNames()
+        {
+            var db = dbConnection();
+            var sql = @"
+                        SELECT id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, name_branch, name_rol
+                        FROM public.""Employees""
+                        INNER JOIN public.""Roles""
+                        ON id_rol_employee = id_rol
+                        INNER JOIN public.""Branches""
+                        ON id_branch_employee = id_branch";
+            return await db.QueryAsync<Employee>(sql, new { });
+        }
     }
 }

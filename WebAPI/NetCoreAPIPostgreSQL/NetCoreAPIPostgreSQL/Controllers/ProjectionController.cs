@@ -27,6 +27,11 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _projectionRespository.GetProjectionDetails(id));
         }
+        [HttpGet("all")]
+        public async Task<ActionResult> GetDetailedProjections()
+        {
+            return Ok(await _projectionRespository.GetDetailedProjections());
+        }
         [HttpPost]
         public async Task<ActionResult> CreateProjection([FromBody] ProjectionFRONTEND projection)
         {

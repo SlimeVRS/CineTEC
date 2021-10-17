@@ -35,6 +35,11 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _employeeRepository.GetEmployeeByUserPassword(user, password));
         }
+        [HttpGet("details")]
+        public async Task<ActionResult> GetEmployeeDetailsWithNames()
+        {
+            return Ok(await _employeeRepository.GetEmployeeDetailsWithNames());
+        }
                 
         [HttpPost]
         public async Task<ActionResult> CreateEmployee([FromBody] EmployeeFRONTEND employee)
