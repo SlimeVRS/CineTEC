@@ -219,11 +219,20 @@ namespace NetCoreAPIPostgreSQL.Data.Room_Repository
             // Returns true if one or more room were modified
             return response > 0;
         }
-        /**
-        public async Task<IEnumerable<Room>> GetAllRoomsByBranchID()
+        
+        public async Task<IEnumerable<Room>> GetAllRoomsByBranchID(string branch_name)
         {
             var db = dbConnection();
-
-        }*/
+            var id_branch_sql = @"
+                                SELECT id_branch, name_branch, cant_rooms_branch, address_branch
+                                FROM public.""Branches""
+                                WHERE name_branch = @Branch_Name";
+            var id_branch = await db.QueryFirstOrDefaultAsync<Branch>(id_branch_sql, new { Branch_Name = branch_name });
+            var sql = @"
+                        SELECT id_room, capacity_room, rows_room, columns_room, id_branch_room
+                        FROM public.""Rooms""
+                        WHERE id_branch_room = @Id_Branch_Room";
+            return await db.QueryAsync<Room>(sql, new { Id_Branch_Room = id_branch.Id_Branch });
+        }
     }
 }
