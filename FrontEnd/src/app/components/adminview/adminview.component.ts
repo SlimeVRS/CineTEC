@@ -10,6 +10,7 @@ export class AdminviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.clear();
   }
 
 }
