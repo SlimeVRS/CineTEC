@@ -166,5 +166,15 @@ namespace NetCoreAPIPostgreSQL.Data.Seat_Repository
             // Returns if one or more seat were modified
             return response > 0;
         }
+
+        public async Task<IEnumerable<Seat>> GetOcupiedseats(int id)
+        {
+            var db = dbConnection();
+            var sql = @"
+                        SELECT row_seat, column_seat
+                        FROM public.""Seats""
+                        WHERE id_room_seat = @Id_Room_Seat AND state_seat = 2";
+            return await db.QueryAsync<Seat>(sql, new { Id_Room_Seat = id });
+        }
     }
 }

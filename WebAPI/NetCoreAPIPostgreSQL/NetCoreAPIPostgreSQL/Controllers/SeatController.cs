@@ -32,6 +32,11 @@ namespace NetCoreAPIPostgreSQL.Controllers
         {
             return Ok(await _seatRespository.GetSeatByRoomId(id));
         }
+        [HttpGet("ocupied/{id}")]
+        public async Task<ActionResult>asdlkjaskldj(int id)
+        {
+            return Ok(await _seatRespository.GetOcupiedseats(id));
+        }
         [HttpPost]
         public async Task<ActionResult> CreateSeat([FromBody] Seat seat)
         {
