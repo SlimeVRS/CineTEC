@@ -19,6 +19,20 @@ export class SalaService {
   obtenerSala():Observable<salaModel> {
      return this.actualizarForm.asObservable();
   }
+  obtenerSalabyID(id:number){
+    this.http.get('http://localhost:15451/api/Room/'+id).toPromise().then(data => {
+   
+      this.list = data as salaModel[];
+      console.log(data);
+      
+    }
+    );
+  }
+  obtenerSalaId(id:number): Promise<salaModel[]> {
+    return this.http.get('http://localhost:15451/api/Room/'+id)
+               .toPromise()
+               .then(response => this.list= response as salaModel[]);         
+  }
   obtenerSalas() {
     this.http.get('http://localhost:15451/api/Room').toPromise().then(data => {
       this.list = data as salaModel[];

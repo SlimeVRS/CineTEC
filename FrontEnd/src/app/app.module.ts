@@ -51,7 +51,7 @@ import { ProtagonistComponent } from './components/protagonist/protagonist.compo
 import { DirectorComponent } from './components/director/director.component';
 import { ProtagonistlistComponent } from './components/protagonist/protagonistlist/protagonistlist.component';
 import { DirectorlistComponent } from './components/director/directorlist/directorlist.component';
-import { CarteleraComponent } from './components/cartelera/cartelera.component';
+import { CarteleraComponent } from './components/salacliente/cartelera.component';
 import { SalaclienteComponent } from './components/salacliente/salacliente.component';
 import { MovieslistComponent } from './components/movies/movieslist/movieslist.component';
 

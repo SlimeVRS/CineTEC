@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { proyeccionModel } from 'src/app/models/proyeccionModel';
+import { BookingService } from 'src/app/services/booking.service';
 import { MovieService } from 'src/app/services/movie.service';
 import { OfficesService } from 'src/app/services/offices.service';
 import { ProyeccionService } from 'src/app/services/proyeccion.service';
 import { SalaService } from 'src/app/services/sala.service';
-import { SalaclienteComponent } from '../salacliente/salacliente.component';
 
 @Component({
   selector: 'app-cartelera',
@@ -16,11 +15,17 @@ import { SalaclienteComponent } from '../salacliente/salacliente.component';
 export class CarteleraComponent implements OnInit {
 
   constructor(public projectionService: ProyeccionService, private toastr: ToastrService, private fb: FormBuilder, private salaService: SalaService, private sucursalService: OfficesService,
-    private movieService: MovieService) { }
+    private movieService: MovieService,private bookingService:BookingService) { }
   enableEdit = false;
   enableEditIndex = null;
   arrayIDMovies:any[];
   proyecciones:any[];
+  
+  salaCartelera;
+  nombrepeliculaCartelera;
+  horaCartelera;
+  diaCarteral;
+  sucursalCartelera;
 
   ngOnInit(): void {
     this.projectionService.obtenerProyeccion().subscribe(data => {
@@ -55,15 +60,11 @@ export class CarteleraComponent implements OnInit {
   //   this.projectionService.actualizar(tarjeta);
   // }
   booking(pelicula){
-    var sala= pelicula.id_room; 
-    var nombrepelicula=pelicula.name_movie;
-    var hora=pelicula.time_projection;
-    var dia=pelicula.day_projection;
-    var sucursal=pelicula.name_branch;
-    console.log(sala);
-    console.log(dia);
-
-
+    this.bookingService.storesalaCartelera(pelicula.id_room); 
+    this.bookingService.storenombrepeliculaCartelera(pelicula.name_movie); 
+    this.bookingService.storehoraCartelera(pelicula.time_projection); 
+    this.bookingService.storediaCartelera(pelicula.day_projection); 
+    this.bookingService.storesucursalCarteleral(pelicula.name_branch); 
   }
   enableEditMethod(e, i) {
     this.enableEdit = true;

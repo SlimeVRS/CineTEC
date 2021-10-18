@@ -16,7 +16,7 @@
           <option value="1">Cartago</option>
         </select>
       </div> -->
-      <form [formGroup]="sucursalesForm">
+      <!-- <form [formGroup]="sucursalesForm">
         <label> Seleccione Sucursal:</label>
         <select formControlName="sucursalControl" (click)="getValue()">
             <option [value]="sucursal" *ngFor="let sucursal of lugares">{{sucursal}}</option>
@@ -27,9 +27,9 @@
         <select formControlName="salaControl" id="salas" >
             <option [value]='sala' *ngFor="let sala of salasDeBranch">{{sala}}</option>
         </select>
-    </form> 
+    </form>  -->
       <div>
-        <button class="button btn-sucess btn-lg btn-block">Ver Salas</button>
+        <button class="button btn-sucess btn-lg btn-block" (click)="obtenerFilasyColumnas()">Ver Salas</button>
       </div> 
 
     <ul class="showcase">
