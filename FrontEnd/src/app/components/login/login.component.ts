@@ -35,7 +35,27 @@ export class LoginComponent implements OnInit {
 
   onclick() {
     console.log(this.form2.get('myUser').value);
-    localStorage.setItem("USER", JSON.stringify(this.form2.get('myUser').value));
+    localStorage.setItem("USER", this.form2.get('myUser').value);
+
+    this.UserAdminService.obtenerRol().subscribe(data => {
+      console.log(data);
+      this.userAdmin = data;
+      this.form2.patchValue({
+        myUser: this.userAdmin.user_Employee,
+        password: this.userAdmin.password_Employee,
+       
+      })
+    })
+
+    this.UserClientService.obtenerRol().subscribe(data => {
+      console.log(data);
+      this.userClient = data;
+      this.form2.patchValue({
+        myUser: this.userClient.user_Client,
+        password: this.userClient.password_Client,
+       
+      })
+    })
   }
 verificar(){
   //aquí envía a base de datos para comprobar
