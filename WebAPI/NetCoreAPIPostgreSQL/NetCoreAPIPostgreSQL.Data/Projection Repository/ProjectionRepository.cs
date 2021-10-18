@@ -198,7 +198,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT name_movie, duration_movie, poster_movie, name_protagonist, name_director, price_adult_movie, price_kid_movie, price_elder_movie, id_room, name_branch
+                        SELECT name_movie, duration_movie, time_projection, day_projection, poster_movie, name_protagonist, name_director, price_adult_movie, price_kid_movie, price_elder_movie, id_room, name_branch
                         FROM public.""Projections""
                         INNER JOIN public.""Movies""
                         ON id_movie_projection = id_movie

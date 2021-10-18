@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +19,8 @@ namespace NetCoreAPIPostgreSQL.Model
         public int price_elder_movie { get; set; }
         public int id_room { get; set; }
         public string name_branch { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime day_projection { get; set; }
+        public string time_projection { get; set; }
     }
 }
