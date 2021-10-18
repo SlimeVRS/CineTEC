@@ -198,7 +198,7 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT name_movie, duration_movie, poster_movie, name_protagonist, name_director, price_adult_movie, price_kid_movie, price_elder_movie
+                        SELECT name_movie, duration_movie, poster_movie, name_protagonist, name_director, price_adult_movie, price_kid_movie, price_elder_movie, id_room, name_branch
                         FROM public.""Projections""
                         INNER JOIN public.""Movies""
                         ON id_movie_projection = id_movie
@@ -206,7 +206,10 @@ namespace NetCoreAPIPostgreSQL.Data.Projection_Repository
                         ON id_protagonist = id_protagonist_movie
                         INNER JOIN public.""Directors""
                         ON id_director = id_director_movie
-";
+                        INNER JOIN public.""Rooms""
+                        ON id_room = id_room_projection
+                        INNER JOIN public.""Branches""
+                        ON id_branch = id_branch_room";
         
             return await db.QueryAsync<ShowProjection>(sql, new { });
         }

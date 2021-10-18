@@ -16,5 +16,7 @@ namespace NetCoreAPIPostgreSQL.Model
         public int price_adult_movie { get; set; }
         public int price_kid_movie { get; set; } 
         public int price_elder_movie { get; set; }
+        public int id_room { get; set; }
+        public string name_branch { get; set; }
     }
 }
