@@ -189,14 +189,17 @@ namespace NetCoreAPIPostgreSQL.Data.Employee_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT password_employee, user_employee
+                        SELECT id_employee, first_name_employee, second_name_employee, first_last_name_employee, second_last_name_employee, phone_employee, birth_date_employee, admission_date_employee, password_employee, user_employee, id_branch_employee, id_rol_employee
                         FROM public.""Employees""
                         WHERE password_employee = @Password_Employee AND user_employee = @User_Employee";
-            return await db.QueryFirstOrDefaultAsync<Employee>(sql, new
+            var response = await db.QueryFirstOrDefaultAsync<Employee>(sql, new
             {
                 Password_Employee = password,
                 User_Employee = user
             });
+            if (response == null)
+                return null;
+            return response;
         }
 
         public async Task<bool> UpdateEmlpoyeeFromFrontEnd(EmployeeFRONTEND employee)

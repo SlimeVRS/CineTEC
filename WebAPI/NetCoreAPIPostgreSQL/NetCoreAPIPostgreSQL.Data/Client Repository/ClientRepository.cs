@@ -102,14 +102,17 @@ namespace NetCoreAPIPostgreSQL.Data.Client_Repository
         {
             var db = dbConnection();
             var sql = @"
-                        SELECT password_client, user_client
+                        SELECT id_client, first_name_client, second_name_client, first_last_name_client, second_last_name_client, phone_client, birth_date_client, password_client, user_client
                         FROM public.""Clients""
                         WHERE password_client = @Passwrod_client AND user_client = @User_Client";
-            return await db.QueryFirstOrDefaultAsync<Client>(sql, new
+            var response = await db.QueryFirstOrDefaultAsync<Client>(sql, new
             {
                 Passwrod_client = password,
                 User_Client = user
             });
+            if (response == null)
+                return null;
+            return response;
         }
     }
 }
