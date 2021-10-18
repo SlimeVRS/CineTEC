@@ -118,10 +118,11 @@ import { MovieslistComponent } from './components/movies/movieslist/movieslist.c
       {path: 'offices', component: OfficesComponent},
       {path: 'screens', component: ScreensComponent},
       {path: 'admin', component: AdminviewComponent},
+      {path: 'cartelera', component: CarteleraComponent},
       {path: 'tools', component: RolComponent},
       {path: 'protagonist', component: ProtagonistComponent},
       {path: 'director', component:  DirectorComponent},
-      {path: 'cartelera', component:  SalaclienteComponent},
+      {path: 'salaReserv', component:  SalaclienteComponent},
       {path: 'seat-reserv', component: SeatReservComponent},
       { path: '**', redirectTo: 'login', pathMatch: 'full' },
       

@@ -26,7 +26,7 @@ export class SalaService {
     );
   }
   obtenerBranchAsociadas(nombreSala: string ){
-    this.http.get('http://localhost:15451/api/Room/byroomid'+ nombreSala).toPromise().then(data => {
+    this.http.get('http://localhost:15451/api/Room/byroomid/'+ nombreSala).toPromise().then(data => {
       this.list = data as salaModel[];
     }
     );

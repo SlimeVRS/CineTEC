@@ -15,10 +15,11 @@ export class ClientsComponent implements OnInit {
   list: clientsModel[];
   cliente: clientsModel;
   form: FormGroup;
+  put: Boolean;
 
   constructor(private formBuilder: FormBuilder, private clientService: ClienteService, private toastr: ToastrService) {
     this.form = this.formBuilder.group({
-      id1:0,
+      id1: 0,
       nombre: ['', [Validators.required]],
       nombre2: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(1)]],
       apellido1: ['', [Validators.required, Validators.maxLength(16)]],
@@ -48,8 +49,17 @@ export class ClientsComponent implements OnInit {
         password: this.cliente.password_Client,
       })
     })
+    this.put=false;
   }
-  guardarCliente() {
+  guardarCliente(){
+    console.log(this.put);
+    if(this.put===true){
+      this.editar();
+    }else{
+      this.agregar();
+    }
+  }
+  agregar() {
     const cliente: clientsModel = {
       first_Name_Client: this.form.get('nombre').value,
       second_Name_Client: this.form.get('nombre2').value,
@@ -59,15 +69,35 @@ export class ClientsComponent implements OnInit {
       phone_Client: this.form.get('numeroTelefono').value,
       password_Client: this.form.get('password').value,
       user_Client: this.form.get('usuario').value,
-      birth_Date_Client: this.form.get('fechaNacimiento').value+"T00:00:00",
+      birth_Date_Client: this.form.get('fechaNacimiento').value + "T00:00:00",
     }
     this.clientService.guardarCliente(cliente).subscribe(data => {
       this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
       this.form.reset();
-    })
+    });
 
     console.log(this.form);
     console.log(cliente);
   }
+  editar() {
+    const cliente: clientsModel = {
+      first_Name_Client: this.form.get('nombre').value,
+      second_Name_Client: this.form.get('nombre2').value,
+      first_Last_Name_Client: this.form.get('apellido1').value,
+      second_Last_Name_Client: this.form.get('apellido2').value,
+      id_Client: this.form.get('cedula').value,
+      phone_Client: this.form.get('numeroTelefono').value,
+      password_Client: this.form.get('password').value,
+      user_Client: this.form.get('usuario').value,
+      birth_Date_Client: this.form.get('fechaNacimiento').value + "T00:00:00",
+    }
+    this.clientService.actualizarCliente(cliente).subscribe(data => {
+      this.toastr.success('Cliente Actualizado', 'Agregada Exitosamente');
+      this.form.reset();
+    });
 
+    console.log(this.form);
+    console.log(cliente);
+  }
 }
+

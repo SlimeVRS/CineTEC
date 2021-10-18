@@ -27,8 +27,8 @@ export class ClienteService {
   actualizar(cliente){
     this.actualizarForm.next(cliente);
   }
-  actualizarCliente(id:number , cliente: clientsModel): Observable<clientsModel>{
-    return this.http.put<clientsModel>('http://localhost:15451/api/Client/'+id,cliente);
+  actualizarCliente(cliente: clientsModel): Observable<clientsModel>{
+    return this.http.put<clientsModel>('http://localhost:15451/api/Client',cliente);
   }
   obtenerCliente(): Observable<clientsModel>{
     return this.actualizarForm.asObservable();

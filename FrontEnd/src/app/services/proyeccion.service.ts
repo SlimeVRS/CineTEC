@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { proyeccionModelAll } from '../models/proyeccionAll';
 import { proyeccionModel } from '../models/proyeccionModel';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { proyeccionModel } from '../models/proyeccionModel';
 export class ProyeccionService {
   myAppUrl: 'http://localhost:15451/api/Projection';
   list: proyeccionModel[];
+  lista:proyeccionModelAll[];
   private actualizarForm = new BehaviorSubject<proyeccionModel>({} as any);
 
   constructor(private http: HttpClient) { }
@@ -18,8 +20,8 @@ export class ProyeccionService {
   }
 
   obtenerProyecciones() {
-    this.http.get('http://localhost:15451/api/Projection').toPromise().then(data => {
-      this.list = data as proyeccionModel[];
+    this.http.get('http://localhost:15451/api/Projection/all').toPromise().then(data => {
+      this.lista = data as proyeccionModelAll[];
     }
     );
   }

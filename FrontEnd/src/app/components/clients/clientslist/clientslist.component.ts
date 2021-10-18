@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { clientsModel } from 'src/app/models/clientsModel';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { ClientsComponent } from '../clients.component';
 
 @Component({
   selector: 'app-clientslist',
@@ -12,7 +13,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class ClientslistComponent implements OnInit {
   enableEdit = false;
   enableEditIndex = null;
-  constructor(public clientService:ClienteService, public toastr:ToastrService) { }
+  constructor(public clientService:ClienteService, public toastr:ToastrService, private cliente:ClientsComponent) { }
   ngOnInit(): void {
     this.clientService.obtenerClientes();
   }
@@ -29,6 +30,7 @@ export class ClientslistComponent implements OnInit {
    }
    editar(tarjeta){
      this.clientService.actualizar(tarjeta);
+     this.cliente.put=true;
    }
    enableEditMethod(e, i) {
      this.enableEdit = true;

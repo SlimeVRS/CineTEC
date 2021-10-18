@@ -1,2 +1,42 @@
-<app-navbar-client></app-navbar-client>
-<p>cartelera works!</p>
+<app-employees></app-employees>
+<body>
+  
+<table class="table table-sm">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <tr *ngFor="let projection of projectionService.lista">
+        <td style="color: white;">
+          
+            <img src={{projection.poster_movie}} alt="" />
+        <!-- {{projection.name_protagonist}} -->
+    </td>
+        <td style="color: white;">
+            {{projection.name_movie}}
+        </td>
+        <td style="color: white;">
+            {{projection.name_protagonist}}
+        </td>
+        <td style="color: white;">
+            {{projection.name_director}}
+        </td>
+        <td style="color: white;">
+            {{projection.duration_movie}}
+        </td>
+        <td style="color: white;">
+            {{"Sala "+projection.id_room}}
+        </td>
+        <td style="color: white;">
+            {{projection.day_projection}}
+        </td>
+        <td style="color: white;">
+            {{projection.time_projection}}
+        </td>
+        <td style="color: white;">
+            {{projection.name_branch}}
+        </td>
+        <td>
+            <i class="fas fa-couch"  (click)="booking(projection)"  routerLink="/salaReserv" style="cursor: pointer;color:#d6c41e"></i>  
+        </td>
+
+    </tr>
+</table>
+</body>
