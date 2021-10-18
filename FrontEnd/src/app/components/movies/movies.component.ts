@@ -147,7 +147,7 @@ export class MoviesComponent implements OnInit {
       poster_Movie : this.finalURL,
     }
     this.movieService.guardarMovie(cliente).subscribe(data=>{
-      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.toastr.success('Pelicula Guardada', 'Agregada Exitosamente');
       this.form.reset();
     })
     

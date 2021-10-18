@@ -20,7 +20,7 @@ export class MovieslistComponent implements OnInit {
       const index = this.movieService.lista.indexOf(id);
       this.movieService.lista.splice(index, 1);
       this.movieService.eliminarMovie(id).subscribe(data => {
-        this.toastr.warning('Eliminar Exitoso', 'Tarjeta Eliminada');
+        this.toastr.warning('Eliminar Exitoso', 'Pelicula Eliminada');
 
         this.movieService.obtenerMovies();
       })

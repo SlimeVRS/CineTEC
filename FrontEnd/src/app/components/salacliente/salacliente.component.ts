@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { oficcesModel } from 'src/app/models/oficcesModels';
 import { salaModel } from 'src/app/models/salaModel';
+import { seatModel } from 'src/app/models/seat';
 import { BookingService } from 'src/app/services/booking.service';
 
 import { OfficesService } from 'src/app/services/offices.service';
+import { ReservService } from 'src/app/services/reserv.service';
 import { SalaService } from 'src/app/services/sala.service';
 import { CarteleraComponent } from './cartelera.component';
 
@@ -29,9 +32,13 @@ export class SalaclienteComponent implements OnInit {
   contenedor:any[];
   arraySalas: any[];
 
- 
+  filasNuevas:any[];
+  columnasNuevas:any[];
 
-  constructor(private bookingServices: BookingService, private fb: FormBuilder, private salaService: SalaService, private sucursalService: OfficesService) { }
+  seatContainer:any[];
+  seatContainer2:any[];
+
+  constructor(private toastr: ToastrService,private seatService:ReservService,private bookingServices: BookingService, private fb: FormBuilder, private salaService: SalaService, private sucursalService: OfficesService) { }
 
   ngOnInit(): void {
     // this.salaService.obtenerSalas();
@@ -45,6 +52,8 @@ export class SalaclienteComponent implements OnInit {
     this.salasDeBranch = [];
     this.arraySalas = [];
     this.contenedor=[];
+    this.seatContainer2=[];
+    this.filasNuevas=[];
     
 
 
@@ -55,34 +64,17 @@ export class SalaclienteComponent implements OnInit {
     this.salasForm = this.fb.group({
       salaControl: []
     });
-    //  console.log(this.bookingServices.diaCartelera);
-    //  console.log(this.bookingServices.horaCartelera);
+  
     console.log(this.bookingServices.salaCartelera);
 
-    //console.log(this.cartelera.salaCartelera);
+  
 
     this.obtenerSucursal();
     this.salaService.obtenerSala();
      this.obtenerDimensionesSala();
 
   }
-  // obtenerSala() {
-  //   this.salaService.obtenerSalas();
-  //   this.salaService.getHeroes().then(data => {
-  //     this.salas as salaModel[];
-  //     this.salas = data as salaModel[];
-
-  //     for (let sala of this.salas) {
-  //       var rows = sala.rows_Room;
-  //       var cells = sala.columns_Room;
-  //       this.filas.push(rows);
-  //       this.columnas.push(cells);
-  //     }
-  //     //  this.populateArray(this.filas,this.columnas);
-  //     console.log(this.filas);
-  //     console.log(this.columnas);
-  //   });
-  // }
+  
   obtenerDimensionesSala() {
     this.salaService.obtenerSalas();
     this.salaService.obtenerSalaId(this.bookingServices.salaCartelera).then(data => {
@@ -148,6 +140,13 @@ export class SalaclienteComponent implements OnInit {
     console.log(sucursal);
 
   }
+  obtenerFilas(){
+    for (let salaxx of Object.keys(this.seatContainer2)) {
+      var nueva = this.seatContainer2[salaxx];
+      this.filasNuevas.push(nueva);
+    }
+    console.log(this.filasNuevas);
+  }
   obtenerSalas(sucursal: string) {
     this.salaService.obtenerBranchAsociadas(sucursal);
     //var salas = this.salaService.list;
@@ -158,6 +157,17 @@ export class SalaclienteComponent implements OnInit {
     console.log(this.salasDeBranch);
   }
   populateArray(filas: number, columnas: number) {
+    this.seatService.getHeroes2(this.bookingServices.salaCartelera).then(data => {
+      this.seatContainer as seatModel[];
+      this.seatContainer = data as seatModel[];
+      for (let sucursalx of this.seatContainer) {
+        var nombreSucursal = sucursalx.state_Seat;
+        this.seatContainer2.push(sucursalx);
+      }
+     
+      console.log(this.seatContainer2);
+    });
+  
     var count = 1;
     for (var i = 0; i < filas; i++) {
       var data = [];
@@ -167,13 +177,17 @@ export class SalaclienteComponent implements OnInit {
       }
       this.seatsMatrix.push(data);
     }
+
     this.generateTable(filas, columnas);
     console.log(this.seatsMatrix);
     console.log(filas, columnas)
+  
   }
+
   generateTable(filasX: number, columnasX: number) {
-    console.log("ADENTREO "+filasX);
-    console.log("ADENTREO "+columnasX);
+    // console.log("ADENTREO "+filasX);
+    // console.log("ADENTREO "+columnasX);
+    this.obtenerFilas();
     var count = 1;
     var disponibleO = document.getElementById('disponible');
 
@@ -243,6 +257,26 @@ export class SalaclienteComponent implements OnInit {
         });
       });
     });
+  }
+  guardarReservacion(){
+    for(var i = 0; i < this.seatsMatrix.length; i++){
+      for(var j = 0; j < this.seatsMatrix[0].length; j++){
+        if (this.seatsMatrix[i][j] === 1) {
+          const cliente: seatModel = {
+            row_Seat: i,
+            column_Seat:j,
+            state_Seat:2, 
+            id_Room_Seat:this.bookingServices.salaCartelera,
+          }
+          this.seatService.actualizarOffices(cliente).subscribe(data => {
+            this.toastr.success('Asientos Reservados', 'Agregada Exitosamente');
+            
+          })
+          console.log(cliente);
+        }
+      }
+      
+    }
   }
 
 

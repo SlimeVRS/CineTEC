@@ -21,7 +21,7 @@ export class OfficeslistComponent implements OnInit {
     const index = this.officesService.list.indexOf(id);
      this.officesService.list.splice(index,1);
       this.officesService.eliminarOffices(id).subscribe(data=>{
-         this.toastr.warning('Eliminar Exitoso', 'Tarjeta Eliminada');
+         this.toastr.warning('Eliminar Exitoso', 'Sucursal Eliminada');
  
          this.officesService.obtenerOffices();
       })

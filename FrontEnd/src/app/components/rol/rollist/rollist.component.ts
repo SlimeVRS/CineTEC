@@ -20,7 +20,7 @@ export class RollistComponent implements OnInit {
     const index = this.rolService.list.indexOf(id);
      this.rolService.list.splice(index,1);
       this.rolService.eliminarTarjeta(id).subscribe(data=>{
-         this.toastr.warning('Eliminar Exitoso', 'Tarjeta Eliminada');
+         this.toastr.warning('Eliminar Exitoso', 'Rol Eliminada');
  
          this.rolService.obtenerRoles();
       })

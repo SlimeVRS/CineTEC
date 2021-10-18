@@ -127,7 +127,7 @@ export class ScreensComponent implements OnInit {
       day_Projection : this.formDia.get('day_Projection').value,
     }
     this.proyeccionService.guardarProyeccion(cliente).subscribe(data=>{
-      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.toastr.success('Proyeccion Asignada', 'Agregada Exitosamente');
     })
     console.log(cliente);
   }

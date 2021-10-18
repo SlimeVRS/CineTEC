@@ -38,7 +38,7 @@ export class ProtagonistComponent implements OnInit {
       
     }
     this.clientService.guardarCliente(cliente).subscribe(data => {
-      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.toastr.success('Protagonista Guardado', 'Agregada Exitosamente');
       this.form.reset();
     })
 

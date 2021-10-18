@@ -1,6 +1,7 @@
 export class seatModel{
-    id?:number;
-    row:number;
-    column:number;
-    seatState:number;
+    id_Seat?:number;
+    row_Seat:number;
+    column_Seat:number;
+    state_Seat:number;
+    id_Room_Seat:number;
 }

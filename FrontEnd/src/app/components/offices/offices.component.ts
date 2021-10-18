@@ -43,7 +43,7 @@ export class OfficesComponent implements OnInit {
       address_Branch: this.form2.get('inputLocation').value,
     }
     this.officesService.guardarOffices(offices).subscribe(data => {
-      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.toastr.success('Sucursales Guardada', 'Agregada Exitosamente');
       this.form2.reset();
     })
     console.log(this.form2);

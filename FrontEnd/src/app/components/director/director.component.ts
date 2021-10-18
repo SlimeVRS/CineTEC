@@ -38,7 +38,7 @@ export class DirectorComponent implements OnInit {
       
     }
     this.directorService.guardarCliente(cliente).subscribe(data => {
-      this.toastr.success('Tarjeta Guardada', 'Agregada Exitosamente');
+      this.toastr.success('Director Guardada', 'Agregada Exitosamente');
       this.form.reset();
     })
 

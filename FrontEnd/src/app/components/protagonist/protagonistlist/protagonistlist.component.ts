@@ -20,7 +20,7 @@ export class ProtagonistlistComponent implements OnInit {
     const index = this.protagonistService.list.indexOf(id);
      this.protagonistService.list.splice(index,1);
       this.protagonistService.eliminarCliente(id).subscribe(data=>{
-         this.toastr.warning('Eliminar Exitoso', 'Tarjeta Eliminada');
+         this.toastr.warning('Eliminar Exitoso', 'Protagonista Eliminado');
  
          this.protagonistService.obtenerClientes();
       })
